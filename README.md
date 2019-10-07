@@ -1,16 +1,24 @@
 # SimplyFind
 
 ## Vision
+
 Our vision is to help users navigate the conference building by guiding them from their current location to relevant spots in the conference
 
 ---
-### User stories
+
+## Elevator Pitch
+
+We started this project because we understand how hard it is to find our way in a conference building we have never been in. So why would you find your way when SimplyFind can do it for you? If you need to go somewhere and have no idea how to, just a couple of taps will make sure you go where you need to without ever getting you lost.
+
+---
+
+## User stories
 
 + As a coffee drinker, I would like to know where the coffee machines are, because I don't want to be dependent on the coffee breaks.
 
 + As a forgetful person, I would like to know what conferences are going on today because I wanted a simple way to get this information.
 
-+ As a foreigner I would like to locate myself within FEUP because I was never here before.
++ As a foreigner I would like to locate myself within FEUP because I was never there before.
 
 + As a person with no sense of direction, I would like to have very precise directions to not get lost in the building.
 
