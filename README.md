@@ -12,6 +12,20 @@ We started this project because we understand how hard it is to find our way in 
 
 ---
 
+## Technologies
+
+### Hardware
+ - Beacons
+ - Android Phone
+
+### Software/Tools
+ - [Microsoft Visual Studio Code](https://code.visualstudio.com/)
+ - [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter)
+ - [Git/GitHub](https://github.com/)
+ - [Android Studio and SDK](https://developer.android.com/studio)
+
+---
+
 ## User stories
 
 + As a coffee drinker, I would like to know where the coffee machines are, because I don't want to be dependent on the coffee breaks.
