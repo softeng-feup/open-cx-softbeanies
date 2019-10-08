@@ -14,11 +14,11 @@ We started this project because we understand how hard it is to find our way in 
 
 ## User stories
 
-+ As a coffee drinker, I would like to know where the coffee machines are, because I don't want to be dependent on the coffee breaks.
++ As a person with no sense of direction, I would like to have very precise directions to not get lost in the building.
 
 + As a forgetful person, I would like to know what conferences are going on today because I want a simple way to get this information.
 
-+ As a person with no sense of direction, I would like to have very precise directions to not get lost in the building.
++ As a coffee drinker, I would like to know where the coffee machines are, because I don't want to be dependent on the coffee breaks.
 
 + As a participant, I would want to know where I could do check-in as soon as I arrived, so I wouldn't have to ask.
 
