@@ -1,4 +1,4 @@
-package com.softbeanies.starter_app
+package com.softbeanies.flutter_app
 
 import android.os.Bundle
 

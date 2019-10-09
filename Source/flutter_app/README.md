@@ -1,6 +1,6 @@
-# starter_app
+# flutter_app
 
-A new Flutter application.
+A sample flutter project to start.
 
 ## Getting Started
 
