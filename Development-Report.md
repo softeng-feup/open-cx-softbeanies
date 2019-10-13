@@ -48,7 +48,11 @@ We started this project because we understand how hard it is to find our way in 
 
 ### Use case diagram 
 
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Use%20Cases/SimplyFind%20Use%20Case%201.jpeg">
 
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Use%20Cases/SimplyFind%20Use%20Case%202.jpeg">
+
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Use%20Cases/SimplyFind%20Use%20Case%203.jpeg">
 
 ### User stories
 
@@ -62,7 +66,7 @@ We started this project because we understand how hard it is to find our way in 
 
 + As a FEUP student, I'm interested in knowing where the coffee breaks are, and which speakers will be talking at what time because I already know how to find my way at FEUP.
 
-+ If I get lost, I would like to know where my colleagues are, to find them when that happens.
++ As an user, I would like to know where my colleagues are if i get lost.
 
 + As a speaker, I would like to know the rooms where I am going to give a talk because those are the relevant locations for me.
 
