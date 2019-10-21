@@ -1,4 +1,4 @@
-name: flutter_app_3
+name: prototype
 description: A new Flutter application.
 
 # The following defines the version and build number for your application.
@@ -39,6 +39,17 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - images/back-arrow.png
+    - images/logout.png
+    - images/man.png
+    - images/network.png
+    - images/pin.png
+    - images/restaurant.png
+    - images/speech.png
+    - images/student.png
+    - images/wc.png
+    - images/start.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

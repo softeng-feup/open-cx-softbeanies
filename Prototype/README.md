@@ -1,4 +1,4 @@
-# flutter_app_3
+# prototype
 
 A new Flutter application.
 

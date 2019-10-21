@@ -1,4 +1,4 @@
-package com.example.flutter_app_3
+package com.example.prototype
 
 import android.os.Bundle
 
