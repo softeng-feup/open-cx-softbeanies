@@ -50,13 +50,13 @@ class _MyHomePageState extends State<MyHomePage> {
   return Scaffold(
       body: SafeArea(
         child: Container(
-          color: Color(0xFFACDF87) ,
+          color: Color(0xFFCAEABC) ,
           child: Stack(
             children: <Widget>[
-              Button(x: 10, y:75, title: "Start", onPressed: (){
+              Button(x: 13, y:75, title: "Start", onPressed: (){
                 Navigator.pushNamed(context, '/Options');
               }, ),
-              LocateImage(x: 20, y: 25, imageName: "images/wc.png"),
+              LocateImage(x: 20, y: 25, imageName: "images/start.png"),
               LocateText(x: 10,y: 10, title: "Simplyfind", size:55.0)
             ],
           ),
@@ -86,7 +86,7 @@ class LocateText extends StatelessWidget {
        child: new Text(title, 
           style: new TextStyle(
               fontSize: size,
-              color: Colors.blue,
+              color: Color(0xFF073763),
           ),
         ),
     );
@@ -177,7 +177,7 @@ class OptionsMenu extends StatelessWidget {
         appBar: AppBar(title: Text("Options"),),
       body: SafeArea(
         child: Container(
-          color: Color(0xFFACDF87) ,
+          color: Color(0xFFCAEABC) ,
           child: Stack(
             children: <Widget>[
               ButtonWithImage(x: 5, y:2, image: "images/speech.png", onPressed: (){
@@ -221,7 +221,7 @@ class ButtonWithImage extends StatelessWidget {
       child: 
       new FlatButton(
         onPressed: onPressed,
-        color: Colors.green,
+        color: Color(0xFFB6D7A8),
         padding: EdgeInsets.all(1.0),
         child: Column(
           children: <Widget>[
@@ -237,7 +237,7 @@ class ButtonWithImage extends StatelessWidget {
   }
 }
 
-
+/*
 class MyButton extends StatelessWidget {
 
   MyButton({this.x, this.y, this.title, this.onPressed });
@@ -267,7 +267,7 @@ class MyButton extends StatelessWidget {
       );
   }
 }
-
+*/
 class Lectures extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
