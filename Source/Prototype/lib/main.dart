@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         '/Workshops': (context) => Workshops(),
         '/Wc': (context) => Wc(),
         '/Exits': (context) => Exits(),
-        //'/Search': (context) => Search(),
+        '/Search': (context) => Search(),
       },
     );
   }
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushNamed(context, '/Options');
               }, ),
               Button(x: 12, y:75, title: "Explore", onPressed: (){
-                Navigator.pushNamed(context, '/Options');
+                Navigator.pushNamed(context, '/Search');
               }, ),
               LocateImage(x: 20, y: 20, imageName: "images/start.png"),
               LocateText(x: 12,y: 10, title: "Simplyfind", size:55.0)
@@ -204,7 +204,9 @@ class OptionsMenu extends StatelessWidget {
               }, legend: "Exits")
             ],
           ),
-        )));
+        )
+      )
+    );
   }
 }
 
@@ -239,40 +241,6 @@ class ButtonWithImage extends StatelessWidget {
   }
 }
 
-/*
-class MyButton extends StatelessWidget {
-  MyButton({this.x, this.y, this.title, this.onPressed});
-  final int x;
-  final int y;
-  final String title;
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-        left: (x / 100) * MediaQuery.of(context).size.width,
-        top: (y / 100) * MediaQuery.of(context).size.height,
-        child: Container(
-            width: 110.0,
-            height: 100.0,
-            margin: EdgeInsets.symmetric(vertical: 3.0),
-            child: OutlineButton(
-              child: Text(
-                title,
-                style: TextStyle(
-                  color: Color(0xFF083663),
-                ),
-              ),
-              borderSide: BorderSide(
-                color: Color(0xFFA5D6A7),
-                style: BorderStyle.solid,
-                width: 2.8,
-              ),
-              onPressed: onPressed,
-            )));
-  }
-}
-*/
 class Lectures extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
