@@ -46,74 +46,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  @override
   Widget build(BuildContext context) {
-    return Material(
-      // needed
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: () => {Navigator.pushNamed(context, '/Options')}, // needed
-        child: Image.asset(
-          "images/start.png",
-          width: 22,
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-}
-
-class App_name extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child : Text("SimplyFind", style: TextStyle(color: Colors.blue)),
-    );
-  }
-}
-
-
-class OptionsMenu extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text("Options"),),
+  return Scaffold(
       body: SafeArea(
         child: Container(
           color: Color(0xFFACDF87) ,
           child: Stack(
             children: <Widget>[
-         /*     ButtonWithImage(image: "images/speech.png", onPressed: (){
-                Navigator.pushNamed(context, '/Lectures');
+              Button(x: 10, y:75, title: "Start", onPressed: (){
+                Navigator.pushNamed(context, '/Options');
               }, ),
-              ButtonWithImage(image: "images/network.png", onPressed: (){
-                Navigator.pushNamed(context, '/Networking');
-              }, ),
-              ButtonWithImage(image: "images/speech.png", onPressed: (){
-                Navigator.pushNamed(context, '/Food');
-              }, ),
-              ButtonWithImage(image: "images/restaurant.png", onPressed: (){
-                Navigator.pushNamed(context, '/Food');
-              }, ),*/
-             // IconsPics(x: 10, y: 10, image: "images/speech.png"),
-              MyButton(x: 10, y:10, title: "Lectures", onPressed: (){
-                Navigator.pushNamed(context, '/Lectures');
-              }, ),
-              MyButton(x: 60, y:10, title: "Networking", onPressed: (){
-                Navigator.pushNamed(context, '/Networking');
-              }),
-              MyButton(x: 10, y:35, title: "Food", onPressed: (){
-                Navigator.pushNamed(context, '/Food');
-              }),
-              MyButton(x: 60, y:35, title: "Workshops", onPressed: (){
-                Navigator.pushNamed(context, '/Workshops');
-              }),
-              MyButton(x: 10, y:60, title: "wc", onPressed: (){
-                Navigator.pushNamed(context, '/Wc');
-              }),
-              MyButton(x: 60, y:60, title: "exits", onPressed: (){
-                Navigator.pushNamed(context, '/Exits');
-              })
+              LocateImage(x: 20, y: 25, imageName: "images/wc.png"),
+              LocateText(x: 10,y: 10, title: "Simplyfind", size:55.0)
             ],
           ),
         )
@@ -122,51 +66,66 @@ class OptionsMenu extends StatelessWidget {
   }
 }
 
-class ButtonWithImage extends StatelessWidget {
-  ButtonWithImage({this.image, this.onPressed});
-  final String image;
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      // needed
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: () => onPressed, // needed
-        child: Image.asset(
-          image,
-          width: 22,
-          fit: BoxFit.cover,
-          height: 22,
-        ),
-      ),
-    );
-  }
-}
-
-class IconsPics extends StatelessWidget {
-  IconsPics({this.x, this.y, this.image});
+class LocateText extends StatelessWidget {
+  LocateText({this.x, this.y, this.title, this.size});
   final int x;
   final int y;
-  final String image;
-
+  final String title;
+  final double size;
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: (x/100)*MediaQuery.of(context).size.width,
-      top: (y/100)*MediaQuery.of(context).size.height,
-      child: Container(
-          width: 110.0,
-          height: 100.0,
-          margin: EdgeInsets.symmetric(vertical: 3.0),
-          child: Image.asset(image)),
+      left: (x / 100) * MediaQuery
+          .of(context)
+          .size
+          .width,
+      top: (y / 100) * MediaQuery
+          .of(context)
+          .size
+          .height,
+       child: new Text(title, 
+          style: new TextStyle(
+              fontSize: size,
+              color: Colors.blue,
+          ),
+        ),
     );
   }
 }
+class LocateImage extends StatelessWidget {
+  LocateImage({ this.x,this.y, this.imageName });
+  final int x;
+  final int y;
+  final String imageName;
 
-class BigButton extends StatelessWidget {
-  BigButton({this.x, this.y, this.title, this.onPressed});
+  @override
+  Widget build(BuildContext context) {
+      return Positioned(
+      left: (x / 100) * MediaQuery
+          .of(context)
+          .size
+          .width,
+      top: (y / 100) * MediaQuery
+          .of(context)
+          .size
+          .height,
+      child: Image.asset(
+          imageName,
+          width: 0.6 * MediaQuery
+          .of(context)
+          .size
+          .width,
+          height: 0.4 * MediaQuery
+          .of(context)
+          .size
+          .height,
+        ),
+      );
+  }
+
+}
+class Button extends StatelessWidget {
+  Button({this.x, this.y, this.title, this.onPressed});
   final int x;
   final int y;
   final String title;
@@ -183,24 +142,101 @@ class BigButton extends StatelessWidget {
           .of(context)
           .size
           .height,
-      child: Container(
-          width: 270.0,
-          height: 50.0,
-          margin: EdgeInsets.symmetric(vertical: 3.0),
-          child: SizedBox.expand(
-              child: OutlineButton(
-                child: Text(title),
-                borderSide: BorderSide(
-                  color: Color(0xFFA5D6A7),
-                  style: BorderStyle.solid, width: 2.8,
-                ),
-                onPressed: onPressed,
-              )
-          )
-      ),
+      child:
+      new MaterialButton(
+        child: new Text(title, 
+          style: new TextStyle(
+              fontSize: 30.0,
+              color: Colors.white,
+          ),
+        ),
+        onPressed: onPressed,
+        padding: EdgeInsets.all(1.0),
+        color: Color(0xFF083663),
+        textTheme: ButtonTextTheme.primary,
+        minWidth: 0.8 * MediaQuery
+          .of(context)
+          .size
+          .width,
+        height: 0.1 * MediaQuery
+          .of(context)
+          .size
+          .height,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10)
+        ),
+      )
     );
   }
 }
+
+class OptionsMenu extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text("Options"),),
+      body: SafeArea(
+        child: Container(
+          color: Color(0xFFACDF87) ,
+          child: Stack(
+            children: <Widget>[
+              ButtonWithImage(x: 5, y:2, image: "images/speech.png", onPressed: (){
+                Navigator.pushNamed(context, '/Lectures');
+              }, legend: "Lectures" ),
+              ButtonWithImage(x: 55, y:2,image: "images/network.png", onPressed: (){
+                Navigator.pushNamed(context, '/Networking');
+              }, legend: "Networking"),
+              ButtonWithImage(x: 5, y:30, image: "images/restaurant.png", onPressed: (){
+                Navigator.pushNamed(context, '/Food');
+              }, legend: "Food"),
+              ButtonWithImage(x: 55, y:30, image: "images/student.png", onPressed: (){
+                Navigator.pushNamed(context, '/Workshops');
+              }, legend: "Workshops" ),
+              ButtonWithImage(x: 5, y:60, image: "images/wc.png", onPressed: (){
+                Navigator.pushNamed(context, '/Wc');
+              }, legend: "Wc"),
+              ButtonWithImage(x: 55, y:60, image: "images/logout.png", onPressed: (){
+                Navigator.pushNamed(context, '/Exits');
+              }, legend: "Exits")
+            ],
+          ),
+        )
+      )
+    );
+  }
+}
+
+class ButtonWithImage extends StatelessWidget {
+  ButtonWithImage({this. x, this.y, this.image, this.onPressed, this.legend});
+  final int x;
+  final int y;
+  final String image;
+  final Function onPressed;
+  final String legend;
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      left: (x/100)*MediaQuery.of(context).size.width,
+      top: (y/100)*MediaQuery.of(context).size.height,
+      child: 
+      new FlatButton(
+        onPressed: onPressed,
+        color: Colors.green,
+        padding: EdgeInsets.all(1.0),
+        child: Column(
+          children: <Widget>[
+            new Text(legend),
+            new Image.asset(
+              image,
+              width: 0.40 *MediaQuery.of(context).size.width,
+              height: 0.20 *MediaQuery.of(context).size.height)            
+          ],
+      )
+     )
+    );
+  }
+}
+
 
 class MyButton extends StatelessWidget {
 
