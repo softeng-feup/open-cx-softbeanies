@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => Search(),
+        '/': (context) => MyHomePage(),
         '/Options': (context) => OptionsMenu(),
         '/Lectures': (context) => Lectures(),
         '/Networking': (context) => Networking(),
