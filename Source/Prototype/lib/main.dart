@@ -53,11 +53,14 @@ class _MyHomePageState extends State<MyHomePage> {
           color: Color(0xFFCAEABC) ,
           child: Stack(
             children: <Widget>[
-              Button(x: 13, y:75, title: "Start", onPressed: (){
+              Button(x: 12, y:60, title: "Search", onPressed: (){
                 Navigator.pushNamed(context, '/Options');
               }, ),
-              LocateImage(x: 20, y: 25, imageName: "images/start.png"),
-              LocateText(x: 10,y: 10, title: "Simplyfind", size:55.0)
+              Button(x: 12, y:75, title: "Explore", onPressed: (){
+                Navigator.pushNamed(context, '/Options');
+              }, ),
+              LocateImage(x: 20, y: 20, imageName: "images/start.png"),
+              LocateText(x: 12,y: 10, title: "Simplyfind", size:55.0)
             ],
           ),
         )
@@ -86,7 +89,7 @@ class LocateText extends StatelessWidget {
        child: new Text(title, 
           style: new TextStyle(
               fontSize: size,
-              color: Color(0xFF073763),
+              color: Color(0xFF073763)
           ),
         ),
     );
