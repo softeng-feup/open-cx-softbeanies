@@ -40,7 +40,7 @@ class ScanResultTile extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              value,
+              value == null ? "N/A": value,
               style: Theme.of(context)
                   .textTheme
                   .caption
@@ -88,7 +88,7 @@ class ScanResultTile extends StatelessWidget {
       leading: Text(result.rssi.toString()),
       trailing: RaisedButton(
         child: Text('CONNECT'),
-        color: Colors.black,
+        color: Color(0xFF1DC000),
         textColor: Colors.white,
         onPressed: (result.advertisementData.connectable) ? onTap : null,
       ),
