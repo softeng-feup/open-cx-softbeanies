@@ -48,25 +48,33 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
-      body: SafeArea(
-        child: Container(
-          color: Color(0xFFCAEABC) ,
-          child: Stack(
-            children: <Widget>[
-              Button(x: 12, y:60, title: "Search", onPressed: (){
-                Navigator.pushNamed(context, '/Options');
-              }, ),
-              Button(x: 12, y:75, title: "Explore", onPressed: (){
-                Navigator.pushNamed(context, '/Search');
-              }, ),
-              LocateImage(x: 20, y: 20, imageName: "images/start.png"),
-              LocateText(x: 12,y: 10, title: "Simplyfind", size:55.0)
-            ],
+    return Scaffold(
+        body: SafeArea(
+            child: Container(
+      color: Color(0xFFCAEABC),
+      child: Stack(
+        children: <Widget>[
+          Button(
+            x: 12,
+            y: 60,
+            title: "Search",
+            onPressed: () {
+              Navigator.pushNamed(context, '/Options');
+            },
           ),
-        )
-      )
-    );
+          Button(
+            x: 12,
+            y: 75,
+            title: "Explore",
+            onPressed: () {
+              Navigator.pushNamed(context, '/Search');
+            },
+          ),
+          LocateImage(x: 20, y: 20, imageName: "images/start.png"),
+          LocateText(x: 12, y: 10, title: "Simplyfind", size: 55.0)
+        ],
+      ),
+    )));
   }
 }
 
@@ -79,55 +87,36 @@ class LocateText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: (x / 100) * MediaQuery
-          .of(context)
-          .size
-          .width,
-      top: (y / 100) * MediaQuery
-          .of(context)
-          .size
-          .height,
-       child: new Text(title, 
-          style: new TextStyle(
-              fontSize: size,
-              color: Color(0xFF073763)
-          ),
-        ),
+      left: (x / 100) * MediaQuery.of(context).size.width,
+      top: (y / 100) * MediaQuery.of(context).size.height,
+      child: new Text(
+        title,
+        style: new TextStyle(fontSize: size, color: Color(0xFF073763)),
+      ),
     );
   }
 }
+
 class LocateImage extends StatelessWidget {
-  LocateImage({ this.x,this.y, this.imageName });
+  LocateImage({this.x, this.y, this.imageName});
   final int x;
   final int y;
   final String imageName;
 
   @override
   Widget build(BuildContext context) {
-      return Positioned(
-      left: (x / 100) * MediaQuery
-          .of(context)
-          .size
-          .width,
-      top: (y / 100) * MediaQuery
-          .of(context)
-          .size
-          .height,
+    return Positioned(
+      left: (x / 100) * MediaQuery.of(context).size.width,
+      top: (y / 100) * MediaQuery.of(context).size.height,
       child: Image.asset(
-          imageName,
-          width: 0.6 * MediaQuery
-          .of(context)
-          .size
-          .width,
-          height: 0.4 * MediaQuery
-          .of(context)
-          .size
-          .height,
-        ),
-      );
+        imageName,
+        width: 0.6 * MediaQuery.of(context).size.width,
+        height: 0.4 * MediaQuery.of(context).size.height,
+      ),
+    );
   }
-
 }
+
 class Button extends StatelessWidget {
   Button({this.x, this.y, this.title, this.onPressed});
   final int x;
@@ -138,39 +127,25 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: (x / 100) * MediaQuery
-          .of(context)
-          .size
-          .width,
-      top: (y / 100) * MediaQuery
-          .of(context)
-          .size
-          .height,
-      child:
-      new MaterialButton(
-        child: new Text(title, 
-          style: new TextStyle(
+        left: (x / 100) * MediaQuery.of(context).size.width,
+        top: (y / 100) * MediaQuery.of(context).size.height,
+        child: new MaterialButton(
+          child: new Text(
+            title,
+            style: new TextStyle(
               fontSize: 30.0,
               color: Colors.white,
+            ),
           ),
-        ),
-        onPressed: onPressed,
-        padding: EdgeInsets.all(1.0),
-        color: Color(0xFF083663),
-        textTheme: ButtonTextTheme.primary,
-        minWidth: 0.8 * MediaQuery
-          .of(context)
-          .size
-          .width,
-        height: 0.1 * MediaQuery
-          .of(context)
-          .size
-          .height,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)
-        ),
-      )
-    );
+          onPressed: onPressed,
+          padding: EdgeInsets.all(1.0),
+          color: Color(0xFF083663),
+          textTheme: ButtonTextTheme.primary,
+          minWidth: 0.8 * MediaQuery.of(context).size.width,
+          height: 0.1 * MediaQuery.of(context).size.height,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ));
   }
 }
 
@@ -178,40 +153,70 @@ class OptionsMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Options"),),
-      body: SafeArea(
-        child: Container(
-          color: Color(0xFFCAEABC) ,
+        appBar: AppBar(
+          title: Text("Options"),
+        ),
+        body: SafeArea(
+            child: Container(
+          color: Color(0xFFCAEABC),
           child: Stack(
             children: <Widget>[
-              ButtonWithImage(x: 5, y:2, image: "images/speech.png", onPressed: (){
-                Navigator.pushNamed(context, '/Lectures');
-              }, legend: "Lectures" ),
-              ButtonWithImage(x: 55, y:2,image: "images/network.png", onPressed: (){
-                Navigator.pushNamed(context, '/Networking');
-              }, legend: "Networking"),
-              ButtonWithImage(x: 5, y:30, image: "images/restaurant.png", onPressed: (){
-                Navigator.pushNamed(context, '/Food');
-              }, legend: "Food"),
-              ButtonWithImage(x: 55, y:30, image: "images/student.png", onPressed: (){
-                Navigator.pushNamed(context, '/Workshops');
-              }, legend: "Workshops" ),
-              ButtonWithImage(x: 5, y:60, image: "images/wc.png", onPressed: (){
-                Navigator.pushNamed(context, '/Wc');
-              }, legend: "Wc"),
-              ButtonWithImage(x: 55, y:60, image: "images/logout.png", onPressed: (){
-                Navigator.pushNamed(context, '/Exits');
-              }, legend: "Exits")
+              ButtonWithImage(
+                  x: 5,
+                  y: 2,
+                  image: "images/speech.png",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Lectures');
+                  },
+                  legend: "Lectures"),
+              ButtonWithImage(
+                  x: 55,
+                  y: 2,
+                  image: "images/network.png",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Networking');
+                  },
+                  legend: "Networking"),
+              ButtonWithImage(
+                  x: 5,
+                  y: 30,
+                  image: "images/restaurant.png",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Food');
+                  },
+                  legend: "Food"),
+              ButtonWithImage(
+                  x: 55,
+                  y: 30,
+                  image: "images/student.png",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Workshops');
+                  },
+                  legend: "Workshops"),
+              ButtonWithImage(
+                  x: 5,
+                  y: 60,
+                  image: "images/wc.png",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Wc');
+                  },
+                  legend: "Wc"),
+              ButtonWithImage(
+                  x: 55,
+                  y: 60,
+                  image: "images/logout.png",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Exits');
+                  },
+                  legend: "Exits")
             ],
           ),
-        )
-      )
-    );
+        )));
   }
 }
 
 class ButtonWithImage extends StatelessWidget {
-  ButtonWithImage({this. x, this.y, this.image, this.onPressed, this.legend});
+  ButtonWithImage({this.x, this.y, this.image, this.onPressed, this.legend});
   final int x;
   final int y;
   final String image;
@@ -220,24 +225,20 @@ class ButtonWithImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: (x/100)*MediaQuery.of(context).size.width,
-      top: (y/100)*MediaQuery.of(context).size.height,
-      child: 
-      new FlatButton(
-        onPressed: onPressed,
-        color: Color(0xFFB6D7A8),
-        padding: EdgeInsets.all(1.0),
-        child: Column(
-          children: <Widget>[
-            new Text(legend),
-            new Image.asset(
-              image,
-              width: 0.40 *MediaQuery.of(context).size.width,
-              height: 0.20 *MediaQuery.of(context).size.height)            
-          ],
-      )
-     )
-    );
+        left: (x / 100) * MediaQuery.of(context).size.width,
+        top: (y / 100) * MediaQuery.of(context).size.height,
+        child: new FlatButton(
+            onPressed: onPressed,
+            color: Color(0xFFB6D7A8),
+            padding: EdgeInsets.all(1.0),
+            child: Column(
+              children: <Widget>[
+                new Text(legend),
+                new Image.asset(image,
+                    width: 0.40 * MediaQuery.of(context).size.width,
+                    height: 0.20 * MediaQuery.of(context).size.height)
+              ],
+            )));
   }
 }
 
@@ -335,30 +336,33 @@ Color hexToColor(String code) {
 
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
+  final BuildContext context;
 
   const MyCustomAppBar({
     Key key,
     @required this.height,
+    @required this.context,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext c) {
     return Column(
       children: [
         Container(
           height: 190,
-          color: Color.fromRGBO(7, 55, 99,1),
+          color: Color.fromRGBO(7, 55, 99, 1),
           child: new Form(
             child: Column(
               children: <Widget>[
                 SizedBox(height: 40),
                 Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.arrow_back,
+                    IconButton(
+                      icon: Icon(Icons.arrow_back),
                       color: Colors.white,
-                      size: 40.0,
-                      semanticLabel: 'Go back',
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/');
+                      },
                     ),
                     Expanded(
                       child: new TextFormField(
@@ -403,7 +407,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       child: new TextFormField(
                         decoration: new InputDecoration(
                           labelText: 'Choose Destination',
-                           filled: true,
+                          filled: true,
                           fillColor: Colors.white,
                           contentPadding: new EdgeInsets.symmetric(
                               vertical: 18.0, horizontal: 5.0),
@@ -439,9 +443,9 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
         new Container(
-  height: 30,
-  color: Color.fromRGBO(182, 215, 168, 1),
-)
+          height: 30,
+          color: Color.fromRGBO(182, 215, 168, 1),
+        )
       ],
     );
   }
@@ -456,7 +460,7 @@ class Search extends StatelessWidget {
     return new MaterialApp(
       title: "SearchPage",
       home: new Scaffold(
-        appBar: new MyCustomAppBar(height: 250),
+        appBar: new MyCustomAppBar(height: 250, context: ctxt),
         body: new Center(
           child: new Text("Hello "),
         ),
