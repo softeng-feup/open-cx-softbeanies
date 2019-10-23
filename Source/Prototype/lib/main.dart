@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() => runApp(MyApp());
 
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/Wc': (context) => Wc(),
         '/Exits': (context) => Exits(),
         '/Search': (context) => Search(),
+        '/Results': (context) => Results(),
       },
     );
   }
@@ -386,7 +388,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         ), // icon is 48px widge
                         validator: (val) {
                           if (val.length == 0) {
-                            return "Email cannot be empty";
+                            return "my localization cannot be empty";
                           } else {
                             return null;
                           }
@@ -402,7 +404,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 SizedBox(height: 20),
                 Row(
                   children: <Widget>[
-                    SizedBox(width: 40),
+                    SizedBox(width: 50),
                     Expanded(
                       child: new TextFormField(
                         decoration: new InputDecoration(
@@ -419,13 +421,13 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             padding: EdgeInsets.all(0.0),
                             child: Icon(
                               Icons.search,
-                              color: Colors.grey,
+                              color: Colors.black,
                             ), // icon is 48px widget.
                           ),
                         ), // icon is 48px widge
                         validator: (val) {
                           if (val.length == 0) {
-                            return "Email cannot be empty";
+                            return "destination cannot be empty";
                           } else {
                             return null;
                           }
@@ -461,6 +463,39 @@ class Search extends StatelessWidget {
       title: "SearchPage",
       home: new Scaffold(
         appBar: new MyCustomAppBar(height: 250, context: ctxt),
+        body: new Center(
+          child: new Text("Hello "),
+        ),
+      ),
+    );
+  }
+}
+
+class Results extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctxt) {
+    return new MaterialApp(
+      title: "ResultPage",
+      home: new Scaffold(
+        appBar:PreferredSize(
+          preferredSize: Size.fromHeight(100.0), // here the desired height
+          child: AppBar(
+          backgroundColor: Color.fromRGBO(7, 55, 99, 1),
+          flexibleSpace: Row(
+            children: <Widget>[
+              SizedBox(width: 30),
+              Container(
+                padding: EdgeInsets.all(8.0),
+                margin: const EdgeInsets.all(10.0),
+                color: Colors.white,
+                width: 60,
+                height: 60,
+              ),
+            ],
+          ),
+        ),
+        ),
+    
         body: new Center(
           child: new Text("Hello "),
         ),
