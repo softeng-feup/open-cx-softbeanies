@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> prototype
 ## Technologies
 
 ### Hardware
@@ -11,4 +14,7 @@
  - [Flutter extension](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter)
  - [Git/GitHub](https://github.com/)
  - [Android Studio and SDK](https://developer.android.com/studio)
+<<<<<<< HEAD
 
+=======
+>>>>>>> prototype
