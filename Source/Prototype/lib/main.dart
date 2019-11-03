@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
             y: 75,
             title: "Explore",
             onPressed: () {
-              Navigator.pushNamed(context, '/Search');
+              Navigator.pushNamed(context, '/Results');
             },
           ),
           LocateImage(x: 20, y: 20, imageName: "images/start.png"),
@@ -471,31 +471,53 @@ class Search extends StatelessWidget {
   }
 }
 
+
+
 class Results extends StatelessWidget {
   @override
   Widget build(BuildContext ctxt) {
     return new MaterialApp(
       title: "ResultPage",
       home: new Scaffold(
-        appBar:PreferredSize(
-          preferredSize: Size.fromHeight(100.0), // here the desired height
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(180.0), // here the desired height
           child: AppBar(
-          backgroundColor: Color.fromRGBO(7, 55, 99, 1),
-          flexibleSpace: Row(
-            children: <Widget>[
-              SizedBox(width: 30),
-              Container(
-                padding: EdgeInsets.all(8.0),
-                margin: const EdgeInsets.all(10.0),
-                color: Colors.white,
-                width: 60,
-                height: 60,
+            backgroundColor: Color.fromRGBO(7, 55, 99, 1),
+            flexibleSpace: Stack(children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 35),
+                      width: 95,
+                      height: 95,
+                      decoration: new BoxDecoration(
+                        color: Colors.white,
+                        image: new DecorationImage(
+                          image: new AssetImage("images/left.png"),
+                          fit: BoxFit.scaleDown,
+                        ),
+                      ),
+                    ),
+                  ),
+                  new Text('Oi', 
+                  style: TextStyle(color: Colors.white, fontSize: 40),
+                  textAlign: TextAlign.right,
+                  )
+                ],
               ),
-            ],
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  color: Colors.amber[600],
+                  height: 20,
+                  width: 600,
+                ),
+              ),
+            ]),
           ),
         ),
-        ),
-    
         body: new Center(
           child: new Text("Hello "),
         ),
@@ -503,3 +525,4 @@ class Results extends StatelessWidget {
     );
   }
 }
+
