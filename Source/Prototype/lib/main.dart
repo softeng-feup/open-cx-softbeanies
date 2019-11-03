@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 void main() => runApp(MyApp());
 
@@ -388,7 +387,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         ), // icon is 48px widge
                         validator: (val) {
                           if (val.length == 0) {
-                            return "my localization cannot be empty";
+                            return "Email cannot be empty";
                           } else {
                             return null;
                           }
@@ -404,7 +403,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 SizedBox(height: 20),
                 Row(
                   children: <Widget>[
-                    SizedBox(width: 50),
+                    SizedBox(width: 40),
                     Expanded(
                       child: new TextFormField(
                         decoration: new InputDecoration(
@@ -421,13 +420,13 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             padding: EdgeInsets.all(0.0),
                             child: Icon(
                               Icons.search,
-                              color: Colors.black,
+                              color: Colors.grey,
                             ), // icon is 48px widget.
                           ),
                         ), // icon is 48px widge
                         validator: (val) {
                           if (val.length == 0) {
-                            return "destination cannot be empty";
+                            return "Email cannot be empty";
                           } else {
                             return null;
                           }
