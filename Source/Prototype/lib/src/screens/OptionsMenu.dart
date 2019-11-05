@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class LocateText extends StatelessWidget {
   LocateText({this.x, this.y, this.title, this.size});
   final int x;
@@ -175,6 +176,7 @@ class ButtonWithImage extends StatelessWidget {
 }
 
 class Lectures extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -182,7 +184,12 @@ class Lectures extends StatelessWidget {
         title: Text("Lectures"),
       ),
       body: Center(
-        child: Image.asset('images/wc.png'),
+         child: Text(
+              'ola',
+              style: TextStyle(
+              color: Color(0xFF2222FF),
+          )
+        )
       ),
     );
   }
