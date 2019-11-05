@@ -76,16 +76,23 @@ class OptionsMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Options"),
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+          title: Text(
+            "Options",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
         ),
         body: SafeArea(
             child: Container(
-          color: Color(0xFFCAEABC),
+          color: Color.fromRGBO(250, 250, 235, 1),
           child: Stack(
             children: <Widget>[
               ButtonWithImage(
                   x: 5,
-                  y: 2,
+                  y: 7,
                   image: "images/speech.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
@@ -93,7 +100,7 @@ class OptionsMenu extends StatelessWidget {
                   legend: "Lectures"),
               ButtonWithImage(
                   x: 55,
-                  y: 2,
+                  y: 7,
                   image: "images/network.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Networking');
@@ -101,7 +108,7 @@ class OptionsMenu extends StatelessWidget {
                   legend: "Networking"),
               ButtonWithImage(
                   x: 5,
-                  y: 30,
+                  y: 35,
                   image: "images/restaurant.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Food');
@@ -109,7 +116,7 @@ class OptionsMenu extends StatelessWidget {
                   legend: "Food"),
               ButtonWithImage(
                   x: 55,
-                  y: 30,
+                  y: 35,
                   image: "images/student.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Workshops');
@@ -117,7 +124,7 @@ class OptionsMenu extends StatelessWidget {
                   legend: "Workshops"),
               ButtonWithImage(
                   x: 5,
-                  y: 60,
+                  y: 62,
                   image: "images/wc.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Wc');
@@ -125,7 +132,7 @@ class OptionsMenu extends StatelessWidget {
                   legend: "Wc"),
               ButtonWithImage(
                   x: 55,
-                  y: 60,
+                  y: 62,
                   image: "images/logout.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Exits');
@@ -149,18 +156,21 @@ class ButtonWithImage extends StatelessWidget {
     return Positioned(
         left: (x / 100) * MediaQuery.of(context).size.width,
         top: (y / 100) * MediaQuery.of(context).size.height,
-        child: new FlatButton(
-            onPressed: onPressed,
-            color: Color(0xFFB6D7A8),
-            padding: EdgeInsets.all(1.0),
-            child: Column(
-              children: <Widget>[
-                new Text(legend),
-                new Image.asset(image,
-                    width: 0.40 * MediaQuery.of(context).size.width,
-                    height: 0.20 * MediaQuery.of(context).size.height)
-              ],
-            )));
+        child: Container(
+            width: 0.40 * MediaQuery.of(context).size.width,
+            height: 0.20 * MediaQuery.of(context).size.height,
+            child: new FlatButton(
+                onPressed: onPressed,
+                color: Color.fromRGBO(227, 180, 102, 1),
+                padding: EdgeInsets.all(1.0),
+                child: Column(
+                  children: <Widget>[
+                    new Text(legend, style: new TextStyle(fontSize: 20.0)),
+                    new Image.asset(image,
+                        width: 0.30 * MediaQuery.of(context).size.width,
+                        height: 0.10 * MediaQuery.of(context).size.height),
+                  ],
+                ))));
   }
 }
 
@@ -250,8 +260,4 @@ class Exits extends StatelessWidget {
       ),
     );
   }
-}
-
-Color hexToColor(String code) {
-  return new Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
 }

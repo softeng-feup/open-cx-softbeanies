@@ -16,7 +16,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       children: [
         Container(
           height: 190,
-          color: Color.fromRGBO(7, 55, 99, 1),
+          color: Color.fromRGBO(1, 38, 90, 1),
           child: new Form(
             child: Column(
               children: <Widget>[
@@ -110,7 +110,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         new Container(
           height: 30,
-          color: Color.fromRGBO(182, 215, 168, 1),
+          color: Color.fromRGBO(227, 180, 102, 1),
         )
       ],
     );

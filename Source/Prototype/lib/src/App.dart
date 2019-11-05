@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
             y: 75,
             title: "Explore",
             onPressed: () {
-              Navigator.pushNamed(context, '/Results');
+              Navigator.pushNamed(context, '/Search');
             },
           ),
           LocateImage(x: 20, y: 20, imageName: "images/start.png"),
