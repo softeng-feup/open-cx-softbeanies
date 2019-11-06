@@ -3,7 +3,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'screens/OptionsMenu.dart';
 import 'screens/Search.dart';
 import 'screens/Results.dart';
-import 'Controler.dart';
+import 'Controller.dart';
 
 class MVCApp extends AppMVC {
 
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         body: SafeArea(
             child: Container(
-      color: Color(0xFFCAEABC),
+      color: Color.fromRGBO(249, 228, 183, 1),
       child: Stack(
         children: <Widget>[
           Button(
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
           LocateImage(x: 20, y: 20, imageName: "images/start.png"),
-          LocateText(x: 12, y: 10, title: "Simplyfind", size: 55.0)
+          LocateText(x: 15, y: 10, title: "Simplyfind", size: 60.0)
         ],
       ),
     )));

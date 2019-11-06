@@ -61,7 +61,7 @@ class Button extends StatelessWidget {
           ),
           onPressed: onPressed,
           padding: EdgeInsets.all(1.0),
-          color: Color(0xFF083663),
+          color: Color.fromRGBO(1, 38, 90, 1),
           textTheme: ButtonTextTheme.primary,
           minWidth: 0.8 * MediaQuery.of(context).size.width,
           height: 0.1 * MediaQuery.of(context).size.height,
@@ -87,7 +87,7 @@ class OptionsMenu extends StatelessWidget {
         ),
         body: SafeArea(
             child: Container(
-          color: Color.fromRGBO(250, 250, 235, 1),
+          color: Colors.white,
           child: Stack(
             children: <Widget>[
               ButtonWithImage(
@@ -161,14 +161,19 @@ class ButtonWithImage extends StatelessWidget {
             height: 0.20 * MediaQuery.of(context).size.height,
             child: new FlatButton(
                 onPressed: onPressed,
-                color: Color.fromRGBO(227, 180, 102, 1),
+                color: Color.fromRGBO(249, 228, 183, 1),
                 padding: EdgeInsets.all(1.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    new Text(legend, style: new TextStyle(fontSize: 20.0)),
+                    Padding(
+                        padding: EdgeInsets.only(bottom:10),
+                        child:
+                            Text(legend, style: new TextStyle(fontSize: 25, color: Color.fromRGBO(1, 38, 90, 1), ))),
                     new Image.asset(image,
                         width: 0.30 * MediaQuery.of(context).size.width,
-                        height: 0.10 * MediaQuery.of(context).size.height),
+                        height: 0.10 * MediaQuery.of(context).size.height,
+                        color:Color.fromRGBO(1, 38, 90, 1),)
                   ],
                 ))));
   }

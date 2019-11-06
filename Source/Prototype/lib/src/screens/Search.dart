@@ -20,97 +20,65 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: new Form(
             child: Column(
               children: <Widget>[
-                SizedBox(height: 40),
-                Row(
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      color: Colors.white,
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/');
-                      },
-                    ),
-                    Expanded(
-                      child: new TextFormField(
-                        decoration: new InputDecoration(
-                          filled: true,
-                          labelText: 'My Localization',
-                          fillColor: Colors.white,
-                          contentPadding: new EdgeInsets.symmetric(
-                              vertical: 18.0, horizontal: 10.0),
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(30.0),
-                            borderSide: new BorderSide(),
-                          ),
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: Icon(
-                              Icons.search,
-                              color: Colors.black,
-                            ), // icon is 48px widget.
-                          ),
-                        ), // icon is 48px widge
-                        validator: (val) {
-                          if (val.length == 0) {
-                            return "Email cannot be empty";
-                          } else {
-                            return null;
-                          }
+                Padding(
+                  padding: EdgeInsets.only(top: 40, bottom:20),
+                  child: Row(
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.arrow_back),
+                        color: Colors.white,
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/');
                         },
-                        keyboardType: TextInputType.emailAddress,
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
+                      ),
+                      Expanded(
+                        child: new TextFormField(
+                          decoration: new InputDecoration(
+                            filled: true,
+                            labelText: 'My Localization',
+                            fillColor: Colors.white,
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: Colors.grey,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                SizedBox(height: 20),
+                Padding(padding: EdgeInsets.only(bottom:10, left:50),
+                child:
                 Row(
                   children: <Widget>[
-                    SizedBox(width: 40),
                     Expanded(
                       child: new TextFormField(
-                        decoration: new InputDecoration(
+                          decoration: new InputDecoration(
                           labelText: 'Choose Destination',
                           filled: true,
                           fillColor: Colors.white,
-                          contentPadding: new EdgeInsets.symmetric(
-                              vertical: 18.0, horizontal: 5.0),
                           border: new OutlineInputBorder(
                             borderRadius: new BorderRadius.circular(30.0),
-                            borderSide: new BorderSide(),
                           ),
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: Icon(
-                              Icons.search,
-                              color: Colors.grey,
-                            ), // icon is 48px widget.
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: Colors.grey,
                           ),
-                        ), // icon is 48px widge
-                        validator: (val) {
-                          if (val.length == 0) {
-                            return "Email cannot be empty";
-                          } else {
-                            return null;
-                          }
-                        },
-                        keyboardType: TextInputType.emailAddress,
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
                         ),
                       ),
                     ),
                   ],
-                ),
+                ),),
               ],
             ),
           ),
         ),
         new Container(
           height: 30,
-          color: Color.fromRGBO(227, 180, 102, 1),
+          color: Color.fromRGBO(249, 228, 183, 1),
         )
       ],
     );
