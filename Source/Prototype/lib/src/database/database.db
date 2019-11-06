@@ -1,0 +1,6 @@
+
+CREATE TABLE TalkTable (id INTEGER PRIMARY KEY, name TEXT, speaker TEXT, roomNumber INTEGER);
+
+INSERT INTO TalkTable (id, name, speaker, roomNumber) VALUES (0, 'sustainability', 'John', 120);
+INSERT INTO TalkTable (id, name, speaker, roomNumber) VALUES (1, 'sustainability1', 'Paul', 121);
+INSERT INTO TalkTable (id, name, speaker, roomNumber) VALUES (2, 'sustainability2', 'Anna', 122);
