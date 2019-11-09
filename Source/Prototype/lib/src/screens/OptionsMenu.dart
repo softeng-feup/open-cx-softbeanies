@@ -188,14 +188,50 @@ class Lectures extends StatelessWidget {
       appBar: AppBar(
         title: Text("Lectures"),
       ),
-      body: Center(
-         child: Text(
-              'ola',
-              style: TextStyle(
-              color: Color(0xFF2222FF),
-          )
+      body: SafeArea(
+            child: Container(
+          color: Colors.white,
+          child: Stack(
+            children: <Widget>[
+              Button(
+                  x: 10,
+                  y: 5,
+                  title: "Lecture 1",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Lectures');
+                  }),
+              Button(
+                  x: 10,
+                  y: 20,
+                  title: "Lecture 2",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Lectures');
+                  }),
+              Button(
+                  x: 10,
+                  y: 35,
+                  title: "Lecture 3",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Lectures');
+                  }),
+              Button(
+                  x: 10,
+                  y: 50,
+                  title: "Lecture 5",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Lectures');
+                  }),
+              Button(
+                  x: 10,
+                  y: 65,
+                  title: "Lecture 6",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Lectures');
+                  })
+            ],
+          ),
         )
-      ),
+      )
     );
   }
 }
