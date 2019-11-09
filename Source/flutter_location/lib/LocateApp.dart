@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'GeoLocateListenPage.dart';
 import 'GoogleMapsPage.dart';
-import 'LocateListenPage.dart';
-import 'LocatePage.dart';
 
 class LocateApp extends StatelessWidget {
   @override
@@ -11,7 +8,7 @@ class LocateApp extends StatelessWidget {
     return MaterialApp(
       title: 'Locate App',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
       home: GoogleMapsPage(),
     );
