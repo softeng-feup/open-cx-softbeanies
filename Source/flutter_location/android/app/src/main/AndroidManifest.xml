@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutter_location"
+        android:label="SimplyFind"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDY3a_ER4uyPsm4GGHQFt5QDCavutL7KeM" />
