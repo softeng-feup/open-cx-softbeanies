@@ -67,11 +67,41 @@ class Button extends StatelessWidget {
           minWidth: 0.8 * MediaQuery.of(context).size.width,
           height: 0.1 * MediaQuery.of(context).size.height,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         ));
   }
 }
 
+class ButtonOrange extends StatelessWidget {
+  ButtonOrange({this.x, this.y, this.title, this.onPressed});
+  final int x;
+  final int y;
+  final String title;
+  final Function onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+        left: (x / 100) * MediaQuery.of(context).size.width,
+        top: (y / 100) * MediaQuery.of(context).size.height,
+        child: new MaterialButton(
+          child: new Text(
+            title,
+            style: new TextStyle(
+              fontSize: 30.0,
+              color: Color.fromRGBO(1, 38, 90, 1),
+            ),
+          ),
+          onPressed: onPressed,
+          padding: EdgeInsets.all(1.0),
+          color: Color.fromRGBO(249, 228, 183, 1),
+          minWidth: 0.8 * MediaQuery.of(context).size.width,
+          height: 0.15 * MediaQuery.of(context).size.height,
+          shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ));
+  }
+}
 class OptionsMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -174,9 +204,95 @@ class ButtonWithImage extends StatelessWidget {
                     new Image.asset(image,
                         width: 0.30 * MediaQuery.of(context).size.width,
                         height: 0.10 * MediaQuery.of(context).size.height,
-                        color:Color.fromRGBO(1, 38, 90, 1),)
+                        color: Color.fromRGBO(1, 38, 90, 1),)
                   ],
-                ))));
+                ))
+      )
+    );
+  }
+}
+
+class OptionButton extends StatelessWidget {
+  OptionButton ({this.x, this.y, this.title, this.time, this.speaker, this.room, this.onPressed});
+  final int x;
+  final int y;
+  final String title;
+  final String time;
+  final String speaker;
+  final String room;
+  final Function onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+        left: (x / 100) * MediaQuery.of(context).size.width,
+        top: (y / 100) * MediaQuery.of(context).size.height,
+        child: Container(
+          width: 0.80 * MediaQuery.of(context).size.width,
+          height: 0.15 * MediaQuery.of(context).size.height,
+          child:     
+          new FlatButton(
+          color: Color.fromRGBO(249, 228, 183, 1),
+        
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  title,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                  color: Color.fromRGBO(1, 38, 90, 1), fontSize: 20.0),
+                ),
+                Text(
+                  speaker,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                  color: Colors.black, fontSize: 15.5),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                  Text(
+                    "Time : ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                    color: Colors.black, fontSize: 15.5),
+                  ),
+                  Text(
+                    time,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                    color: Colors.black, fontSize: 15.5),
+                  ),
+
+                ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                  Text(
+                    "Room : ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                    color: Colors.black, fontSize: 15.5),
+                  ),
+                  Text(
+                    room,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                    color: Colors.black, fontSize: 15.5),
+                  ),
+
+                ],
+                ),
+                
+              ],
+            ), 
+            onPressed: onPressed,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+          )
+      )
+    );
   }
 }
 
@@ -185,49 +301,61 @@ class Lectures extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Lectures"),
-      ),
-      body: SafeArea(
-            child: Container(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+          title: Text(
+            "Lectures",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
+        ),
+        body: SafeArea(
+          child: Container(
           color: Colors.white,
           child: Stack(
             children: <Widget>[
-              Button(
+              OptionButton(
                   x: 10,
                   y: 5,
-                  title: "Lecture 1",
+                  title: "Lecture 1 Name",
+                  time: "11:30",
+                  speaker: "Ademar Aguiar",
+                  room: "121",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   }),
-              Button(
+              OptionButton(
                   x: 10,
-                  y: 20,
-                  title: "Lecture 2",
+                  y: 25,
+                  title: "Lecture 2 Name",
+                  time: "11:30",
+                  speaker: "Ademar Aguiar",
+                  room: "221",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   }),
-              Button(
+               OptionButton(
                   x: 10,
-                  y: 35,
-                  title: "Lecture 3",
+                  y: 45,
+                  title: "Lecture 3 Name",
+                  time: "11:30",
+                  speaker: "Ademar Aguiar",
+                  room: "333",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   }),
-              Button(
-                  x: 10,
-                  y: 50,
-                  title: "Lecture 5",
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Lectures');
-                  }),
-              Button(
+               OptionButton(
                   x: 10,
                   y: 65,
-                  title: "Lecture 6",
+                  title: "Lecture 4 Name",
+                  time: "11:30",
+                  speaker: "Ademar Aguiar",
+                  room: "123",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
-                  })
+                  }),
             ],
           ),
         )
@@ -236,20 +364,108 @@ class Lectures extends StatelessWidget {
   }
 }
 
+class ButtonNetworking extends StatelessWidget {
+  ButtonNetworking( { this.x, this.y, this.title, this.date, this.time, this.onPressed});
+  final int x;
+  final int y;
+  final String title;
+  final String date;
+  final String time;
+  final Function onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+        left: (x / 100) * MediaQuery.of(context).size.width,
+        top: (y / 100) * MediaQuery.of(context).size.height,       
+        child: new Container(
+          width: 0.80 * MediaQuery.of(context).size.width,
+          height: 0.15 * MediaQuery.of(context).size.height,
+          color: Color.fromRGBO(249, 228, 183, 1),
+          child:     
+          new FlatButton(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                  color: Color.fromRGBO(1, 38, 90, 1), fontSize: 20.0),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                  new Text(
+                    "Date :  ",
+                    textAlign: TextAlign.end,
+                    style: TextStyle(
+                    color: Colors.black, fontSize: 15.5),
+                  ),
+                  new Text(
+                    date,
+                    textAlign: TextAlign.end,
+                    style: TextStyle(
+                    color: Colors.black, fontSize: 15.5),
+                  ),
+                  new Text(
+                    " - ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                    color: Colors.black, fontSize: 15.5),
+                  ),
+                  Text(
+                    time,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                    color: Colors.black, fontSize: 15.5),
+                  ),
+
+                ],
+                ),                
+              ],
+            ), 
+            onPressed: onPressed,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          )
+      )
+      
+    );
+  }
+}
 class Networking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Networking"),
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+          title: Text(
+            "Networking",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
       ),
-      body: Center(
-          child: Text(
-        "MyNetworking",
-        style: TextStyle(
-          color: Color(0xFF2222FF),
-        ),
-      )),
+      body: SafeArea(
+          child: Container(
+          color: Colors.white,
+          child: Stack(
+            children: <Widget>[
+              ButtonNetworking(
+                x: 10,
+                y: 20,
+                title: "Session 1",
+                date: "Day 11",
+                time: "11:30",
+                onPressed: () {
+                    Navigator.pushNamed(context, '/Networking');
+                }
+              )
+            ],
+          ),
+        )
+      )
     );
   }
 }
@@ -259,11 +475,56 @@ class Food extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Food'),
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+          title: Text(
+            "Food",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
       ),
-      body: Center(
-        child: Text("MyFood"),
-      ),
+      body: SafeArea(
+          child: Container(
+          color: Colors.white,
+          child: Stack(
+            children: <Widget>[
+              ButtonOrange(
+                x: 10,
+                y: 5,
+                title: "Library Bar",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Food');
+                }
+              ),
+              ButtonOrange(
+                x: 10,
+                y: 25,
+                title: "Mines Bar",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Food');
+                }
+              ),
+              ButtonOrange(
+                x: 10,
+                y: 45,
+                title: "Grill",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Food');
+                }
+              ),
+              ButtonOrange(
+                x: 10,
+                y: 65,
+                title: "Machines",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Food');
+                }
+              ),
+            ],
+          ),
+        )
+      )
     );
   }
 }
@@ -273,25 +534,108 @@ class Workshops extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Workshops"),
-      ),
-      body: Center(
-        child: Text("MyWorkshops"),
-      ),
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+          title: Text(
+            "Workshops",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
+        ),
+        body: SafeArea(
+          child: Container(
+          color: Colors.white,
+          child: Stack(
+            children: <Widget>[
+              OptionButton(
+                  x: 10,
+                  y: 5,
+                  title: "Workshop 1 Name",
+                  time: "11:30",
+                  speaker: "Ademar Aguiar",
+                  room: "121",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Workshops');
+                  }),
+              OptionButton(
+                  x: 10,
+                  y: 25,
+                  title: "Workshop 2 Name",
+                  time: "11:30",
+                  speaker: "Ademar Aguiar",
+                  room: "221",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Workshops');
+                  }),
+              OptionButton(
+                  x: 10,
+                  y: 45,
+                  title: "Workshop 3 Name",
+                  time: "11:30",
+                  speaker: "Ademar Aguiar",
+                  room: "333",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Workshops');
+                  }),
+              OptionButton(
+                  x: 10,
+                  y: 65,
+                  title: "Workshop 4 Name",
+                  time: "11:30",
+                  speaker: "Ademar Aguiar",
+                  room: "123",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Workshops');
+                  }),
+            ],
+          ),
+        )
+      )
     );
   }
 }
+
 
 class Wc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("wc"),
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+          title: Text(
+            "Wc",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
       ),
-      body: Center(
-        child: Text("wc"),
-      ),
+      body: SafeArea(
+            child: Container(
+          color: Colors.white,
+          child: Stack(
+            children: <Widget>[
+              ButtonOrange(
+                  x: 10,
+                  y: 20,
+                  title: "Men",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Wc');
+                  },
+              ),
+              ButtonOrange(
+                  x: 10,
+                  y: 45,
+                  title: "Woman",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Wc');
+                  },
+                )
+            ],
+          )
+        )
+      )
     );
   }
 }
