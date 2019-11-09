@@ -1,7 +1,7 @@
 ## Technologies
 
 ### Hardware
- - Beacons
+ - Mobile GPS Location
  - Android Phone
 
 ### Software/Tools
