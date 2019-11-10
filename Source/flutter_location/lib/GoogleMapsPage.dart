@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import 'data/DataServer.dart';
+
 class GoogleMapsPage extends StatefulWidget {
   @override
   _GoogleMapsPageState createState() => _GoogleMapsPageState();
@@ -8,6 +10,8 @@ class GoogleMapsPage extends StatefulWidget {
 
 class _GoogleMapsPageState extends State<GoogleMapsPage> {
   GoogleMapController controller;
+
+  DataServer server = new DataServer('assets/data/eventDataBase.json');
 
   final Set<Marker> _markers = new Set();
   final Set<Polyline> _polylines = new Set();
@@ -58,6 +62,8 @@ class _GoogleMapsPageState extends State<GoogleMapsPage> {
 
   @override
   Widget build(BuildContext context) {
+    server.loadData();
+    //print(server.getEvent('1'));
     return Scaffold(
       appBar: AppBar(
           title: Text("SimplyFind.me"),
