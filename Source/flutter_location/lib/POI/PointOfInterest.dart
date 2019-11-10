@@ -1,12 +1,10 @@
-import 'package:location/location.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 abstract class PointOfInterest {
-  final Location _location;
-  final String _info;
+  final LatLng _location;
 
-  PointOfInterest(this._location, this._info);
+  PointOfInterest(this._location);
 
-  String get info => _info;
+  LatLng get location => _location;
 
-  Location get location => _location;
 }
