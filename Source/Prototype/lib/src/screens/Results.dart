@@ -22,7 +22,7 @@ class Results extends StatelessWidget {
                       decoration: new BoxDecoration(
                         color: Colors.white,
                         image: new DecorationImage(
-                          image: new AssetImage("images/left.png"),
+                          image: new AssetImage("/assets/images/left.png"),
                           fit: BoxFit.scaleDown,
                         ),
                       ),

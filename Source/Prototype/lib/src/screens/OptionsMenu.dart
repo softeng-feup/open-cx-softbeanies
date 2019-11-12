@@ -23,7 +23,7 @@ class OptionsMenu extends StatelessWidget {
               ButtonWithImage(
                   x: 5,
                   y: 7,
-                  image: "images/speech.png",
+                  image: "assets/images/speech.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   },
@@ -31,7 +31,7 @@ class OptionsMenu extends StatelessWidget {
               ButtonWithImage(
                   x: 55,
                   y: 7,
-                  image: "images/network.png",
+                  image: "assets/images/network.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Networking');
                   },
@@ -39,7 +39,7 @@ class OptionsMenu extends StatelessWidget {
               ButtonWithImage(
                   x: 5,
                   y: 35,
-                  image: "images/restaurant.png",
+                  image: "assets/images/restaurant.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Food');
                   },
@@ -47,7 +47,7 @@ class OptionsMenu extends StatelessWidget {
               ButtonWithImage(
                   x: 55,
                   y: 35,
-                  image: "images/student.png",
+                  image: "assets/images/student.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Workshops');
                   },
@@ -55,7 +55,7 @@ class OptionsMenu extends StatelessWidget {
               ButtonWithImage(
                   x: 5,
                   y: 62,
-                  image: "images/wc.png",
+                  image: "assets/images/wc.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Wc');
                   },
@@ -63,7 +63,7 @@ class OptionsMenu extends StatelessWidget {
               ButtonWithImage(
                   x: 55,
                   y: 62,
-                  image: "images/logout.png",
+                  image: "assets/images/logout.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Exits');
                   },

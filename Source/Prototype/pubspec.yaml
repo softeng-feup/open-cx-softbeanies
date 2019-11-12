@@ -24,12 +24,18 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   mvc_pattern: ^3.0.0
+  google_maps_flutter: ^0.5.21+8
+  flutter_launcher_icons : ^0.7.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/start.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -41,17 +47,18 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - images/back-arrow.png
-    - images/logout.png
-    - images/man.png
-    - images/network.png
-    - images/pin.png
-    - images/restaurant.png
-    - images/speech.png
-    - images/student.png
-    - images/wc.png
-    - images/start.png
-    - images/left.png
+    - assets/images/back-arrow.png
+    - assets/images/logout.png
+    - assets/images/man.png
+    - assets/images/network.png
+    - assets/images/pin.png
+    - assets/images/restaurant.png
+    - assets/images/speech.png
+    - assets/images/student.png
+    - assets/images/wc.png
+    - assets/images/start.png
+    - assets/images/left.png
+    - assets/data/eventDataBase.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

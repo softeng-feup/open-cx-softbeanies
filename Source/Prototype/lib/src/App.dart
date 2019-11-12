@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import '../GoogleMapsPage.dart';
 import 'screens/OptionsMenu.dart';
 import 'screens/Search.dart';
 import 'screens/Results.dart';
@@ -37,6 +38,7 @@ class MVCApp extends AppMVC {
         '/Search': (context) => Search(),
         '/Results': (context) => Results(),
         '/Results2': (context) => Results2(),
+        '/GoogleMaps' : (context) => GoogleMapsPage(),
       },
     );
     return _app;
@@ -84,10 +86,10 @@ class _MyHomePageState extends State<MyHomePage> {
             y: 75,
             title: "Explore",
             onPressed: () {
-              Navigator.pushNamed(context, '/Results2');
+              Navigator.pushNamed(context, '/GoogleMaps'); // /Search
             },
           ),
-          LocateImage(x: 20, y: 20, imageName: "images/start.png"),
+          LocateImage(x: 20, y: 20, imageName: "/assets/images/start.png"),
           LocateText(x: 15, y: 10, title: "Simplyfind", size: 60.0)
         ],
       ),

@@ -1,5 +1,6 @@
-import 'package:flutter_location/POI/PointOfInterest.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'PointOfInterest.dart';
 
 class Event extends PointOfInterest {
   final String _name;
