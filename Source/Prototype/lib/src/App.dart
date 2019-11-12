@@ -3,6 +3,7 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 import 'screens/OptionsMenu.dart';
 import 'screens/Search.dart';
 import 'screens/Results.dart';
+import 'screens/Results2.dart';
 import 'Controller.dart';
 
 class MVCApp extends AppMVC {
@@ -35,6 +36,7 @@ class MVCApp extends AppMVC {
         '/Exits': (context) => Exits(),
         '/Search': (context) => Search(),
         '/Results': (context) => Results(),
+        '/Results2': (context) => Results2(),
       },
     );
     return _app;
@@ -82,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
             y: 75,
             title: "Explore",
             onPressed: () {
-              Navigator.pushNamed(context, '/Search');
+              Navigator.pushNamed(context, '/Results2');
             },
           ),
           LocateImage(x: 20, y: 20, imageName: "images/start.png"),
