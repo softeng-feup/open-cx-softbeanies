@@ -1,0 +1,30 @@
+{
+  "1": {
+    "name": "5G - The Future of Telecommunications",
+    "speaker": "Maria Josefina",
+    "room": "B201",
+    "description": "5G is super cool",
+    "tags":[
+      "5G",
+      "Telecommunications"
+    ],
+    "location": {
+      "latitude": 41.177470,
+      "longitude": -8.596464
+    }
+  },
+  "2": {
+    "name": "Quantum Computing 101",
+    "speaker": "Ademar Aguiar",
+    "room": "B204",
+    "description": "So is the cat dead or alive? Now you can find out :)",
+    "tags":[
+      "Computing",
+      "Physics"
+    ],
+    "location": {
+      "latitude": 41.177395,
+      "longitude": -8.596044
+    }
+  }
+}
