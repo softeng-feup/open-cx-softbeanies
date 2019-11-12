@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class LocateText extends StatelessWidget {
   LocateText({this.x, this.y, this.title, this.size});
   final int x;
@@ -297,9 +296,9 @@ class OptionButton extends StatelessWidget {
 }
 
 class Lectures extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
+    var numberOfLectures = 3;
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -316,6 +315,7 @@ class Lectures extends StatelessWidget {
           color: Colors.white,
           child: Stack(
             children: <Widget>[
+            if(numberOfLectures >= 1)
               OptionButton(
                   x: 10,
                   y: 5,
@@ -326,6 +326,7 @@ class Lectures extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   }),
+              if(numberOfLectures >= 2)
               OptionButton(
                   x: 10,
                   y: 25,
@@ -336,7 +337,8 @@ class Lectures extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   }),
-               OptionButton(
+              if(numberOfLectures >= 3)
+              OptionButton(
                   x: 10,
                   y: 45,
                   title: "Lecture 3 Name",
@@ -346,6 +348,7 @@ class Lectures extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   }),
+              if(numberOfLectures >= 4)
                OptionButton(
                   x: 10,
                   y: 65,
@@ -532,6 +535,7 @@ class Food extends StatelessWidget {
 class Workshops extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var numberOfWorkshops = 3;
     return Scaffold(
       appBar: AppBar(
           iconTheme: IconThemeData(
@@ -548,6 +552,7 @@ class Workshops extends StatelessWidget {
           color: Colors.white,
           child: Stack(
             children: <Widget>[
+              if(numberOfWorkshops >= 1)
               OptionButton(
                   x: 10,
                   y: 5,
@@ -558,6 +563,7 @@ class Workshops extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/Workshops');
                   }),
+              if(numberOfWorkshops >= 2)
               OptionButton(
                   x: 10,
                   y: 25,
@@ -568,6 +574,7 @@ class Workshops extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/Workshops');
                   }),
+              if(numberOfWorkshops >= 3)
               OptionButton(
                   x: 10,
                   y: 45,
@@ -578,6 +585,7 @@ class Workshops extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/Workshops');
                   }),
+              if(numberOfWorkshops >= 4)
               OptionButton(
                   x: 10,
                   y: 65,
