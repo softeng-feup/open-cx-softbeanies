@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import 'NavigationPage.dart';
 import 'data/DataServer.dart';
 
 class GoogleMapsPage extends StatefulWidget {
@@ -47,6 +48,10 @@ class _GoogleMapsPageState extends State<GoogleMapsPage> {
                 _lastMapPosition.latitude.toStringAsFixed(6) +
                 " Longitude: " +
                 _lastMapPosition.longitude.toStringAsFixed(6),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => NavigationPage()));
+            },
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(215)));
       _polylines.clear();
@@ -110,6 +115,7 @@ class _GoogleMapsPageState extends State<GoogleMapsPage> {
             children: <Widget>[
               FittedBox(
                 child: FloatingActionButton(
+                  heroTag: "add_marker",
                   onPressed: _onAddMarkerButtonPressed,
                   materialTapTargetSize: MaterialTapTargetSize.padded,
                   backgroundColor: Color.fromRGBO(1, 38, 90, 1),
@@ -119,6 +125,7 @@ class _GoogleMapsPageState extends State<GoogleMapsPage> {
               SizedBox(height: 10),
               FittedBox(
                 child: FloatingActionButton(
+                    heroTag: "reset",
                     onPressed: _resetMarkers,
                     materialTapTargetSize: MaterialTapTargetSize.padded,
                     backgroundColor: Color.fromRGBO(1, 38, 90, 1),
@@ -127,6 +134,7 @@ class _GoogleMapsPageState extends State<GoogleMapsPage> {
               SizedBox(height: 10),
               FittedBox(
                 child: FloatingActionButton(
+                    heroTag: "home",
                     onPressed: _resetPosition,
                     materialTapTargetSize: MaterialTapTargetSize.padded,
                     backgroundColor: Color.fromRGBO(1, 38, 90, 1),
@@ -143,7 +151,9 @@ class _GoogleMapsPageState extends State<GoogleMapsPage> {
     return Center(
       child: FittedBox(
         child: Icon(
-          Icons.keyboard_arrow_up,size: 20,color: Color.fromRGBO(1, 38, 90, 1),
+          Icons.keyboard_arrow_up,
+          size: 20,
+          color: Color.fromRGBO(1, 38, 90, 1),
         ),
       ),
     );
