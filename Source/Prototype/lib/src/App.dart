@@ -89,8 +89,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.pushNamed(context, '/GoogleMaps'); // /Search
             },
           ),
-          LocateImage(x: 20, y: 20, imageName: "/assets/images/start.png"),
-          LocateText(x: 15, y: 10, title: "Simplyfind", size: 60.0)
+          LocateImage(x: 20, y: 20, imageName: "assets/images/start.png"),
+          LocateText(x: 15, y: 10, title: "Simplyfind", size: 60.0),
         ],
       ),
     )));

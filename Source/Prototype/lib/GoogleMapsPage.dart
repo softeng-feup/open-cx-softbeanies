@@ -71,7 +71,7 @@ class _GoogleMapsPageState extends State<GoogleMapsPage> {
     //print(server.getEvent('1'));
     return Scaffold(
       appBar: AppBar(
-          title: Text("SimplyFind.me",style: TextStyle(color: Colors.white)),
+          title: Text("SimplyFind.me"),
           backgroundColor: Color.fromRGBO(1, 38, 90, 1)
       ),
 
