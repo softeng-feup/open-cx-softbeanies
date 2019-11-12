@@ -115,7 +115,7 @@ class ButtonWithImage extends StatelessWidget {
 class Lectures extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var numberOfLectures = 0;
+    var numberOfLectures = 3;
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -133,9 +133,13 @@ class Lectures extends StatelessWidget {
           child: Stack(
             children: <Widget>[
             if(numberOfLectures == 0)
-            new Text(
-              "There aren't any Lectures availables", 
-              style: new TextStyle(fontSize: 10.0, color: Color(0xFF073763)),
+             new Padding(
+              padding: EdgeInsets.only(top:(35 / 100) * MediaQuery.of(context).size.height,),
+              child: new Text(
+              "Sorry! There are no Lectures available.", 
+              textAlign: TextAlign.center,
+              style: new TextStyle(fontSize: 30.0, color: Color.fromRGBO(1, 38, 90, 1)),
+              )
             ),
             if(numberOfLectures >= 1)
               OptionButton(
@@ -288,7 +292,7 @@ class Food extends StatelessWidget {
 class Workshops extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var numberOfWorkshops = 3;
+    var numberOfWorkshops = 2;
     return Scaffold(
       appBar: AppBar(
           iconTheme: IconThemeData(
@@ -305,6 +309,15 @@ class Workshops extends StatelessWidget {
           color: Colors.white,
           child: Stack(
             children: <Widget>[
+              if(numberOfWorkshops == 0)
+              new Padding(
+                  padding: EdgeInsets.only(top:(35 / 100) * MediaQuery.of(context).size.height,),
+                  child: new Text(
+                  "Sorry! There are no Workshops available.", 
+                  textAlign: TextAlign.center,
+                  style: new TextStyle(fontSize: 30.0, color: Color.fromRGBO(1, 38, 90, 1)),
+                )
+              ),
               if(numberOfWorkshops >= 1)
               OptionButton(
                   x: 10,
@@ -406,8 +419,15 @@ class Exits extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(' Exits'),
-      ),
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
+          title: Text(
+            "Exits",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
+        ),
       body: Center(
         child: Text("My Exits"),
       ),
