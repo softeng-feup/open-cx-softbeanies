@@ -7,7 +7,6 @@ import 'screens/Results2.dart';
 import 'Controller.dart';
 
 class MVCApp extends AppMVC {
-
   MVCApp({Key key}) : super(con: _controller, key: key);
 
   /// An external reference to the Controller if you wish. -gp
@@ -16,6 +15,7 @@ class MVCApp extends AppMVC {
   static MaterialApp _app;
 
   static String get title => _app.title.toString();
+  
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class MVCApp extends AppMVC {
       routes: {
         '/': (context) => MyHomePage(),
         '/Options': (context) => OptionsMenu(),
-        '/Lectures': (context) => Lectures(),
-        '/Networking': (context) => Networking(),
-        '/Food': (context) => Food(),
-        '/Workshops': (context) => Workshops(),
-        '/Wc': (context) => Wc(),
+        '/Lectures': (context) => LecturesMenu(),
+        '/Networking': (context) => NetworkingMenu(),
+        '/Food': (context) => FoodMenu(),
+        '/Workshops': (context) => WorkshopsMenu(),
+        '/Wc': (context) => WcMenu(),
         '/Exits': (context) => Exits(),
         '/Search': (context) => Search(),
         '/Results': (context) => Results(),
@@ -41,6 +41,7 @@ class MVCApp extends AppMVC {
     );
     return _app;
   }
+
 }
 
 class MyHomePage extends StatefulWidget {
