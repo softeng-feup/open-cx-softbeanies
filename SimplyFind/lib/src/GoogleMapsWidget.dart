@@ -88,7 +88,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
         zoom: 19.0,
       ),
       myLocationEnabled: true,
-      myLocationButtonEnabled: false,
+      myLocationButtonEnabled: true,
       indoorViewEnabled: true,
       markers: _markers,
       onCameraMove: _onCameraMove,
@@ -104,10 +104,11 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       child: Align(
         alignment: Alignment.topRight,
         child: Container(
-          height: 140,
+          height: 180,
           width: 40,
           child: Column(
             children: <Widget>[
+              SizedBox(height: 40),
               FittedBox(
                 child: FloatingActionButton(
                   heroTag: "add_marker",
