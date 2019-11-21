@@ -9,27 +9,55 @@ class Event extends PointOfInterest {
   final String _description;
   final List<String> _tags;
 
-  Event(this._name, this._speaker, this._room, this._description, this._tags, LatLng location) : super(location);
+  Event(this._name, this._speaker, this._room, this._description, this._tags, LatLng location, int floor) : super(location, floor);
 
-  factory Event.fromJson(Map<String, dynamic> json) => _eventFromJson(json);
-}
+  String get name => _name;
 
-Event _eventFromJson(Map<String, dynamic> json) {
+  String get speaker => _speaker;
 
-  // get tags
-  var tagsJson = json['tags'];
-  List<String> tags = tagsJson != null ? new List.from(tagsJson) : null;
+  String get room => _room;
 
-  // get latitude and longitude
-  var locationJson = json['location'];
-  LatLng location = new LatLng(locationJson['latitude'] as double, locationJson['longitude'] as double);
+  String get description => _description;
 
-  return Event(
-    json['name'] as String,
-    json['speaker'] as String,
-    json['room'] as String,
-    json['description'] as String,
-    tags,
-    location,
-  );
+  List<String> get tags => _tags;
+
+  String getStringTags() {
+    String tagString;
+
+    _tags.forEach(
+      (tag) {
+        tagString = tagString + ' ' + tag;
+      }
+    );
+
+    return tagString;
+  }
+
+  factory Event.fromJson(Map<String, dynamic> json) {
+    // get tags
+    var tagsJson = json['tags'];
+    List<String> tags = tagsJson != null ? new List.from(tagsJson) : null;
+
+    // get latitude and longitude
+    var locationJson = json['location'];
+    LatLng location = new LatLng(locationJson['latitude'] as double, locationJson['longitude'] as double);
+
+    print(json['name']);
+    print(json['speaker']);
+    print(json['room']);
+    print(['description']);
+    print(tags);
+    print(location);
+    print(['floor']);
+
+    return Event(
+        json['name'] as String,
+        json['speaker'] as String,
+        json['room'] as String,
+        json['description'] as String,
+        tags,
+        location,
+        json['floor'] as int
+    );
+  }
 }

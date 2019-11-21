@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'GoogleMapsWidget.dart';
 import 'screens/OptionsMenu.dart';
 import 'screens/Search.dart';
 import 'screens/Results.dart';
@@ -67,31 +66,33 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-            child: Container(
-      color: Color.fromRGBO(249, 228, 183, 1),
-      child: Stack(
-        children: <Widget>[
-          Button(
-            x: 12,
-            y: 60,
-            title: "Search",
-            onPressed: () {
-              Navigator.pushNamed(context, '/Options');
-            },
+      body: SafeArea(
+        child: Container(
+          color: Color.fromRGBO(249, 228, 183, 1),
+          child: Stack(
+            children: <Widget>[
+              Button(
+                x: 12,
+                y: 60,
+                title: "Search",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Options');
+                },
+              ),
+              Button(
+                x: 12,
+                y: 75,
+                title: "Explore",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Search'); // /Search
+                },
+              ),
+              LocateImage(x: 20, y: 20, imageName: "assets/images/start.png"),
+              LocateText(x: 15, y: 10, title: "Simplyfind", size: 60.0),
+            ],
           ),
-          Button(
-            x: 12,
-            y: 75,
-            title: "Explore",
-            onPressed: () {
-              Navigator.pushNamed(context, '/Search'); // /Search
-            },
-          ),
-          LocateImage(x: 20, y: 20, imageName: "assets/images/start.png"),
-          LocateText(x: 15, y: 10, title: "Simplyfind", size: 60.0),
-        ],
-      ),
-    )));
+        )
+      )
+    );
   }
 }

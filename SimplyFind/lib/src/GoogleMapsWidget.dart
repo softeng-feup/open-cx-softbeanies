@@ -12,7 +12,7 @@ class GoogleMapsWidget extends StatefulWidget {
 class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   GoogleMapController controller;
 
-  DataServer server = new DataServer('assets/data/eventDataBase.json');
+  DataServer server = new DataServer();
 
   final Set<Marker> _markers = new Set();
   final Set<Polyline> _polylines = new Set();
@@ -67,7 +67,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    server.loadData();
+    server.loadEventData();
     //print(server.getEvent('1'));
     return Stack(
       children: <Widget>[

@@ -6,18 +6,18 @@ import '../POI/Event.dart';
 
 class DataServer {
 
-  final String _address;
   Map<String, Event> _events;
 
-  DataServer(this._address) {
+  DataServer() {
     this._events = new Map<String, Event>();
   }
 
   Future<String> _loadDataAsset() async {
-    return await rootBundle.loadString(this._address);
+    return await rootBundle.loadString('assets/data/eventDataBase.json');
   }
 
-  Future loadData() async {
+  /// Creates Event objects from json file and stores them in a map
+  Future loadEventData() async {
     String jsonData = await _loadDataAsset();
     Map jsonEvents = jsonDecode(jsonData);
 
@@ -26,10 +26,9 @@ class DataServer {
         this._events[k] = Event.fromJson(v);
       }
     );
-
-    print(this._events);
   }
 
+  /// Returns event given its id
   Event getEvent(String eventID) {
     return this._events[eventID];
   }
