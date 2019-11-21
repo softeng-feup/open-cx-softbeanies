@@ -11,6 +11,26 @@ class Event extends PointOfInterest {
 
   Event(this._name, this._speaker, this._room, this._description, this._tags, LatLng location) : super(location);
 
+  String get name {
+    return this._name;
+  }
+
+  String get speaker {
+    return this._speaker;
+  }
+
+  String get room {
+    return this._room;
+  }
+
+  String get description{
+    return this._description;
+  }
+
+  List<String> get tags{
+    return this._tags;
+  }
+
   factory Event.fromJson(Map<String, dynamic> json) => _eventFromJson(json);
 }
 
@@ -24,7 +44,7 @@ Event _eventFromJson(Map<String, dynamic> json) {
   var locationJson = json['location'];
   LatLng location = new LatLng(locationJson['latitude'] as double, locationJson['longitude'] as double);
 
-  return Event(
+  return new Event(
     json['name'] as String,
     json['speaker'] as String,
     json['room'] as String,
