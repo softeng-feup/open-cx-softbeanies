@@ -117,10 +117,11 @@ class LecturesMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var numberOfLectures = 3;
-    Event Lecture1 = new Event("5G-The Future of Telecommunications", "Maria Josefina", "B201", "5G is super cool", null, null);
-    Event Lecture2 = new Event("Quantum Computing 101", "Ademar Aguiar", "B204", "So is the cat dead or alive? Now you can find out :)", null, null);
-    Event Lecture3 = new Event("Simplyfind app", "Helena Ferreira", "B306", "Simplyfind if the best app ever", null, null);
+    Event Lecture1 = new Event("5G-The Future of Telecommunications", "Maria Josefina", "B201", "5G is super cool", null, null, 1);
+    Event Lecture2 = new Event("Quantum Computing 101", "Ademar Aguiar", "B204", "So is the cat dead or alive? Now you can find out :)", null, null, 1);
+    Event Lecture3 = new Event("Simplyfind app", "Helena Ferreira", "B306", "Simplyfind if the best app ever", null, null, 1);
     Event Lecture4;
+    List<Event> Lectures = [Lecture1, Lecture2, Lecture3, Lecture4];
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -146,50 +147,17 @@ class LecturesMenu extends StatelessWidget {
               style: new TextStyle(fontSize: 30.0, color: Color.fromRGBO(1, 38, 90, 1)),
               )
             ),
-            if(numberOfLectures >= 1)
-              OptionButton(
+              for(int i=0; i< numberOfLectures; i++)
+                OptionButton(
                   x: 10,
-                  y: 5,
-                  title: Lecture1.name,
+                  y: 5 + i * 20,
+                  title:  Lectures[i].name,
                   time: "11:30",
-                  speaker: Lecture1.speaker,
-                  room: Lecture1.room,
+                  speaker: Lectures[i].speaker,
+                  room: Lectures[i].room,
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
-                  }),
-              if(numberOfLectures >= 2)
-              OptionButton(
-                  x: 10,
-                  y: 25,
-                  title: Lecture2.name,
-                  time: "11:30",
-                  speaker: Lecture2.speaker,
-                  room: Lecture2.room,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Lectures');
-                  }),
-              if(numberOfLectures >= 3)
-              OptionButton(
-                  x: 10,
-                  y: 45,
-                  title: Lecture3.name,
-                  time: "11:30",
-                  speaker: Lecture3.speaker,
-                  room: Lecture3.room,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Lectures');
-                  }),
-              if(numberOfLectures >= 4)
-               OptionButton(
-                  x: 10,
-                  y: 65,
-                  title: Lecture4.name,
-                  time: "11:30",
-                  speaker: Lecture4.speaker,
-                  room: Lecture4.room,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Lectures');
-                  }),
+                  }),                 
             ],
           ),
         )
@@ -300,11 +268,11 @@ class WorkshopsMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     var numberOfWorkshops = 3;    
     //Event Workshop1 = server.getEvent("1");
-    Event Workshop1 = new Event("5G-The Future of Telecommunications", "Maria Josefina", "B201", "5G is super cool", null, null);
-    Event Workshop2 = new Event("Quantum Computing 101", "Ademar Aguiar", "B204", "So is the cat dead or alive? Now you can find out :)", null, null);
-    Event Workshop3 = new Event("Simplyfind app", "Helena Ferreira", "B306", "Simplyfind if the best app ever", null, null);
+    Event Workshop1 = new Event("5G-The Future of Telecommunications", "Maria Josefina", "B201", "5G is super cool", null, null, 1);
+    Event Workshop2 = new Event("Quantum Computing 101", "Ademar Aguiar", "B204", "So is the cat dead or alive? Now you can find out :)", null, null, 1);
+    Event Workshop3 = new Event("Simplyfind app", "Helena Ferreira", "B306", "Simplyfind if the best app ever", null, null, 1);
     Event Workshop4;
-
+    List<Event> Workshops = [Workshop1, Workshop2, Workshop3, Workshop4];
     return Scaffold(
       appBar: AppBar(
           iconTheme: IconThemeData(
@@ -329,51 +297,18 @@ class WorkshopsMenu extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: new TextStyle(fontSize: 30.0, color: Color.fromRGBO(1, 38, 90, 1)),
                 )
-              ),
-              if(numberOfWorkshops >= 1)
-              OptionButton(
+              ),             
+              for(int i=0; i< numberOfWorkshops; i++)
+                OptionButton(
                   x: 10,
-                  y: 5,
-                  title:  Workshop1.name,
+                  y: 5 + i * 20,
+                  title:  Workshops[i].name,
                   time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "121",
+                  speaker: Workshops[i].speaker,
+                  room: Workshops[i].room,
                   onPressed: () {
                     Navigator.pushNamed(context, '/Workshops');
-                  }),
-              if(numberOfWorkshops >= 2)
-              OptionButton(
-                  x: 10,
-                  y: 25,
-                  title:  Workshop2.name,
-                  time: "11:30",
-                  speaker:  Workshop2.speaker,
-                  room:  Workshop2.room,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Workshops');
-                  }),
-              if(numberOfWorkshops >= 3)
-              OptionButton(
-                  x: 10,
-                  y: 45,
-                  title:  Workshop3.name,
-                  time: "11:30",
-                  speaker:  Workshop3.speaker,
-                  room:  Workshop3.room,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Workshops');
-                  }),
-              if(numberOfWorkshops >= 4)
-              OptionButton(
-                  x: 10,
-                  y: 65,
-                  title:  Workshop4.name,
-                  time: "11:30",
-                  speaker: Workshop4.speaker,
-                  room: Workshop4.room,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Workshops');
-                  }),
+                  }),                           
             ],
           ),
         )
