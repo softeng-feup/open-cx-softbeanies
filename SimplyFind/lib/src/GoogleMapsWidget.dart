@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import 'NavigationPage.dart';
-import 'data/DataServer.dart';
+import '../NavigationPage.dart';
+import '../data/DataServer.dart';
 
-class GoogleMapsPage extends StatefulWidget {
+class GoogleMapsWidget extends StatefulWidget {
   @override
-  _GoogleMapsPageState createState() => _GoogleMapsPageState();
+  _GoogleMapsWidgetState createState() => _GoogleMapsWidgetState();
 }
 
-class _GoogleMapsPageState extends State<GoogleMapsPage> {
+class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   GoogleMapController controller;
 
   DataServer server = new DataServer('assets/data/eventDataBase.json');
@@ -69,19 +69,12 @@ class _GoogleMapsPageState extends State<GoogleMapsPage> {
   Widget build(BuildContext context) {
     server.loadData();
     //print(server.getEvent('1'));
-    return Scaffold(
-      appBar: AppBar(
-          title: Text("SimplyFind.me"),
-          backgroundColor: Color.fromRGBO(1, 38, 90, 1)
-      ),
-
-      body: Stack(
-        children: <Widget>[
-          mapWidget(),
-          crossHair(),
-          sideButtons(),
-        ],
-      ),
+    return Stack(
+      children: <Widget>[
+        mapWidget(),
+        crossHair(),
+        sideButtons(),
+      ],
     );
   }
 

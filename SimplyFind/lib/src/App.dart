@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import '../GoogleMapsPage.dart';
+import 'GoogleMapsWidget.dart';
 import 'screens/OptionsMenu.dart';
 import 'screens/Search.dart';
 import 'screens/Results.dart';
@@ -38,7 +38,6 @@ class MVCApp extends AppMVC {
         '/Search': (context) => Search(),
         '/Results': (context) => Results(),
         '/Results2': (context) => Results2(),
-        '/GoogleMaps' : (context) => GoogleMapsPage(),
       },
     );
     return _app;

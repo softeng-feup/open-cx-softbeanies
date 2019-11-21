@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'GoogleMapsPage.dart';
+import 'src/GoogleMapsWidget.dart';
 
 class LocateApp extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class LocateApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: GoogleMapsPage(),
+      home: GoogleMapsWidget(),
     );
   }
 }
