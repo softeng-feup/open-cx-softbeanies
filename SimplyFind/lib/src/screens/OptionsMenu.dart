@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:prototype/data/DataServer.dart';
+import '../../main.dart';
+
+import '../../POI/Event.dart';
 
 /**    MENUS */
 class OptionsMenu extends StatelessWidget {
@@ -100,7 +104,7 @@ class ButtonWithImage extends StatelessWidget {
                         padding: EdgeInsets.only(bottom:10),
                         child:
                             Text(legend, style: new TextStyle(fontSize: 25, color: Color.fromRGBO(1, 38, 90, 1), ))),
-                    new Image.asset(image,
+                        new Image.asset(image,
                         width: 0.30 * MediaQuery.of(context).size.width,
                         height: 0.10 * MediaQuery.of(context).size.height,
                         color: Color.fromRGBO(1, 38, 90, 1),)
@@ -112,10 +116,14 @@ class ButtonWithImage extends StatelessWidget {
 }
 
 
-class Lectures extends StatelessWidget {
+class LecturesMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var numberOfLectures = 3;
+    Event Lecture1 = new Event("5G-The Future of Telecommunications", "Maria Josefina", "B201", "5G is super cool", null, null);
+    Event Lecture2 = new Event("Quantum Computing 101", "Ademar Aguiar", "B204", "So is the cat dead or alive? Now you can find out :)", null, null);
+    Event Lecture3 = new Event("Simplyfind app", "Helena Ferreira", "B306", "Simplyfind if the best app ever", null, null);
+    Event Lecture4;
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -145,10 +153,10 @@ class Lectures extends StatelessWidget {
               OptionButton(
                   x: 10,
                   y: 5,
-                  title: "Lecture 1 Name",
+                  title: Lecture1.name,
                   time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "121",
+                  speaker: Lecture1.speaker,
+                  room: Lecture1.room,
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   }),
@@ -156,10 +164,10 @@ class Lectures extends StatelessWidget {
               OptionButton(
                   x: 10,
                   y: 25,
-                  title: "Lecture 2 Name",
+                  title: Lecture2.name,
                   time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "221",
+                  speaker: Lecture2.speaker,
+                  room: Lecture2.room,
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   }),
@@ -167,10 +175,10 @@ class Lectures extends StatelessWidget {
               OptionButton(
                   x: 10,
                   y: 45,
-                  title: "Lecture 3 Name",
+                  title: Lecture3.name,
                   time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "333",
+                  speaker: Lecture3.speaker,
+                  room: Lecture3.room,
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   }),
@@ -178,10 +186,10 @@ class Lectures extends StatelessWidget {
                OptionButton(
                   x: 10,
                   y: 65,
-                  title: "Lecture 4 Name",
+                  title: Lecture4.name,
                   time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "123",
+                  speaker: Lecture4.speaker,
+                  room: Lecture4.room,
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
                   }),
@@ -193,7 +201,7 @@ class Lectures extends StatelessWidget {
   }
 }
 
-class Networking extends StatelessWidget {
+class NetworkingMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -230,7 +238,7 @@ class Networking extends StatelessWidget {
   }
 }
 
-class Food extends StatelessWidget {
+class FoodMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -289,10 +297,17 @@ class Food extends StatelessWidget {
   }
 }
 
-class Workshops extends StatelessWidget {
+class WorkshopsMenu extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
-    var numberOfWorkshops = 2;
+    var numberOfWorkshops = 3;    
+    //Event Workshop1 = server.getEvent("1");
+    Event Workshop1 = new Event("5G-The Future of Telecommunications", "Maria Josefina", "B201", "5G is super cool", null, null);
+    Event Workshop2 = new Event("Quantum Computing 101", "Ademar Aguiar", "B204", "So is the cat dead or alive? Now you can find out :)", null, null);
+    Event Workshop3 = new Event("Simplyfind app", "Helena Ferreira", "B306", "Simplyfind if the best app ever", null, null);
+    Event Workshop4;
+
     return Scaffold(
       appBar: AppBar(
           iconTheme: IconThemeData(
@@ -322,7 +337,7 @@ class Workshops extends StatelessWidget {
               OptionButton(
                   x: 10,
                   y: 5,
-                  title: "Workshop 1 Name",
+                  title:  Workshop1.name,
                   time: "11:30",
                   speaker: "Ademar Aguiar",
                   room: "121",
@@ -333,10 +348,10 @@ class Workshops extends StatelessWidget {
               OptionButton(
                   x: 10,
                   y: 25,
-                  title: "Workshop 2 Name",
+                  title:  Workshop2.name,
                   time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "221",
+                  speaker:  Workshop2.speaker,
+                  room:  Workshop2.room,
                   onPressed: () {
                     Navigator.pushNamed(context, '/Workshops');
                   }),
@@ -344,10 +359,10 @@ class Workshops extends StatelessWidget {
               OptionButton(
                   x: 10,
                   y: 45,
-                  title: "Workshop 3 Name",
+                  title:  Workshop3.name,
                   time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "333",
+                  speaker:  Workshop3.speaker,
+                  room:  Workshop3.room,
                   onPressed: () {
                     Navigator.pushNamed(context, '/Workshops');
                   }),
@@ -355,10 +370,10 @@ class Workshops extends StatelessWidget {
               OptionButton(
                   x: 10,
                   y: 65,
-                  title: "Workshop 4 Name",
+                  title:  Workshop4.name,
                   time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "123",
+                  speaker: Workshop4.speaker,
+                  room: Workshop4.room,
                   onPressed: () {
                     Navigator.pushNamed(context, '/Workshops');
                   }),
@@ -371,7 +386,7 @@ class Workshops extends StatelessWidget {
 }
 
 
-class Wc extends StatelessWidget {
+class WcMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -444,11 +459,12 @@ class LocateText extends StatelessWidget {
   final double size;
   @override
   Widget build(BuildContext context) {
-    return Positioned(
+    return new Positioned(
       left: (x / 100) * MediaQuery.of(context).size.width,
       top: (y / 100) * MediaQuery.of(context).size.height,
       child: new Text(
         title,
+        textAlign: TextAlign.center,
         style: new TextStyle(fontSize: size, color: Color(0xFF073763)),
       ),
     );

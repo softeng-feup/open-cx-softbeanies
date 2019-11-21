@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:prototype/data/DataServer.dart';
 import 'GoogleMapsWidget.dart';
 import 'screens/OptionsMenu.dart';
 import 'screens/Search.dart';
@@ -8,7 +9,6 @@ import 'screens/Results2.dart';
 import 'Controller.dart';
 
 class MVCApp extends AppMVC {
-
   MVCApp({Key key}) : super(con: _controller, key: key);
 
   /// An external reference to the Controller if you wish. -gp
@@ -17,6 +17,7 @@ class MVCApp extends AppMVC {
   static MaterialApp _app;
 
   static String get title => _app.title.toString();
+  
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -29,11 +30,11 @@ class MVCApp extends AppMVC {
       routes: {
         '/': (context) => MyHomePage(),
         '/Options': (context) => OptionsMenu(),
-        '/Lectures': (context) => Lectures(),
-        '/Networking': (context) => Networking(),
-        '/Food': (context) => Food(),
-        '/Workshops': (context) => Workshops(),
-        '/Wc': (context) => Wc(),
+        '/Lectures': (context) => LecturesMenu(),
+        '/Networking': (context) => NetworkingMenu(),
+        '/Food': (context) => FoodMenu(),
+        '/Workshops': (context) => WorkshopsMenu(),
+        '/Wc': (context) => WcMenu(),
         '/Exits': (context) => Exits(),
         '/Search': (context) => Search(),
         '/Results': (context) => Results(),
@@ -42,6 +43,7 @@ class MVCApp extends AppMVC {
     );
     return _app;
   }
+
 }
 
 class MyHomePage extends StatefulWidget {
@@ -89,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
           LocateImage(x: 20, y: 20, imageName: "assets/images/start.png"),
-          LocateText(x: 15, y: 10, title: "Simplyfind", size: 60.0),
+          LocateText(x: 12, y: 10, title: "Simplyfind", size: 60.0),
         ],
       ),
     )));

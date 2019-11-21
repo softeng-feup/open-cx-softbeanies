@@ -30,6 +30,12 @@ class DataServer {
     print(this._events);
   }
 
+  DataServer getdataServer(_address) {
+    if(this._events == null){
+      DataServer(this._address);
+    }
+    return this;
+  }
   Event getEvent(String eventID) {
     return this._events[eventID];
   }

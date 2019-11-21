@@ -26,5 +26,20 @@
       "latitude": 41.177395,
       "longitude": -8.596044
     }
+  },
+
+  "3": {
+    "name": "Simplyfind app",
+    "speaker": "Helena Ferreira",
+    "room": "B306",
+    "description": "Simplyfind if the best app ever",
+    "tags":[
+      "World",
+      "Physics"
+    ],
+    "location": {
+      "latitude": 41.177395,
+      "longitude": -8.596044
+    }
   }
 }
