@@ -12,49 +12,48 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext c) {
-    return Column(
-      children: [
-        Container(
-          height: (height / 100) * MediaQuery.of(context).size.height,
-          color: Color.fromRGBO(1, 38, 90, 1),
-          child: new Form(
-            child: Column(
+    return Container(
+      height: ((this.height + 2.6) / 100) * MediaQuery.of(context).size.height,
+      color: Color.fromRGBO(1, 38, 90, 1),
+      child: new Form(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(
+              top: (5.17 / 100) * MediaQuery.of(context).size.height, //puts the first button in the correct y
+              bottom: (1.5 / 100) * MediaQuery.of(context).size.height //puts 2 buttons closer
+            ),
+            child: Row(
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: (5 / 100) * MediaQuery.of(context).size.height, //puts the first button in the correct y
-                    bottom: (1.5 / 100) * MediaQuery.of(context).size.height //puts 2 buttons closer
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(Icons.arrow_back),
-                        color: Colors.white,
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/');
-                        },
+                IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  color: Colors.white,
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/');
+                      },
+                ),
+                Expanded(
+                  child: new TextFormField(
+                    decoration: new InputDecoration(
+                      filled: true,
+                      labelText: 'My Localization',
+                      fillColor: Colors.white,
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(30.0),
                       ),
-                      Expanded(
-                        child: new TextFormField(
-                          decoration: new InputDecoration(
-                            filled: true,
-                            labelText: 'My Localization',
-                            fillColor: Colors.white,
-                            border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(30.0),
-                            ),
-                            prefixIcon: Icon(
-                              Icons.search,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
+                      prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.grey,
                       ),
-                    ],
+                    ),
                   ),
                 ),
-                Padding(padding: EdgeInsets.only(
-                  bottom:(1 / 100) * MediaQuery.of(context).size.height,
+              ],
+            ),
+          ),
+          new Padding(
+            padding: EdgeInsets.only(
+            bottom: (1.2 / 100) * MediaQuery.of(context).size.height,
                   left:(13 / 100) * MediaQuery.of(context).size.width //moves the second buttom of the app bar
                 ),
                 child:
@@ -77,16 +76,15 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ),
                   ],
-                ),),
-              ],
-            ),
-          ),
+                ),
+              ),
+              new Container(
+                height:(2 / 100) * MediaQuery.of(context).size.height, //change size of yellow line
+                color: Color.fromRGBO(249, 228, 183, 1),
+              )
+          ],
         ),
-       new Container(
-          height:(2 / 100) * MediaQuery.of(context).size.height, //change size of yellow line
-          color: Color.fromRGBO(249, 228, 183, 1),
-        )
-      ],
+      ),
     );
   }
 
