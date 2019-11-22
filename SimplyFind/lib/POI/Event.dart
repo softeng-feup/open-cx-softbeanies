@@ -8,6 +8,7 @@ class Event extends PointOfInterest {
   final String _room;
   final String _description;
   final List<String> _tags;
+  //final String _date;
 
   Event(this._name, this._speaker, this._room, this._description, this._tags, int pointOfInterestId, LatLng location, int floor) : super(pointOfInterestId, location, floor);
 
@@ -20,6 +21,8 @@ class Event extends PointOfInterest {
   String get description => _description;
 
   List<String> get tags => _tags;
+
+  //String get date => _date;
 
   String getStringTags() {
     String tagString;
