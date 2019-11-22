@@ -15,7 +15,7 @@ class MVCApp extends AppMVC {
   static MaterialApp _app;
 
   static String get title => _app.title.toString();
-  
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -28,10 +28,10 @@ class MVCApp extends AppMVC {
       routes: {
         '/': (context) => MyHomePage(),
         '/Options': (context) => OptionsMenu(),
-        '/Lectures': (context) => LecturesMenu(),
+        '/Lectures': (context) => EventsMenu(title: "Lectures"),
         '/Networking': (context) => NetworkingMenu(),
         '/Food': (context) => FoodMenu(),
-        '/Workshops': (context) => WorkshopsMenu(),
+        '/Workshops': (context) => EventsMenu(title: "Workshops"),
         '/Wc': (context) => WcMenu(),
         '/Exits': (context) => Exits(),
         '/Search': (context) => Search(),

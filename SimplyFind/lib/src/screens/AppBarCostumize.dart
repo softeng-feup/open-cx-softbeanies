@@ -15,13 +15,16 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Column(
       children: [
         Container(
-          height: 190,
+          height: (height / 100) * MediaQuery.of(context).size.height,
           color: Color.fromRGBO(1, 38, 90, 1),
           child: new Form(
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(top: 40, bottom:20),
+                  padding: EdgeInsets.only(
+                    top: (5 / 100) * MediaQuery.of(context).size.height, //puts the first button in the correct y
+                    bottom: (1.5 / 100) * MediaQuery.of(context).size.height //puts 2 buttons closer
+                  ),
                   child: Row(
                     children: <Widget>[
                       IconButton(
@@ -50,7 +53,10 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ],
                   ),
                 ),
-                Padding(padding: EdgeInsets.only(bottom:10, left:50),
+                Padding(padding: EdgeInsets.only(
+                  bottom:(1 / 100) * MediaQuery.of(context).size.height,
+                  left:(13 / 100) * MediaQuery.of(context).size.width //moves the second buttom of the app bar
+                ),
                 child:
                 Row(
                   children: <Widget>[
@@ -76,32 +82,34 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         ),
-        new Container(
-          height: 30,
+       new Container(
+          height:(2 / 100) * MediaQuery.of(context).size.height, //change size of yellow line
           color: Color.fromRGBO(249, 228, 183, 1),
         )
       ],
     );
   }
 
-  @override
-  Size get preferredSize => Size.fromHeight(height);
+  @override 
+  Size get preferredSize => Size.fromHeight((this.height / 100) * MediaQuery.of(context).size.height); //change size of app bar
 }
 
 class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
+  final String title;
 
   const MyCustomAppBar2({
     Key key,
     @required this.height,
     @required this.context,
+    @required this.title
   }) : super(key: key);
 
   @override
   Widget build(BuildContext c) {
     return Container(
-      height: 120,
+      height: (height / 100) * MediaQuery.of(context).size.height,
       color: Color.fromRGBO(1, 38, 90, 1),
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,7 +117,11 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
           new Row(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 40, left: 0, bottom: 12),
+                padding: EdgeInsets.only(
+                  top: (4.7 / 100) * MediaQuery.of(context).size.height,
+                  left: 0, 
+                  bottom: 0
+                ),
                 child: IconButton(
                   icon: Icon(Icons.arrow_back),
                   color: Colors.white,
@@ -119,16 +131,20 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 40, left: 10, bottom: 12),
+                padding: EdgeInsets.only(
+                  top: (7.15 / 100) * MediaQuery.of(context).size.height,
+                  left: (2 / 100) * MediaQuery.of(context).size.width,
+                  bottom: (2.57 / 100) * MediaQuery.of(context).size.height
+                ),
                 child: new Text(
-                  "Machine2",
+                  this.title,
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
             ],
           ),
           new Container(
-            height: 20,
+            height:(2 / 100) * MediaQuery.of(context).size.height,
             color: Color.fromRGBO(249, 228, 183, 1),
           ),
         ],
@@ -137,5 +153,5 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(height);
+  Size get preferredSize => Size.fromHeight((height / 100) * MediaQuery.of(context).size.height);
 }
