@@ -10,7 +10,7 @@ class Event extends PointOfInterest {
   final List<String> _tags;
   //final String _date;
 
-  Event(this._name, this._speaker, this._room, this._description, this._tags, int pointOfInterestId, LatLng location, int floor) : super(pointOfInterestId, location, floor);
+  Event(this._name, this._speaker, this._room, this._description, this._tags, int pointId, LatLng location, int floor) : super(pointId, location, floor);
 
   String get name => _name;
 
