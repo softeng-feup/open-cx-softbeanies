@@ -1,6 +1,8 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:prototype/POI/Connection.dart';
 
+/// A [PointOfInterest] is a marker on our map in which the
+/// user might find something useful
 class PointOfInterest {
   /// Unique identification number
   final int _id;

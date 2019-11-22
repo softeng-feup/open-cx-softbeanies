@@ -1,3 +1,4 @@
+/// Connection between two [PointOfInterest]
 class Connection {
   // double _weight
   /// Unique identification number
