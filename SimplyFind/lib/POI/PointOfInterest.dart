@@ -3,7 +3,7 @@ import 'package:prototype/POI/Connection.dart';
 
 class PointOfInterest {
   /// Unique identification number
-  final int _pointId;
+  final int _id;
   /// GPS Coordinates
   final LatLng _location;
   /// Floor number
@@ -12,11 +12,11 @@ class PointOfInterest {
   List<Connection> _connections;
 
   /// Constructor
-  PointOfInterest(this._pointId, this._location, this._floor);
+  PointOfInterest(this._id, this._location, this._floor);
 
-  /// Getter member function for [_pointId]
+  /// Getter member function for [_id]
   /// returns an [int] indicating [PointOfInterest]'s ID
-  int get pointId => _pointId;
+  int get id => _id;
 
   /// Getter member function for [_location]
   /// returns a [LatLng] Object GPS coordinates
@@ -35,5 +35,20 @@ class PointOfInterest {
   /// and destination POI ID
   void addConnection(int connectionId, int destPointId) {
     _connections.add(new Connection(connectionId, destPointId));
+  }
+
+  /// Factory constructor
+  /// Given a a JSON Map ([json]) a new instance of [PointOfInterest]
+  /// is created and returned
+  factory PointOfInterest.fromJson(Map<String, dynamic> json) {
+    // get latitude and longitude
+    var locationJson = json['location'];
+    LatLng location = new LatLng(locationJson['latitude'] as double, locationJson['longitude'] as double);
+
+    return PointOfInterest (
+      json['id'] as int,
+      location,
+      json['floor'] as int
+    );
   }
 }

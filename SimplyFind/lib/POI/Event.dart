@@ -9,7 +9,7 @@ class Event extends PointOfInterest {
   final String _description;
   final List<String> _tags;
 
-  Event(this._name, this._speaker, this._room, this._description, this._tags, LatLng location, int floor) : super(location, floor);
+  Event(this._name, this._speaker, this._room, this._description, this._tags, int pointOfInterestId, LatLng location, int floor) : super(pointOfInterestId, location, floor);
 
   String get name => _name;
 
@@ -42,20 +42,13 @@ class Event extends PointOfInterest {
     var locationJson = json['location'];
     LatLng location = new LatLng(locationJson['latitude'] as double, locationJson['longitude'] as double);
 
-    print(json['name']);
-    print(json['speaker']);
-    print(json['room']);
-    print(['description']);
-    print(tags);
-    print(location);
-    print(['floor']);
-
     return Event(
         json['name'] as String,
         json['speaker'] as String,
         json['room'] as String,
         json['description'] as String,
         tags,
+        json['pointId'] as int,
         location,
         json['floor'] as int
     );

@@ -8,10 +8,16 @@ class Graph {
   /// Constructor
   Graph();
 
+  /// Getter member function for [_pointsOfInterest]
+  /// returns a [List] containing [PointOfInterest] Objects
+  List<PointOfInterest> get pointsOfInterest => _pointsOfInterest;
+
   /// Adds a new [PointOfInterest] to the [_pointsOfInterest] list
   /// creating a new instance of [PointOfInterest] given its ID,
   /// [LatLng] location and floor
   void addPointOfInterest(int pointId, LatLng location, int floor) {
     _pointsOfInterest.add(new PointOfInterest(pointId, location, floor));
   }
+
+
 }
