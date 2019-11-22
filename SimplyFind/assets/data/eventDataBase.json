@@ -8,6 +8,7 @@
       "5G",
       "Telecommunications"
     ],
+    "pointId": 1,
     "location": {
       "latitude": 41.177470,
       "longitude": -8.596464
@@ -23,29 +24,26 @@
       "Computing",
       "Physics"
     ],
+    "pointId" : 2,
     "location": {
       "latitude": 41.177395,
       "longitude": -8.596044
-<<<<<<< HEAD
     },
     "floor": 1
-=======
-    }
-  },
-
+    },
   "3": {
-    "name": "Simplyfind app",
+    "name": "Simplyfind App",
     "speaker": "Helena Ferreira",
     "room": "B306",
-    "description": "Simplyfind if the best app ever",
+    "description": "Simplyfind is the best app ever",
     "tags":[
       "World",
       "Physics"
     ],
+    "pointId" : 3,
     "location": {
       "latitude": 41.177395,
       "longitude": -8.596044
     }
->>>>>>> 5d8626a2c882e857f7a31bc0f9d3a2e90d5751a9
   }
 }
