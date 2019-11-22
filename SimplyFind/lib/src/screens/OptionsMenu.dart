@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../MockGenerator.dart';
 import '../../POI/Event.dart';
 
 /**    MENUS */
@@ -117,11 +118,8 @@ class LecturesMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var numberOfLectures = 3;
-    Event Lecture1 = new Event("5G-The Future of Telecommunications", "Maria Josefina", "B201", "5G is super cool", null, null, 1);
-    Event Lecture2 = new Event("Quantum Computing 101", "Ademar Aguiar", "B204", "So is the cat dead or alive? Now you can find out :)", null, null, 1);
-    Event Lecture3 = new Event("Simplyfind app", "Helena Ferreira", "B306", "Simplyfind if the best app ever", null, null, 1);
-    Event Lecture4;
-    List<Event> Lectures = [Lecture1, Lecture2, Lecture3, Lecture4];
+
+    List<Event> Lectures = MockGenerator.Lectures;
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -268,11 +266,7 @@ class WorkshopsMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     var numberOfWorkshops = 3;    
     //Event Workshop1 = server.getEvent("1");
-    Event Workshop1 = new Event("5G-The Future of Telecommunications", "Maria Josefina", "B201", "5G is super cool", null, null, 1);
-    Event Workshop2 = new Event("Quantum Computing 101", "Ademar Aguiar", "B204", "So is the cat dead or alive? Now you can find out :)", null, null, 1);
-    Event Workshop3 = new Event("Simplyfind app", "Helena Ferreira", "B306", "Simplyfind if the best app ever", null, null, 1);
-    Event Workshop4;
-    List<Event> Workshops = [Workshop1, Workshop2, Workshop3, Workshop4];
+    List<Event> Workshops = MockGenerator.Workshops;
     return Scaffold(
       appBar: AppBar(
           iconTheme: IconThemeData(

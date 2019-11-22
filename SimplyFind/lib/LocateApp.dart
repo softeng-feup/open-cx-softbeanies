@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'MockGenerator.dart';
 import 'src/GoogleMapsWidget.dart';
 
 class LocateApp extends StatelessWidget {
@@ -10,7 +11,7 @@ class LocateApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: GoogleMapsWidget(),
+      home: GoogleMapsWidget(MockGenerator.Lectures,MockGenerator.Workshops),
     );
   }
 }

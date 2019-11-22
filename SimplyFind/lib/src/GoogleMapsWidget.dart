@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../NavigationPage.dart';
+import '../POI/Event.dart';
+import '../POI/PointOfInterest.dart';
 import '../data/DataServer.dart';
 
 class GoogleMapsWidget extends StatefulWidget {
+  final List<Event> markers;
+  final List<PointOfInterest> points;
+
+  GoogleMapsWidget(this.markers, this.points);
+
   @override
-  _GoogleMapsWidgetState createState() => _GoogleMapsWidgetState();
+  _GoogleMapsWidgetState createState() =>
+      _GoogleMapsWidgetState(markers, points);
 }
 
 class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
@@ -15,11 +23,48 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   DataServer server = new DataServer();
 
   final Set<Marker> _markers = new Set();
-  final Set<Polyline> _polylines = new Set();
-  List<LatLng> _points = new List();
+  final Set<Polyline> _polyLines = new Set();
 
   static const LatLng _center = const LatLng(41.177926, -8.597770);
-  LatLng _lastMapPosition = _center;
+  LatLng _lastMapPosition = _center; // usage is unsure
+
+  _GoogleMapsWidgetState(List<Event> markers, List<PointOfInterest> points) {
+    this.makeMarkers(markers);
+    this.makePolyline(points);
+  }
+
+  void makeMarkers(List<Event> markers) {
+    markers.forEach((M) => {
+          _markers.add(Marker(
+              markerId: MarkerId(M.hashCode.toString()),
+              position: M.location,
+              infoWindow: InfoWindow(
+                title: M.name,
+                snippet: //"Latitude: " + M.location.latitude.toStringAsFixed(2) + "\nLongitude: " + M.location.longitude.toStringAsFixed(2) +
+                    M.description,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NavigationPage()));
+                },
+              ),
+              icon: BitmapDescriptor.defaultMarkerWithHue(215)))
+        });
+  }
+
+  void makePolyline(List<PointOfInterest> points) {
+    List<LatLng> polyPoints = new List();
+    points.forEach((P) => {polyPoints.add(P.location)});
+
+    _polyLines.add(Polyline(
+      polylineId: PolylineId(_lastMapPosition.toString()),
+      visible: true,
+      points: polyPoints,
+      color: Colors.blue,
+      jointType: JointType.round,
+    ));
+  }
 
   void _onCameraMove(CameraPosition position) {
     _lastMapPosition = position.target;
@@ -27,42 +72,12 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
   void _resetMarkers() {
     _markers.clear();
-    _points.clear();
-    _polylines.clear();
+    _polyLines.clear();
   }
 
   void _resetPosition() {
     controller.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(target: _center, zoom: 19)));
-  }
-
-  void _onAddMarkerButtonPressed() {
-    setState(() {
-      _points.add(_lastMapPosition);
-      _markers.add(Marker(
-          markerId: MarkerId(_lastMapPosition.toString()),
-          position: _lastMapPosition,
-          infoWindow: InfoWindow(
-            title: "POI title",
-            snippet: "Latitude: " +
-                _lastMapPosition.latitude.toStringAsFixed(6) +
-                " Longitude: " +
-                _lastMapPosition.longitude.toStringAsFixed(6),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => NavigationPage()));
-            },
-          ),
-          icon: BitmapDescriptor.defaultMarkerWithHue(215)));
-      _polylines.clear();
-      _polylines.add(Polyline(
-        polylineId: PolylineId(_lastMapPosition.toString()),
-        visible: true,
-        points: _points,
-        color: Colors.blue,
-        jointType: JointType.round,
-      ));
-    });
   }
 
   @override
@@ -93,7 +108,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       markers: _markers,
       onCameraMove: _onCameraMove,
       mapType: MapType.terrain,
-      polylines: _polylines,
+      polylines: _polyLines,
       minMaxZoomPreference: MinMaxZoomPreference(2, 24),
     );
   }
@@ -104,21 +119,11 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       child: Align(
         alignment: Alignment.topRight,
         child: Container(
-          height: 180,
+          height: 140,
           width: 40,
           child: Column(
             children: <Widget>[
               SizedBox(height: 40),
-              FittedBox(
-                child: FloatingActionButton(
-                  heroTag: "add_marker",
-                  onPressed: _onAddMarkerButtonPressed,
-                  materialTapTargetSize: MaterialTapTargetSize.padded,
-                  backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-                  child: const Icon(Icons.add_location, size: 24.0),
-                ),
-              ),
-              SizedBox(height: 10),
               FittedBox(
                 child: FloatingActionButton(
                     heroTag: "reset",
