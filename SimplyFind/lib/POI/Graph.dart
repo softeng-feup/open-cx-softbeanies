@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:prototype/POI/Connection.dart';
 import 'package:prototype/POI/PointOfInterest.dart';
 
 /// [PointOfInterest] Graph implementation using a [HashMap] as a Node container
@@ -22,5 +23,16 @@ class Graph {
     _pointsOfInterest[pointId] = new PointOfInterest(pointId, location, floor);
   }
 
+  /// Returns a specific [PointOfInterest] given its ID [pointId],
+  /// in case [pointId] does not exist in [_pointsOfInterest] returns null
+  PointOfInterest getPointOfInterest(int pointId) {
+    return _pointsOfInterest[pointId];
+  }
+
+  /// Returns connection list from a specific [PointOfInterest] given
+  /// its ID [pointID]
+  List<Connection> getConnections(int pointId) {
+    return _pointsOfInterest[pointId].connections;
+  }
 
 }
