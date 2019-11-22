@@ -48,11 +48,11 @@ We started this project because we understand how hard it is to find our way in 
 ## Requirements
 ### Use case diagram 
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Use%20Cases/SimplyFind%20Use%20Case%201.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%201.jpeg">
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Use%20Cases/SimplyFind%20Use%20Case%202.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%202.jpeg">
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Use%20Cases/SimplyFind%20Use%20Case%203.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%203.jpeg">
 
 ### User stories
 
@@ -73,7 +73,8 @@ We started this project because we understand how hard it is to find our way in 
 
 ### Domain model
 
-To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/DomainModel.png">
+
 
 ---
 
