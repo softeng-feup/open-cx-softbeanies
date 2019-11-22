@@ -48,11 +48,11 @@ We started this project because we understand how hard it is to find our way in 
 ## Requirements
 ### Use case diagram 
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/tree/34-/DomainModel/Diagrams/SimplyFind%20Use%20Case%201.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%201.jpeg">
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/tree/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%202.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%202.jpeg">
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/tree/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%203.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%203.jpeg">
 
 ### User stories
 
@@ -73,7 +73,7 @@ We started this project because we understand how hard it is to find our way in 
 
 ### Domain model
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/tree/34-DomainModel/Diagrams/DomainModel.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/DomainModel.png">
 
 
 ---
