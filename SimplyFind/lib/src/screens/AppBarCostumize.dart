@@ -96,12 +96,14 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
   final String title;
+  final String backMenu;
 
   const MyCustomAppBar2({
     Key key,
     @required this.height,
     @required this.context,
-    @required this.title
+    @required this.title,
+    @required this.backMenu
   }) : super(key: key);
 
   @override
@@ -124,7 +126,7 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                   icon: Icon(Icons.arrow_back),
                   color: Colors.white,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/');
+                    Navigator.pushReplacementNamed(context, this.backMenu);
                   },
                 ),
               ),
@@ -142,7 +144,7 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
             ],
           ),
           new Container(
-            height:(2 / 100) * MediaQuery.of(context).size.height,
+            height:(2.019 / 100) * MediaQuery.of(context).size.height,
             color: Color.fromRGBO(249, 228, 183, 1),
           ),
         ],
