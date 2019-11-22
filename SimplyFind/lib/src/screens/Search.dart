@@ -11,7 +11,7 @@ class Search extends StatelessWidget {
     return new MaterialApp(
       title: "SearchPage",
       home: new Scaffold(
-        appBar: new MyCustomAppBar(height: 25, context: ctxt),
+        appBar: new MyCustomAppBar(height: 24, context: ctxt),
         body: new GoogleMapsWidget(MockGenerator.Workshops,MockGenerator.Workshops),
         ),
     );
