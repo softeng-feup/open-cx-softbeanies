@@ -7,7 +7,7 @@ class Results2 extends StatelessWidget {
     return new MaterialApp(
       title: "SearchPage",
       home: new Scaffold(
-        appBar: new MyCustomAppBar2(height: 200, context: ctxt),
+        appBar: new MyCustomAppBar2(height: 200, context: ctxt, title: "Hello", backMenu: '/Search', ),
         body: new Center(
           child: new Text("Hello "),
         ),
