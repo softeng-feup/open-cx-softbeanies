@@ -9,7 +9,7 @@ class OptionsMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Options", backMenu: '/', ),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: "Options", backMenu: '/', ),
       body: SafeArea(
             child: Container(
           color: Colors.white,
@@ -121,7 +121,7 @@ class EventsMenu extends StatelessWidget {
     else
       events = MockGenerator.Workshops; //get Workshops appening next
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: title, backMenu: '/Options',),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: title, backMenu: '/Options',),
       body: SafeArea(
           child: Container(
           color: Colors.white,
@@ -160,7 +160,7 @@ class NetworkingMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Networking", backMenu: '/Options',),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: "Networking", backMenu: '/Options',),
       body: SafeArea(
           child: Container(
           color: Colors.white,
@@ -188,7 +188,7 @@ class FoodMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Food", backMenu: '/Options',),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: "Food", backMenu: '/Options',),
       body: SafeArea(
           child: new Container(
           color: Colors.white,
@@ -238,7 +238,7 @@ class WcMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Wc", backMenu: '/Options'),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: "Wc", backMenu: '/Options'),
       body: SafeArea(
             child: Container(
           color: Colors.white,
@@ -272,7 +272,7 @@ class Exits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Exits", backMenu: '/Options'),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: "Exits", backMenu: '/Options'),
       body: new GoogleMapsWidget(MockGenerator.Workshops,MockGenerator.Workshops),
     );
   }
