@@ -151,6 +151,7 @@ class Lectures extends StatelessWidget {
                   room: "121",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
+                    
                   }),
               if(numberOfLectures >= 2)
               OptionButton(
