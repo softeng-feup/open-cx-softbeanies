@@ -9,7 +9,7 @@ class OptionsMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Options", backMenu: '/', ),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: "Options", backMenu: '/', ),
       body: SafeArea(
             child: Container(
           color: Colors.white,
@@ -115,13 +115,14 @@ class EventsMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var numberOfevents = 3;
     if(title == "Lectures")
       events = MockGenerator.Lectures; //get lectures appening next
     else
       events = MockGenerator.Workshops; //get Workshops appening next
+    var numberOfevents = events.length;
+
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: title, backMenu: '/Options',),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: title, backMenu: '/Options',),
       body: SafeArea(
           child: Container(
           color: Colors.white,
@@ -167,46 +168,24 @@ class CheckInMenu extends StatelessWidget {
 
 
 class FoodMenu extends StatelessWidget {
+  List<String> buttonTitles = ["Bar", "Grill", "Machines", "Coffe break"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Food", backMenu: '/Options',),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: "Food", backMenu: '/Options',),
       body: SafeArea(
           child: new Container(
           color: Colors.white,
           child: Stack(
             children: <Widget>[
+              for(int i = 0; i < buttonTitles.length; i++)
               ButtonOrange(
                 x: 10,
-                y: 5,
-                title: "Library Bar",
+                y: 4 + i * 20,
+                title: buttonTitles[i],
                 onPressed: () {
                   Navigator.pushNamed(context, '/Food');
-                }
-              ),
-              ButtonOrange(
-                x: 10,
-                y: 25,
-                title: "Mines Bar",
-                onPressed: () {
-                  Navigator.pushNamed(context, '/Food');
-                }
-              ),
-              ButtonOrange(
-                x: 10,
-                y: 45,
-                title: "Grill",
-                onPressed: () {
-                  Navigator.pushNamed(context, '/Food');
-                }
-              ),
-              ButtonOrange(
-                x: 10,
-                y: 65,
-                title: "Machines",
-                onPressed: () {
-                  Navigator.pushNamed(context, '/Food');
-                }
+                }             
               ),
             ],
           ),
@@ -219,25 +198,19 @@ class FoodMenu extends StatelessWidget {
 class WcMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    List<String> buttonTitles = ["Men", "Woman" ];
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Wc", backMenu: '/Options'),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: "Wc", backMenu: '/Options'),
       body: SafeArea(
             child: Container(
           color: Colors.white,
           child: Stack(
             children: <Widget>[
+              for(int i =0 ; i < buttonTitles.length; i++)
               ButtonOrange(
                   x: 10,
-                  y: 20,
-                  title: "Men",
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Wc');
-                  },
-              ),
-              ButtonOrange(
-                  x: 10,
-                  y: 45,
-                  title: "Woman",
+                  y: 18 + i * 27,
+                  title: buttonTitles[i],
                   onPressed: () {
                     Navigator.pushNamed(context, '/Wc');
                   },
@@ -254,7 +227,7 @@ class Exits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Exits", backMenu: '/Options'),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: "Exits", backMenu: '/Options'),
       body: new GoogleMapsWidget(MockGenerator.Workshops,MockGenerator.Workshops),
     );
   }

@@ -10,7 +10,7 @@
       "5G",
       "Telecommunications"
     ],
-    "pointId": 1,
+    "id": 1,
     "location": {
       "latitude": 41.177470,
       "longitude": -8.596464
@@ -28,7 +28,7 @@
       "Computing",
       "Physics"
     ],
-    "pointId" : 2,
+    "id": 2,
     "location": {
       "latitude": 41.177395,
       "longitude": -8.596044
@@ -46,7 +46,7 @@
       "World",
       "Physics"
     ],
-    "pointId" : 3,
+    "id": 3,
     "location": {
       "latitude": 41.177395,
       "longitude": -8.596044

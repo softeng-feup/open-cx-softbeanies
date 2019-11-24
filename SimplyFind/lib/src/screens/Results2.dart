@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'AppBarCostumize.dart';
+import '../GoogleMapsWidget.dart';
+import '../../MockGenerator.dart';
+
+
 
 class Results2 extends StatelessWidget {
   @override
@@ -7,11 +11,9 @@ class Results2 extends StatelessWidget {
     return new MaterialApp(
       title: "SearchPage",
       home: new Scaffold(
-        appBar: new MyCustomAppBar2(height: 200, context: ctxt, title: "Hello", backMenu: '/Search', ),
-        body: new Center(
-          child: new Text("Hello "),
+        appBar: new MyCustomAppBar2(height: 14, context: ctxt, title: "Map", backMenu: '/Search', ),
+         body: new GoogleMapsWidget(MockGenerator.Workshops,MockGenerator.Workshops),
         ),
-      ),
     );
   }
 }
