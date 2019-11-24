@@ -6,11 +6,12 @@ class Event extends PointOfInterest {
   final String _name;
   final String _speaker;
   final String _room;
+  final String _date;
+  final String _hour;
   final String _description;
   final List<String> _tags;
-  //final String _date;
 
-  Event(this._name, this._speaker, this._room, this._description, this._tags, int pointId, LatLng location, int floor) : super(pointId, location, floor);
+  Event(this._name, this._speaker, this._room, this._date, this._hour, this._description, this._tags, int pointId, LatLng location, int floor) : super(pointId, location, floor);
 
   String get name => _name;
 
@@ -18,11 +19,13 @@ class Event extends PointOfInterest {
 
   String get room => _room;
 
+  String get date => _date;
+
+  String get hour => _hour;
+
   String get description => _description;
 
   List<String> get tags => _tags;
-
-  //String get date => _date;
 
   String getStringTags() {
     String tagString;
@@ -49,6 +52,8 @@ class Event extends PointOfInterest {
         json['name'] as String,
         json['speaker'] as String,
         json['room'] as String,
+        json['date'] as String,
+        json['hour'] as String,
         json['description'] as String,
         tags,
         json['pointId'] as int,

@@ -141,7 +141,7 @@ class EventsMenu extends StatelessWidget {
                   x: 10,
                   y: 5 + i * 20,
                   title:  events[i].name,
-                  time: "11:30",
+                  time: events[i].hour,
                   speaker: events[i].speaker,
                   room: events[i].room,
                   onPressed: () {
@@ -157,8 +157,10 @@ class EventsMenu extends StatelessWidget {
 
 
 class NetworkingMenu extends StatelessWidget {
+  int numberOfNetworking = 3;
+  List<Event> networkingEvents = MockGenerator.Netwoking ;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return Scaffold(
       appBar: new MyCustomAppBar2(height: 15, context: context, title: "Networking", backMenu: '/Options',),
       body: SafeArea(
@@ -166,16 +168,25 @@ class NetworkingMenu extends StatelessWidget {
           color: Colors.white,
           child: Stack(
             children: <Widget>[
-              ButtonNetworking(
-                x: 10,
-                y: 20,
-                title: "Session 1",
-                date: "Day 11",
-                time: "11:30",
-                onPressed: () {
-                    Navigator.pushNamed(context, '/Networking');
-                }
+               if( numberOfNetworking == 0)
+             new Padding(
+              padding: EdgeInsets.only(top:(35 / 100) * MediaQuery.of(context).size.height,),
+              child: new Text(
+              "Sorry! There are no Networking events available.", 
+              textAlign: TextAlign.center,
+              style: new TextStyle(fontSize: 30.0, color: Color.fromRGBO(1, 38, 90, 1)),
               )
+            ),
+            for(int i= 0; i < numberOfNetworking; i++)
+                ButtonNetworking(
+                  x: 10,
+                  y: 5 + i * 20,
+                  title:  networkingEvents[i].name,
+                  time: networkingEvents[i].hour,
+                  date: networkingEvents[i].date,
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Lectures');
+                  }),                 
             ],
           ),
         )
@@ -278,6 +289,7 @@ class Exits extends StatelessWidget {
   }
 }
 
+/// Widgets */
 
 class LocateText extends StatelessWidget {
   LocateText({this.x, this.y, this.title, this.size});
