@@ -80,18 +80,18 @@ We started this project because we understand how hard it is to find our way in 
 
 ## Architecture and Design
 
-The software division of the project follows the MVC (Model-View-Controller) architectural pattern. As the name implies this pattern divides the structure of the program in three interconnected parts:
+The software division of the project follows the **MVC (Model-View-Controller)** architectural pattern. As the name implies this pattern divides the structure of the program in three interconnected parts:
 
--**Model**: It holds the internal information and is independent of the user interface
--**View**: Represents the visualization of the data that model contains.
+-**Model**: It holds the internal information and is independent of the user interface 
+-**View**: Represents the visualization of the data that model contains. 
 -**Controller**: Exists between the view and the model. It listens to events triggered by the view and executes the appropriate reaction to these events.
 
-We will focus on three main components of the project where the first two are inserted in the model category and the third in the view category:
-	- Data information storage: all the information related to then events and it's location
-	- Route computation and map integration
-	- App design and managment of functionalities in pages
+We will focus on three main components of the project where the first two are inserted in the model category and the third in the view category: 
+- Data information storage: all the information related to then events and it's location 
+-  Route computation and map integration 
+-  App design and managment of functionalities in pages
 
-The route computation and the map display is developed with the assistance of the GoogleMaps API. This way by giving the correct coordinates of the points of source and destination we can obtain the correct route. After that we need to compute the result and represent it in the map.
+The route computation and the map display is developed with the assistance of the **GoogleMaps API**. This way by giving the correct coordinates of the points of source and destination we can obtain the correct route. After that we need to compute the result and represent it in the map.
 
 The managment of the pages and correspondent functionalities is the section where all the visual components of the pages are implemented. In addiction this section also implies the use of the data storaged as arguments in order to display in the correct places (buttons, bars ,...) and allow to compute the right routes in the section above.
 
