@@ -82,8 +82,10 @@ We started this project because we understand how hard it is to find our way in 
 
 The software division of the project follows the **MVC (Model-View-Controller)** architectural pattern. As the name implies this pattern divides the structure of the program in three interconnected parts:
 
--**Model**: It holds the internal information and is independent of the user interface 
+-**Model**: It holds the internal information and is independent of the user interface.
+
 -**View**: Represents the visualization of the data that model contains. 
+
 -**Controller**: Exists between the view and the model. It listens to events triggered by the view and executes the appropriate reaction to these events.
 
 We will focus on three main components of the project where the first two are inserted in the model category and the third in the view category: 
