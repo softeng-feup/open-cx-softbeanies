@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Button(
                 x: 12,
                 y: 60,
-                title: "Search",
+                title: "Options",
                 onPressed: () {
                   Navigator.pushNamed(context, '/Options');
                 },
@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Button(
                 x: 12,
                 y: 75,
-                title: "Explore",
+                title: "Search",
                 onPressed: () {
                   Navigator.pushNamed(context, '/Search'); // /Search
                 },
