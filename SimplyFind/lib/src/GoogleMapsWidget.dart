@@ -7,14 +7,14 @@ import '../POI/PointOfInterest.dart';
 import '../data/DataServer.dart';
 
 class GoogleMapsWidget extends StatefulWidget {
-  final List<Event> markers;
-  final List<PointOfInterest> points;
+  final List<Event> _markers;
+  final List<PointOfInterest> _points;
 
-  GoogleMapsWidget(this.markers, this.points);
+  GoogleMapsWidget([this._markers, this._points ]);
 
   @override
   _GoogleMapsWidgetState createState() =>
-      _GoogleMapsWidgetState(markers, points);
+      _GoogleMapsWidgetState(_markers, _points);
 }
 
 class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
@@ -22,10 +22,10 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
   DataServer server = new DataServer();
 
-  final Set<Marker> _markers = new Set();
-  final Set<Polyline> _polyLines = new Set();
+   final Set<Marker> _markers = new Set();
+   final Set<Polyline> _polyLines = new Set();
 
-  static const LatLng _center = const LatLng(41.177926, -8.597770);
+  static const LatLng _center = const LatLng(41.177634, -8.595764);
   LatLng _lastMapPosition = _center; // usage is unsure
 
   _GoogleMapsWidgetState(List<Event> markers, List<PointOfInterest> points) {
@@ -34,56 +34,64 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   }
 
   void makeMarkers(List<Event> markers) {
-    markers.forEach((M) => {
-          _markers.add(Marker(
-              markerId: MarkerId(M.hashCode.toString()),
-              position: M.location,
-              infoWindow: InfoWindow(
-                title: M.name,
-                snippet: //"Latitude: " + M.location.latitude.toStringAsFixed(2) + "\nLongitude: " + M.location.longitude.toStringAsFixed(2) +
-                    M.description,
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NavigationPage()));
-                },
-              ),
-              icon: BitmapDescriptor.defaultMarkerWithHue(215)))
-        });
+    if(markers != null) {
+      markers.forEach((M) => {
+        _markers.add(Marker(
+          markerId: MarkerId(M.hashCode.toString()),
+          position: M.location,
+          infoWindow: InfoWindow(
+            title: M.name,
+            snippet: //"Latitude: " + M.location.latitude.toStringAsFixed(2) + "\nLongitude: " + M.location.longitude.toStringAsFixed(2) +
+            //M.description,
+            M.room,
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => NavigationPage()));
+            },
+          ),
+          icon: BitmapDescriptor.defaultMarkerWithHue(215),
+          zIndex: M.floor.toDouble(),
+        )),
+      });
+    }
   }
 
   void makePolyline(List<PointOfInterest> points) {
-    List<LatLng> polyPoints = new List();
-    points.forEach((P) => {polyPoints.add(P.location)});
+    if(points != null) {
 
-    _polyLines.add(Polyline(
-      polylineId: PolylineId(_lastMapPosition.toString()),
-      visible: true,
-      points: polyPoints,
-      color: Colors.blue,
-      jointType: JointType.round,
-    ));
+      List<LatLng> polyPoints = new List();
+      points.forEach((P) => {polyPoints.add(P.location)});
+
+      _polyLines.add(Polyline(
+        polylineId: PolylineId(_lastMapPosition.toString()),
+        visible: true,
+        points: polyPoints,
+        color: Colors.blue,
+        jointType: JointType.round,
+        startCap: Cap.roundCap,
+        endCap: Cap.roundCap,
+      ));
+    }
   }
 
   void _onCameraMove(CameraPosition position) {
     _lastMapPosition = position.target;
   }
 
-  void _resetMarkers() {
-    _markers.clear();
-    _polyLines.clear();
-  }
-
   void _resetPosition() {
-    controller.animateCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(target: _center, zoom: 19)));
+    if(_markers != null) {
+      controller.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(target: _markers.first.position, zoom: 17)));
+    }
+    else {
+      controller.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(target: _center, zoom: 17,bearing: 90)));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     server.loadEventData();
-    //print(server.getEvent('1'));
     return Stack(
       children: <Widget>[
         mapWidget(),
@@ -100,7 +108,8 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       },
       initialCameraPosition: CameraPosition(
         target: _center,
-        zoom: 19.0,
+        zoom: 17.0,
+        bearing: 90,
       ),
       myLocationEnabled: true,
       myLocationButtonEnabled: true,
@@ -115,24 +124,14 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
   Widget sideButtons() {
     return Padding(
-      padding: EdgeInsets.only(top: 15, right: 11),
+      padding: EdgeInsets.only(bottom: 15, right: 11),
       child: Align(
-        alignment: Alignment.topRight,
+        alignment: Alignment.bottomRight,
         child: Container(
-          height: 140,
-          width: 40,
+          height: 60,
+          width: 60,
           child: Column(
             children: <Widget>[
-              SizedBox(height: 40),
-              FittedBox(
-                child: FloatingActionButton(
-                    heroTag: "reset",
-                    onPressed: _resetMarkers,
-                    materialTapTargetSize: MaterialTapTargetSize.padded,
-                    backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-                    child: const Icon(Icons.restore, size: 24.0)),
-              ),
-              SizedBox(height: 10),
               FittedBox(
                 child: FloatingActionButton(
                     heroTag: "home",
