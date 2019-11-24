@@ -28,9 +28,9 @@ class OptionsMenu extends StatelessWidget {
                   y: 5,
                   image: "assets/images/network.png",
                   onPressed: () {
-                    Navigator.pushNamed(context, '/Networking');
+                    Navigator.pushNamed(context, '/CheckIn');
                   },
-                  legend: "Networking"),
+                  legend: "Check In"),
               ButtonWithImage(
                   x: 5,
                   y: 31,
@@ -155,45 +155,16 @@ class EventsMenu extends StatelessWidget {
   }
 }
 
-
-class NetworkingMenu extends StatelessWidget {
-  int numberOfNetworking = 3;
-  List<Event> networkingEvents = MockGenerator.Netwoking ;
+class CheckInMenu extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {  
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Networking", backMenu: '/Options',),
-      body: SafeArea(
-          child: Container(
-          color: Colors.white,
-          child: Stack(
-            children: <Widget>[
-               if( numberOfNetworking == 0)
-             new Padding(
-              padding: EdgeInsets.only(top:(35 / 100) * MediaQuery.of(context).size.height,),
-              child: new Text(
-              "Sorry! There are no Networking events available.", 
-              textAlign: TextAlign.center,
-              style: new TextStyle(fontSize: 30.0, color: Color.fromRGBO(1, 38, 90, 1)),
-              )
-            ),
-            for(int i= 0; i < numberOfNetworking; i++)
-                ButtonNetworking(
-                  x: 10,
-                  y: 5 + i * 20,
-                  title:  networkingEvents[i].name,
-                  time: networkingEvents[i].hour,
-                  date: networkingEvents[i].date,
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Lectures');
-                  }),                 
-            ],
-          ),
-        )
-      )
+      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Check In", backMenu: '/Options'),
+      body: new GoogleMapsWidget(MockGenerator.Workshops,MockGenerator.Workshops),
     );
   }
 }
+
 
 class FoodMenu extends StatelessWidget {
   @override

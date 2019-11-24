@@ -29,7 +29,7 @@ class MVCApp extends AppMVC {
         '/': (context) => MyHomePage(),
         '/Options': (context) => OptionsMenu(),
         '/Lectures': (context) => EventsMenu(title: "Lectures"),
-        '/Networking': (context) => NetworkingMenu(),
+        '/CheckIn': (context) => CheckInMenu(),
         '/Food': (context) => FoodMenu(),
         '/Workshops': (context) => EventsMenu(title: "Workshops"),
         '/Wc': (context) => WcMenu(),
