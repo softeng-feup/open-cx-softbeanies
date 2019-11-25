@@ -32,6 +32,11 @@ class BFS {
     this._predecessor = new HashMap<int, int>();
   }
 
+  /// Getter member function for [_path]
+  /// returns a [List] of [int] indicating the path from
+  /// a POI to another
+  List<int> get path => _path;
+
   /// Main member function to perform search and build path
   void execute(int sourcePoint, int destinationPoint) {
     // perform search
@@ -62,7 +67,7 @@ class BFS {
       List<Connection> nextPointConnections = this._graph.getConnections(currentPoint);
       for (Connection connection in nextPointConnections) {
         // process unvisited POI
-        if (this.isVisited(connection.destPointId)) {
+        if (!this.isVisited(connection.destPointId)) {
           // mark destination POI as visited
           this.addVisited(connection.destPointId);
           // add current POI to destination POI predecessor
