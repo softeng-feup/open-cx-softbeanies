@@ -35,11 +35,13 @@ class Event extends PointOfInterest {
   String get description => _description;
 
   /// Getter member function for [_tags]
-  /// return a [String] with the name of the event
+  /// return a [List] of [String]s with the tags of the event
   List<String> get tags => _tags;
 
   //String get date => _date;
 
+  /// Getter member function
+  /// TODO: is this necessary??
   String getStringTags() {
     String tagString;
 
@@ -52,6 +54,8 @@ class Event extends PointOfInterest {
     return tagString;
   }
 
+  /// Factory constructor
+  /// Returns an [Event] object given a json style [Map]
   factory Event.fromJson(Map<String, dynamic> json) {
     // get tags
     var tagsJson = json['tags'];
