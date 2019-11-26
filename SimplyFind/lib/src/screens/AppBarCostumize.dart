@@ -3,11 +3,17 @@ import 'package:flutter/material.dart';
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
+  final String myLocation;
+  final String destination;
+  final String backMenu;
 
   const MyCustomAppBar({
     Key key,
     @required this.height,
     @required this.context,
+    @required this.myLocation,
+    @required this.destination,
+    @required this.backMenu
   }) : super(key: key);
 
   @override
@@ -31,14 +37,14 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     icon: Icon(Icons.arrow_back),
                     color: Colors.white,
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/');
+                      Navigator.pushReplacementNamed(context, backMenu);
                     },
                   ),
                   Expanded(
                     child: new TextFormField(
                       decoration: new InputDecoration(
                         filled: true,
-                        labelText: 'My Localization',
+                        labelText: myLocation ,
                         fillColor: Colors.white,
                         contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
                         border: new OutlineInputBorder(
@@ -64,7 +70,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   Expanded(
                     child: new TextFormField(
                       decoration: new InputDecoration(
-                        labelText: 'Choose Destination',
+                        labelText: destination,
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
