@@ -38,7 +38,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       markers.forEach((M) => {
         _markers.add(Marker(
           markerId: MarkerId(M.hashCode.toString()),
-          position: M.location,
+          position: null, //M.location,
           infoWindow: InfoWindow(
             title: M.name,
             snippet: //"Latitude: " + M.location.latitude.toStringAsFixed(2) + "\nLongitude: " + M.location.longitude.toStringAsFixed(2) +
@@ -50,7 +50,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
             },
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(215),
-          zIndex: M.floor.toDouble(),
+          zIndex: null //M.floor.toDouble(),
         )),
       });
     }
@@ -91,7 +91,6 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    server.loadEventData();
     return Stack(
       children: <Widget>[
         mapWidget(),

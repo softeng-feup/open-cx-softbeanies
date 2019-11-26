@@ -59,6 +59,8 @@ flutter:
     - assets/images/start.png
     - assets/images/left.png
     - assets/data/eventDataBase.json
+    - assets/data/connectionsDataBase.json
+    - assets/data/auxiliarPOIDataBase.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

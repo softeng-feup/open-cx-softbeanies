@@ -40,7 +40,7 @@ class BFS {
   /// Main member function to perform search and build path
   void execute(int sourcePoint, int destinationPoint) {
     // perform search
-    if (this.performSearch(sourcePoint, destinationPoint)) {
+    if (!this.performSearch(sourcePoint, destinationPoint)) {
       // search failed, there is no possible path (warn user)
       return;
     }
@@ -89,6 +89,8 @@ class BFS {
   /// going through all intermediate POIs and finally achieving
   /// the desired path
   void buildPath(int sourcePoint, int destinationPoint) {
+    // add destination point to path
+    this._path.add(destinationPoint);
     int auxPointId = destinationPoint;
     // backtrack to find path
     while(this._predecessor[auxPointId] != null) {
