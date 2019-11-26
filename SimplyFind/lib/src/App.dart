@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
               LocateImage(x: 20, y: 20, imageName: "assets/images/start.png"),
-              LocateText(x: 12, y: 10, title: "Simplyfind", size: 60.0),
+              LocateText(x: 12, y: 10, title: "Simplyfind", size: 60.0, color: 0xFF073763,),
             ],
           ),
         )

@@ -110,15 +110,20 @@ class ButtonWithImage extends StatelessWidget {
 class EventsMenu extends StatelessWidget {
   final BuildContext context;
   final String title;
+  String nextMenu, backMenu;
   List<Event> events;
   EventsMenu({this.context, @required this.title });
 
   @override
   Widget build(BuildContext context) {
-    if(title == "Lectures")
+    if(title == "Lectures"){
+      backMenu = '/Lectures';
       events = MockGenerator.Lectures; //get lectures appening next
-    else
+    }      
+    else {
+      backMenu = '/Workshops';
       events = MockGenerator.Workshops; //get Workshops appening next
+    }
     var numberOfevents = events.length;
 
     return Scaffold(
@@ -146,7 +151,9 @@ class EventsMenu extends StatelessWidget {
                   speaker: events[i].speaker,
                   room: events[i].room,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/Lectures');
+                    Navigator.push(context, MaterialPageRoute( builder: (context) 
+                      => ShowDescriptionMenu(title: title, backMenu: backMenu, event: events[i], ),
+                    )); 
                   }),                 
             ],
           ),
@@ -233,14 +240,163 @@ class Exits extends StatelessWidget {
   }
 }
 
-/// Widgets */
+class ShowDescriptionMenu extends StatelessWidget {
+  final BuildContext context;
+  final String title;
+  final String backMenu;
+  Event event;
+  ShowDescriptionMenu({this.context, @required this.title, @required this.backMenu, @required this.event});
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: title, backMenu: backMenu),
+      body: SafeArea(
+        child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+
+        children: <Widget>[
+          new Container(
+            width: (5/ 100) * MediaQuery.of(context).size.width,
+            height: (4/ 100) * MediaQuery.of(context).size.height,
+          ),
+          new Container( 
+            width: (90/ 100) * MediaQuery.of(context).size.width,
+            height: (60/ 100) * MediaQuery.of(context).size.height,
+            padding: EdgeInsets.only(
+              left: (1/ 100) * MediaQuery.of(context).size.width,
+              right: (1/ 100) * MediaQuery.of(context).size.width,
+            ),           
+            decoration: new BoxDecoration(             
+              color: Color.fromRGBO(249, 228, 183, 1),
+              borderRadius: new BorderRadius.only(
+              topLeft: const Radius.circular(40.0),
+              bottomRight: const Radius.circular(40.0),
+              bottomLeft: const Radius.circular(40.0),
+              topRight: const Radius.circular(40.0))
+            ),
+            child: Stack(
+            children: <Widget>[ 
+              new Column(
+              children: <Widget>[
+                new Container(  
+                  padding: EdgeInsets.only(
+                    top: (5/ 100) * MediaQuery.of(context).size.height,
+                  ),
+                  child: new Text(
+                    event.name,
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(fontSize: 20.0, color: Color(0xFF073763)),                    
+                  ),          
+                ),
+                new Container(
+                  padding: EdgeInsets.only(
+                    top: (3/ 100) * MediaQuery.of(context).size.height,
+                  ),
+                  child: new Text(
+                    "Speaker :  " + event.speaker,
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(fontSize: 17.0, color: Color(0xFF000000)), 
+                  ),
+                ),
+                new Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.only(
+                    top: (2/ 100) * MediaQuery.of(context).size.height,
+                  ),
+                  child: new Text(
+                    "Room :  " + event.room,
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(fontSize: 17.0, color: Color(0xFF000000)), 
+                  ),
+                ),
+                new Container(
+                  padding: EdgeInsets.only(
+                    top: (2/ 100) * MediaQuery.of(context).size.height,
+                  ),
+                  child: new Text(
+                    "Date :  " + event.date,
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(fontSize: 17.0, color: Color(0xFF000000)), 
+                  ),
+                ),
+                new Container(
+                  padding: EdgeInsets.only(
+                    top: (2/ 100) * MediaQuery.of(context).size.height,
+                  ),
+                  child: new Text(
+                    "Hour :  " + event.hour,
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(fontSize: 17.0, color: Color(0xFF000000)), 
+                  ),
+                ),
+                new Container(
+                  padding: EdgeInsets.only(
+                    top: (2/ 100) * MediaQuery.of(context).size.height,
+                  ),
+                  child: new Text(
+                    "Description: ",
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(fontSize: 16.0, color: Color(0xFF000000)), 
+                  ),
+                ),
+                new Container(
+                  padding: EdgeInsets.only(
+                    top: (2/ 100) * MediaQuery.of(context).size.height,
+                    left: (1/ 100) * MediaQuery.of(context).size.width,
+                    right: (1/ 100) * MediaQuery.of(context).size.width,
+                  ),
+                  child: new Text(
+                    event.description,
+                    textAlign: TextAlign.center,
+                    style: new TextStyle(fontSize: 16.0, color: Color(0xFF000000)), 
+                  ),
+                ),
+              
+              ]
+              )
+            ]
+          )
+        ),    
+        new Container(
+          padding: EdgeInsets.only(
+            left: (15/ 100) * MediaQuery.of(context).size.width,
+            right:(10/ 100) * MediaQuery.of(context).size.width,
+            top: (5/ 100) * MediaQuery.of(context).size.height,
+          ),
+          child: new MaterialButton(
+          child: new Text(
+            "Path",
+            style: new TextStyle(
+              fontSize: 30.0,
+              color: Colors.white,
+            ),
+          ),
+          onPressed: (){},
+          padding: EdgeInsets.all(1.0),
+          color: Color.fromRGBO(1, 38, 90, 1),
+          textTheme: ButtonTextTheme.primary,
+          minWidth: 0.7 * MediaQuery.of(context).size.width,
+          height: 0.1 * MediaQuery.of(context).size.height,
+          shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          ),
+        )               
+        ],
+        )
+      )
+    );
+  }
+}
+
+/// Widgets */
 class LocateText extends StatelessWidget {
-  LocateText({this.x, this.y, this.title, this.size});
+  LocateText({this.x, this.y, this.title, this.size, this.color});
   final int x;
   final int y;
   final String title;
   final double size;
+  final int color;
   @override
   Widget build(BuildContext context) {
     return new Positioned(
@@ -249,7 +405,7 @@ class LocateText extends StatelessWidget {
       child: new Text(
         title,
         textAlign: TextAlign.center,
-        style: new TextStyle(fontSize: size, color: Color(0xFF073763)),
+        style: new TextStyle(fontSize: size, color: Color(color)),
       ),
     );
   }
@@ -281,10 +437,10 @@ class LocateImage extends StatelessWidget {
   */
 class Button extends StatelessWidget {
   Button({this.x, this.y, this.title, this.onPressed});
-  final int x;
-  final int y;
-  final String title;
-  final Function onPressed;
+  @required final int x;
+  @required final int y;
+  @required final String title;
+  @required final Function onPressed;
 
   @override
   Widget build(BuildContext context) {
