@@ -48,8 +48,13 @@ class DataServer {
   BFS get bfs => _bfs;
 
   /// Returns an event given its id
-  Event getEvent(int eventID) {
-    return this._events[eventID];
+  Event getEvent(int eventId) {
+    return this._events[eventId];
+  }
+
+  /// Returns a POI given its id
+  PointOfInterest getPOI(int pointId) {
+    return this._pointsOfInterest[pointId];
   }
 
   /// Loads entire json files
@@ -63,6 +68,8 @@ class DataServer {
     this._buildGraph();
   }
 
+  /// After parsing all the data it is necessary to build [Graph]
+  /// for path-finding
   void _buildGraph() {
     _pointsOfInterest.forEach(
       (key, poi) {
