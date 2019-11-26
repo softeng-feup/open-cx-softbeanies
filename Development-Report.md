@@ -73,7 +73,7 @@ We started this project because we understand how hard it is to find our way in 
 
 ### Domain model
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/DomainModel.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/46-ArchitectureDesign/Diagrams/DomainModel.png">
 
 
 ---
