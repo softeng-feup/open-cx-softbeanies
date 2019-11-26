@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'screens/OptionsMenu.dart';
 import 'screens/Search.dart';
 import 'screens/Results.dart';
@@ -66,6 +67,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    requestLocationPermission();
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -95,5 +97,13 @@ class _MyHomePageState extends State<MyHomePage> {
         )
       )
     );
+  }
+
+  Future requestLocationPermission() async {
+    Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.location]);
+    PermissionStatus permission;
+    if((permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.contacts)) == PermissionStatus.denied) {
+    print("NO LOCATION ALLOWED. BITCH ASS");
+    }
   }
 }
