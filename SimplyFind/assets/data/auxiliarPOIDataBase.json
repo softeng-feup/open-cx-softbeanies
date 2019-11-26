@@ -55,8 +55,16 @@
     },
     "floor": 0
   },
-  "Fifth Hall Junction": {
+  "Cheeses LMAO": {
     "id": 8,
+    "location": {
+      "latitude": 41.177621,
+      "longitude": -8.595771
+    },
+    "floor": 0
+  },
+  "Fifth Hall Junction": {
+    "id": 9,
     "location": {
       "latitude": 41.177560,
       "longitude": -8.595544
@@ -64,18 +72,10 @@
     "floor": 0
   },
   "Sixth Hall Junction / Entrance": {
-    "id": 9,
+    "id": 10,
     "location": {
       "latitude": 41.177459,
       "longitude": -8.595167
-    },
-    "floor": 0
-  },
-  "Cheeses LMAO": {
-    "id": 10,
-    "location": {
-      "latitude": 41.177621,
-      "longitude": -8.595771
     },
     "floor": 0
   }
