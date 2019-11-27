@@ -108,9 +108,13 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 
 ### Physical architecture
 
-The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
+In this project we designed an application for mobile that uses the GPS system to locate the user and find the direction to the different points of interest of the conference kept in a database.
 
-It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
+The main components of the physical architecture are the mobile devices, the database and the GPS system.
+
+The technologies used in the project had a lot of research before we came with the final decisions. Initially we thought to use microbits with bluetooth to locate the users but we ended up using GPS intead. The framework choosen was Flutter in deteriment to ReactNative since .... 
+
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/46-ArchitectureDesign/Diagrams/DomainModel.png">
 
 ### Prototype
 
