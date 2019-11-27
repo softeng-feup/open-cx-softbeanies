@@ -8,12 +8,7 @@
       "5G",
       "Telecommunications"
     ],
-    "id": 1,
-    "location": {
-      "latitude": 41.177470,
-      "longitude": -8.596464
-    },
-    "floor": 1
+    "poiId": 1
   },
   "2": {
     "name": "Quantum Computing 101",
@@ -24,12 +19,7 @@
       "Computing",
       "Physics"
     ],
-    "id": 2,
-    "location": {
-      "latitude": 41.177395,
-      "longitude": -8.596044
-    },
-    "floor": 1
+    "poiId": 2
     },
   "3": {
     "name": "Simplyfind App",
@@ -40,10 +30,6 @@
       "World",
       "Physics"
     ],
-    "id": 3,
-    "location": {
-      "latitude": 41.177395,
-      "longitude": -8.596044
-    }
+    "poiId": 8
   }
 }

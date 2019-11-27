@@ -14,7 +14,9 @@ class PointOfInterest {
   List<Connection> _connections;
 
   /// Constructor
-  PointOfInterest(this._id, this._location, this._floor);
+  PointOfInterest(this._id, this._location, this._floor) {
+    this._connections = new List<Connection>();
+  }
 
   /// Getter member function for [_id]
   /// returns an [int] indicating [PointOfInterest]'s ID
