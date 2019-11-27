@@ -114,7 +114,7 @@ The main components of the physical architecture are the mobile devices, the dat
 
 The technologies used in the project had a lot of research before we came with the final decisions. Initially we thought to use microbits with bluetooth to locate the users but we ended up using GPS intead. The framework choosen was Flutter in deteriment to ReactNative since .... 
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/46-ArchitectureDesign/Diagrams/DomainModel.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/46-ArchitectureDesign/Diagrams/DeploymentDiagram.png">
 
 ### Prototype
 
