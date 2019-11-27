@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.location]);
     PermissionStatus permission;
     if((permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.contacts)) == PermissionStatus.denied) {
-    print("NO LOCATION ALLOWED. BITCH ASS");
+    print("NO LOCATION ALLOWED. APP WONT FUNCTION PROPERLY.");
     }
   }
 }
