@@ -273,7 +273,7 @@ class Exits extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new MyCustomAppBar2(height: 15, context: context, title: "Exits", backMenu: '/Options'),
-      body: new GoogleMapsWidget(MockGenerator.LocationWorkshops, null),
+      body: new GoogleMapsWidget(MockGenerator.Workshops, null),
     );
   }
 }

@@ -7,7 +7,7 @@ import '../POI/PointOfInterest.dart';
 import '../data/DataServer.dart';
 
 class GoogleMapsWidget extends StatefulWidget {
-  final List<PointOfInterest> _markers;
+  final List<Event> _markers;
   final List<PointOfInterest> _points;
 
   GoogleMapsWidget([this._markers, this._points ]);
@@ -28,29 +28,27 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   static const LatLng _center = const LatLng(41.177634, -8.595764);
   LatLng _lastMapPosition = _center; // usage is unsure
 
-  _GoogleMapsWidgetState(List<PointOfInterest> markers, List<PointOfInterest> points) {
+  _GoogleMapsWidgetState(List<Event> markers, List<PointOfInterest> points) {
     this.makeMarkers(markers);
     this.makePolyline(points);
   }
 
-  void makeMarkers(List<PointOfInterest> markers) {
+  void makeMarkers(List<Event> markers) {
     if(markers != null) {
       markers.forEach((M) => {
         _markers.add(Marker(
           markerId: MarkerId(M.hashCode.toString()),
-          position: M.location,
+          position: server.getPOI(M.pointId).location,
           infoWindow: InfoWindow(
-            //title: //M.name,
-            //snippet: //"Latitude: " + M.location.latitude.toStringAsFixed(2) + "\nLongitude: " + M.location.longitude.toStringAsFixed(2) +
-            //M.description,
-            //M.room,
+          title: M.name,
+          snippet: M.description + " | " + M.room,
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => NavigationPage()));
             },
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(215),
-          zIndex: M.floor.toDouble(),
+          zIndex: server.getPOI(M.pointId).floor.toDouble(),
         )),
       });
     }
