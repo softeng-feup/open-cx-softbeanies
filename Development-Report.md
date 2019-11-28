@@ -112,7 +112,8 @@ In this project we designed an application for mobile that uses the GPS system t
 
 The main components of the physical architecture are the mobile devices, the database and the GPS system.
 
-The technologies used in the project had a lot of research before we came with the final decisions. Initially we thought to use microbits with bluetooth to locate the users but we ended up using GPS intead. The framework choosen was Flutter in deteriment to ReactNative since .... 
+The technologies used in the project had a lot of research before we came with the final decisions. Initially we thought to use microbits with Bluetooth to locate the users but we ended up using GPS intead. 
+The framework choosen was Flutter (that uses Dart) in deteriment to ReactNative since after a time of reflection and investigation we came to the conclusion that flutter was more intuitive and a better technology for the development of mobile apps for less experienced people.
 
 <img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/46-ArchitectureDesign/Diagrams/DeploymentDiagram.png">
 
