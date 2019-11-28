@@ -11,7 +11,7 @@ class LocateApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: GoogleMapsWidget(MockGenerator.Lectures, null),
+      home: GoogleMapsWidget(MockGenerator.LocationLectures, null),
     );
   }
 }
