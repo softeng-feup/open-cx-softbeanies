@@ -29,7 +29,7 @@ class OptionsMenu extends StatelessWidget {
               ButtonWithImage(
                   x: 55,
                   y: 5,
-                  image: "assets/images/network.png",
+                  image: "assets/images/checkIn.png",
                   onPressed: () {
                     Navigator.push(
                         context,
