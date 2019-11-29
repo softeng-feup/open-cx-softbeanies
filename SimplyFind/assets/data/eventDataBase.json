@@ -8,10 +8,7 @@
       "5G",
       "Telecommunications"
     ],
-    "location": {
-      "latitude": 41.177470,
-      "longitude": -8.596464
-    }
+    "poiId": 1
   },
   "2": {
     "name": "Quantum Computing 101",
@@ -22,9 +19,17 @@
       "Computing",
       "Physics"
     ],
-    "location": {
-      "latitude": 41.177395,
-      "longitude": -8.596044
-    }
+    "poiId": 2
+    },
+  "3": {
+    "name": "Simplyfind App",
+    "speaker": "Helena Ferreira",
+    "room": "B306",
+    "description": "Simplyfind is the best app ever",
+    "tags":[
+      "World",
+      "Physics"
+    ],
+    "poiId": 8
   }
 }

@@ -1,36 +1,31 @@
 import 'package:flutter/material.dart';
+import '../../MockGenerator.dart';
+import '../../POI/Event.dart';
+import '../GoogleMapsWidget.dart';
+import 'AppBarCostumize.dart';
 
 /**    MENUS */
 class OptionsMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Colors.white, //change your color here
-          ),
-          title: Text(
-            "Options",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-        ),
-        body: SafeArea(
+      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Options", backMenu: '/', ),
+      body: SafeArea(
             child: Container(
           color: Colors.white,
           child: Stack(
             children: <Widget>[
               ButtonWithImage(
                   x: 5,
-                  y: 7,
+                  y: 5,
                   image: "assets/images/speech.png",
                   onPressed: () {
-                    Navigator.pushNamed(context, '/Lectures');
+                    Navigator.pushNamed(context, "/Lectures");
                   },
                   legend: "Lectures"),
               ButtonWithImage(
                   x: 55,
-                  y: 7,
+                  y: 5,
                   image: "assets/images/network.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Networking');
@@ -38,7 +33,7 @@ class OptionsMenu extends StatelessWidget {
                   legend: "Networking"),
               ButtonWithImage(
                   x: 5,
-                  y: 35,
+                  y: 31,
                   image: "assets/images/restaurant.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Food');
@@ -46,7 +41,7 @@ class OptionsMenu extends StatelessWidget {
                   legend: "Food"),
               ButtonWithImage(
                   x: 55,
-                  y: 35,
+                  y: 31,
                   image: "assets/images/student.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Workshops');
@@ -54,7 +49,7 @@ class OptionsMenu extends StatelessWidget {
                   legend: "Workshops"),
               ButtonWithImage(
                   x: 5,
-                  y: 62,
+                  y: 58,
                   image: "assets/images/wc.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Wc');
@@ -62,7 +57,7 @@ class OptionsMenu extends StatelessWidget {
                   legend: "Wc"),
               ButtonWithImage(
                   x: 55,
-                  y: 62,
+                  y: 58,
                   image: "assets/images/logout.png",
                   onPressed: () {
                     Navigator.pushNamed(context, '/Exits');
@@ -100,7 +95,7 @@ class ButtonWithImage extends StatelessWidget {
                         padding: EdgeInsets.only(bottom:10),
                         child:
                             Text(legend, style: new TextStyle(fontSize: 25, color: Color.fromRGBO(1, 38, 90, 1), ))),
-                    new Image.asset(image,
+                        new Image.asset(image,
                         width: 0.30 * MediaQuery.of(context).size.width,
                         height: 0.10 * MediaQuery.of(context).size.height,
                         color: Color.fromRGBO(1, 38, 90, 1),)
@@ -111,80 +106,47 @@ class ButtonWithImage extends StatelessWidget {
   }
 }
 
+/* Events Menu is used for display of workshops and lectures */
+class EventsMenu extends StatelessWidget {
+  final BuildContext context;
+  final String title;
+  List<Event> events;
+  EventsMenu({this.context, @required this.title });
 
-class Lectures extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var numberOfLectures = 3;
+    var numberOfevents = 3;
+    if(title == "Lectures")
+      events = MockGenerator.Lectures; //get lectures appening next
+    else
+      events = MockGenerator.Workshops; //get Workshops appening next
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Colors.white, //change your color here
-          ),
-          title: Text(
-            "Lectures",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-        ),
-        body: SafeArea(
+      appBar: new MyCustomAppBar2(height: 15, context: context, title: title, backMenu: '/Options',),
+      body: SafeArea(
           child: Container(
           color: Colors.white,
           child: Stack(
             children: <Widget>[
-            if(numberOfLectures == 0)
+            if(numberOfevents == 0)
              new Padding(
               padding: EdgeInsets.only(top:(35 / 100) * MediaQuery.of(context).size.height,),
               child: new Text(
-              "Sorry! There are no Lectures available.", 
+              "Sorry! There are no " + title + " available.", 
               textAlign: TextAlign.center,
               style: new TextStyle(fontSize: 30.0, color: Color.fromRGBO(1, 38, 90, 1)),
               )
             ),
-            if(numberOfLectures >= 1)
-              OptionButton(
+            for(int i= 0; i < numberOfevents; i++)
+                OptionButton(
                   x: 10,
-                  y: 5,
-                  title: "Lecture 1 Name",
+                  y: 5 + i * 20,
+                  title:  events[i].name,
                   time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "121",
+                  speaker: events[i].speaker,
+                  room: events[i].room,
                   onPressed: () {
                     Navigator.pushNamed(context, '/Lectures');
-                  }),
-              if(numberOfLectures >= 2)
-              OptionButton(
-                  x: 10,
-                  y: 25,
-                  title: "Lecture 2 Name",
-                  time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "221",
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Lectures');
-                  }),
-              if(numberOfLectures >= 3)
-              OptionButton(
-                  x: 10,
-                  y: 45,
-                  title: "Lecture 3 Name",
-                  time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "333",
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Lectures');
-                  }),
-              if(numberOfLectures >= 4)
-               OptionButton(
-                  x: 10,
-                  y: 65,
-                  title: "Lecture 4 Name",
-                  time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "123",
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Lectures');
-                  }),
+                  }),                 
             ],
           ),
         )
@@ -193,20 +155,12 @@ class Lectures extends StatelessWidget {
   }
 }
 
-class Networking extends StatelessWidget {
+
+class NetworkingMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Colors.white, //change your color here
-          ),
-          title: Text(
-            "Networking",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-      ),
+      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Networking", backMenu: '/Options',),
       body: SafeArea(
           child: Container(
           color: Colors.white,
@@ -230,22 +184,13 @@ class Networking extends StatelessWidget {
   }
 }
 
-class Food extends StatelessWidget {
+class FoodMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Colors.white, //change your color here
-          ),
-          title: Text(
-            "Food",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-      ),
+      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Food", backMenu: '/Options',),
       body: SafeArea(
-          child: Container(
+          child: new Container(
           color: Colors.white,
           child: Stack(
             children: <Widget>[
@@ -289,102 +234,11 @@ class Food extends StatelessWidget {
   }
 }
 
-class Workshops extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var numberOfWorkshops = 2;
-    return Scaffold(
-      appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Colors.white, //change your color here
-          ),
-          title: Text(
-            "Workshops",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-        ),
-        body: SafeArea(
-          child: Container(
-          color: Colors.white,
-          child: Stack(
-            children: <Widget>[
-              if(numberOfWorkshops == 0)
-              new Padding(
-                  padding: EdgeInsets.only(top:(35 / 100) * MediaQuery.of(context).size.height,),
-                  child: new Text(
-                  "Sorry! There are no Workshops available.", 
-                  textAlign: TextAlign.center,
-                  style: new TextStyle(fontSize: 30.0, color: Color.fromRGBO(1, 38, 90, 1)),
-                )
-              ),
-              if(numberOfWorkshops >= 1)
-              OptionButton(
-                  x: 10,
-                  y: 5,
-                  title: "Workshop 1 Name",
-                  time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "121",
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Workshops');
-                  }),
-              if(numberOfWorkshops >= 2)
-              OptionButton(
-                  x: 10,
-                  y: 25,
-                  title: "Workshop 2 Name",
-                  time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "221",
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Workshops');
-                  }),
-              if(numberOfWorkshops >= 3)
-              OptionButton(
-                  x: 10,
-                  y: 45,
-                  title: "Workshop 3 Name",
-                  time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "333",
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Workshops');
-                  }),
-              if(numberOfWorkshops >= 4)
-              OptionButton(
-                  x: 10,
-                  y: 65,
-                  title: "Workshop 4 Name",
-                  time: "11:30",
-                  speaker: "Ademar Aguiar",
-                  room: "123",
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/Workshops');
-                  }),
-            ],
-          ),
-        )
-      )
-    );
-  }
-}
-
-
-class Wc extends StatelessWidget {
+class WcMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Colors.white, //change your color here
-          ),
-          title: Text(
-            "Wc",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-      ),
+      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Wc", backMenu: '/Options'),
       body: SafeArea(
             child: Container(
           color: Colors.white,
@@ -418,19 +272,8 @@ class Exits extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          iconTheme: IconThemeData(
-            color: Colors.white, //change your color here
-          ),
-          title: Text(
-            "Exits",
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-        ),
-      body: Center(
-        child: Text("My Exits"),
-      ),
+      appBar: new MyCustomAppBar2(height: 15, context: context, title: "Exits", backMenu: '/Options'),
+      body: new GoogleMapsWidget(MockGenerator.Workshops, null),
     );
   }
 }
@@ -444,11 +287,12 @@ class LocateText extends StatelessWidget {
   final double size;
   @override
   Widget build(BuildContext context) {
-    return Positioned(
+    return new Positioned(
       left: (x / 100) * MediaQuery.of(context).size.width,
       top: (y / 100) * MediaQuery.of(context).size.height,
       child: new Text(
         title,
+        textAlign: TextAlign.center,
         style: new TextStyle(fontSize: size, color: Color(0xFF073763)),
       ),
     );
