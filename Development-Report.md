@@ -48,11 +48,11 @@ We started this project because we understand how hard it is to find our way in 
 ## Requirements
 ### Use case diagram 
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Use%20Cases/SimplyFind%20Use%20Case%201.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%201.jpeg">
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Use%20Cases/SimplyFind%20Use%20Case%202.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%202.jpeg">
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Use%20Cases/SimplyFind%20Use%20Case%203.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%203.jpeg">
 
 ### User stories
 
@@ -73,19 +73,30 @@ We started this project because we understand how hard it is to find our way in 
 
 ### Domain model
 
-To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/46-ArchitectureDesign/Diagrams/DomainModel.png">
+
 
 ---
 
 ## Architecture and Design
 
-The architecture of a software system encompasses the set of key decisions about its overall organization. 
+The software division of the project follows the **MVC (Model-View-Controller)** architectural pattern. As the name implies this pattern divides the structure of the program in three interconnected parts:
 
-A well written architecture document is brief but reduces the amount of time it takes new programmers to a project to understand the code to feel able to make modifications and enhancements.
+-**Model**: It holds the internal information and is independent of the user interface.
 
-To document the architecture requires describing the decomposition of the system in their parts (high-level components) and the key behaviors and collaborations between them. 
+-**View**: Represents the visualization of the data that model contains. 
 
-In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
+-**Controller**: Exists between the view and the model. It listens to events triggered by the view and executes the appropriate reaction to these events.
+
+We will focus on three main components of the project where the first two are inserted in the model category and the third in the view category: 
+- Data information storage: all the information related to then events and it's location 
+-  Route computation and map integration 
+-  App design and managment of functionalities in pages
+
+The route computation and the map display is developed with the assistance of the **GoogleMaps API**. This way by giving the correct coordinates of the points of source and destination we can obtain the correct route. After that we need to compute the result and represent it in the map.
+
+The managment of the pages and correspondent functionalities is the section where all the visual components of the pages are implemented. In addiction this section also implies the use of the data storaged as arguments in order to display in the correct places (buttons, bars ,...) and allow to compute the right routes in the section above.
+
 
 ### Logical architecture
 
@@ -97,9 +108,14 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 
 ### Physical architecture
 
-The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
+In this project we designed an application for mobile that uses the GPS system to locate the user and find the direction to the different points of interest of the conference kept in a database.
 
-It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
+The main components of the physical architecture are the mobile devices, the database and the GPS system.
+
+The technologies used in the project had a lot of research before we came with the final decisions. Initially we thought to use microbits with Bluetooth to locate the users but we ended up using GPS intead. 
+The framework choosen was Flutter (that uses Dart) in deteriment to ReactNative since after a time of reflection and investigation we came to the conclusion that flutter was more intuitive and a better technology for the development of mobile apps for less experienced people.
+
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/46-ArchitectureDesign/Diagrams/DeploymentDiagram.png">
 
 ### Prototype
 
