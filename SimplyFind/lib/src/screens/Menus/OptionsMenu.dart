@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prototype/src/screens/Search.dart';
+import '../Search.dart';
 import '../AppBarCostumize.dart';
 import '../Widgets/ButtonWithImage.dart';
 
@@ -29,7 +29,7 @@ class OptionsMenu extends StatelessWidget {
               ButtonWithImage(
                   x: 55,
                   y: 5,
-                  image: "assets/images/network.png",
+                  image: "assets/images/checkIn.png",
                   onPressed: () {
                     Navigator.push(
                         context,

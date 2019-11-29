@@ -1,5 +1,5 @@
 {
-  "FEUP's Main Entrance": {
+  "1": {
     "id": 1,
     "location": {
       "latitude": 41.177937,
@@ -7,7 +7,7 @@
     },
     "floor": 0
   },
-  "Help Desk": {
+  "2": {
     "id": 2,
     "location": {
       "latitude": 41.177986,
@@ -15,7 +15,7 @@
     },
     "floor": 0
   },
-  "A to B Bridge": {
+  "3": {
     "id": 3,
     "location": {
       "latitude": 41.177913,
@@ -23,7 +23,7 @@
     },
     "floor": 0
   },
-  "First Hall Junction": {
+  "4": {
     "id": 4,
     "location": {
       "latitude": 41.177885,
@@ -31,7 +31,7 @@
     },
     "floor": 0
   },
-  "Second Hall Junction / Entrance": {
+  "5": {
     "id": 5,
     "location": {
       "latitude": 41.177817,
@@ -39,7 +39,7 @@
     },
     "floor": 0
   },
-  "Third Hall Junction": {
+  "6": {
     "id": 6,
     "location": {
       "latitude": 41.177739,
@@ -47,7 +47,7 @@
     },
     "floor": 0
   },
-  "Fourth Hall Junction / Entrance": {
+  "7": {
     "id": 7,
     "location": {
       "latitude": 41.177667,
@@ -55,27 +55,27 @@
     },
     "floor": 0
   },
-  "Fifth Hall Junction": {
+  "8": {
     "id": 8,
+    "location": {
+      "latitude": 41.177621,
+      "longitude": -8.595771
+    },
+    "floor": 0
+  },
+  "9": {
+    "id": 9,
     "location": {
       "latitude": 41.177560,
       "longitude": -8.595544
     },
     "floor": 0
   },
-  "Sixth Hall Junction / Entrance": {
-    "id": 9,
+  "10": {
+    "id": 10,
     "location": {
       "latitude": 41.177459,
       "longitude": -8.595167
-    },
-    "floor": 0
-  },
-  "Cheeses LMAO": {
-    "id": 10,
-    "location": {
-      "latitude": 41.177621,
-      "longitude": -8.595771
     },
     "floor": 0
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prototype/src/screens/Widgets/OptionButton.dart';
+import '../Widgets/OptionButton.dart';
 import '../../../MockGenerator.dart';
 import '../../../POI/Event.dart';
 import '../AppBarCostumize.dart';

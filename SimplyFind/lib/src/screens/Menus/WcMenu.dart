@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prototype/src/screens/Widgets/ButtonOrange.dart';
+import '../Widgets/ButtonOrange.dart';
 
 import '../AppBarCostumize.dart';
 import '../Search.dart';

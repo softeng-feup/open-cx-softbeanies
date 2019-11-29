@@ -1,8 +1,8 @@
 import 'dart:collection';
 
-import 'package:prototype/POI/Connection.dart';
-import 'package:prototype/POI/Graph.dart';
-import 'package:prototype/POI/PointOfInterest.dart';
+import 'Connection.dart';
+import 'Graph.dart';
+import 'PointOfInterest.dart';
 
 
 /// Breadth-first search implementation
@@ -32,10 +32,15 @@ class BFS {
     this._predecessor = new HashMap<int, int>();
   }
 
+  /// Getter member function for [_path]
+  /// returns a [List] of [int] indicating the path from
+  /// a POI to another
+  List<int> get path => _path;
+
   /// Main member function to perform search and build path
   void execute(int sourcePoint, int destinationPoint) {
     // perform search
-    if (this.performSearch(sourcePoint, destinationPoint)) {
+    if (!this.performSearch(sourcePoint, destinationPoint)) {
       // search failed, there is no possible path (warn user)
       return;
     }
@@ -62,7 +67,7 @@ class BFS {
       List<Connection> nextPointConnections = this._graph.getConnections(currentPoint);
       for (Connection connection in nextPointConnections) {
         // process unvisited POI
-        if (this.isVisited(connection.destPointId)) {
+        if (!this.isVisited(connection.destPointId)) {
           // mark destination POI as visited
           this.addVisited(connection.destPointId);
           // add current POI to destination POI predecessor
@@ -84,6 +89,8 @@ class BFS {
   /// going through all intermediate POIs and finally achieving
   /// the desired path
   void buildPath(int sourcePoint, int destinationPoint) {
+    // add destination point to path
+    this._path.add(destinationPoint);
     int auxPointId = destinationPoint;
     // backtrack to find path
     while(this._predecessor[auxPointId] != null) {

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import 'package:prototype/src/screens/Menus/EventsMenu.dart';
-import 'package:prototype/src/screens/Widgets/LocateImage.dart';
-import 'package:prototype/src/screens/Widgets/LocateText.dart';
-import 'screens/Menus/FoodMenu.dart';
-import 'screens/Menus/WcMenu.dart';
-import 'screens/Menus/OptionsMenu.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'screens/Search.dart';
 import 'screens/Results.dart';
 import 'screens/Results2.dart';
 import 'Controller.dart';
+import 'screens/Menus/EventsMenu.dart';
+import 'screens/Widgets/LocateImage.dart';
+import 'screens/Widgets/LocateText.dart';
+import 'screens/Menus/FoodMenu.dart';
+import 'screens/Menus/WcMenu.dart';
+import 'screens/Menus/OptionsMenu.dart';
 import 'screens/Widgets/Button.dart';
 
 class MVCApp extends AppMVC {
@@ -70,6 +71,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    requestLocationPermission();
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -79,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Button(
                 x: 12,
                 y: 60,
-                title: "Options",
+                title: "Search",
                 onPressed: () {
                   Navigator.pushNamed(context, '/Options');
                 },
@@ -87,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Button(
                 x: 12,
                 y: 75,
-                title: "Search",
+                title: "Explore",
                 onPressed: () {
                   Navigator.pushNamed(context, '/Search'); // /Search
                 },
@@ -99,5 +101,13 @@ class _MyHomePageState extends State<MyHomePage> {
         )
       )
     );
+  }
+
+  Future requestLocationPermission() async {
+    Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.location]);
+    PermissionStatus permission;
+    if((permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.contacts)) == PermissionStatus.denied) {
+      print("NO LOCATION ALLOWED. APP WONT FUNCTION PROPERLY.");
+    }
   }
 }

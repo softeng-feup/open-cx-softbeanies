@@ -1,8 +1,7 @@
 import 'dart:collection';
 
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:prototype/POI/Connection.dart';
-import 'package:prototype/POI/PointOfInterest.dart';
+import 'Connection.dart';
+import 'PointOfInterest.dart';
 
 /// [PointOfInterest] Graph implementation using a [HashMap] as a Node container
 class Graph {
@@ -10,17 +9,19 @@ class Graph {
   HashMap<int, PointOfInterest> _pointsOfInterest;
 
   /// Constructor
-  Graph();
+  Graph() {
+    this._pointsOfInterest = new HashMap<int, PointOfInterest>();
+  }
 
   /// Getter member function for [_pointsOfInterest]
   /// returns a [HashMap] containing [PointOfInterest] Objects
   HashMap<int, PointOfInterest> get pointsOfInterest => _pointsOfInterest;
 
+
   /// Adds a new [PointOfInterest] to the [_pointsOfInterest] list
-  /// creating a new instance of [PointOfInterest] given its ID,
-  /// [LatLng] location and floor
-  void addPointOfInterest(int pointId, LatLng location, int floor) {
-    _pointsOfInterest[pointId] = new PointOfInterest(pointId, location, floor);
+  /// given its ID as key
+  void addPointOfInterest(PointOfInterest poi) {
+    _pointsOfInterest[poi.id] = poi;
   }
 
   /// Returns a specific [PointOfInterest] given its ID [pointId],

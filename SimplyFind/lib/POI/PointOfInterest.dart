@@ -1,5 +1,5 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:prototype/POI/Connection.dart';
+import 'Connection.dart';
 
 /// A [PointOfInterest] is a marker on our map in which the
 /// user might find something useful
@@ -14,7 +14,9 @@ class PointOfInterest {
   List<Connection> _connections;
 
   /// Constructor
-  PointOfInterest(this._id, this._location, this._floor);
+  PointOfInterest(this._id, this._location, this._floor) {
+    this._connections = new List<Connection>();
+  }
 
   /// Getter member function for [_id]
   /// returns an [int] indicating [PointOfInterest]'s ID

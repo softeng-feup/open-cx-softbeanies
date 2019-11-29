@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:prototype/POI/Event.dart';
-import 'package:prototype/src/screens/Search.dart';
-
+import '../../../POI/Event.dart';
 import '../AppBarCostumize.dart';
+import '../Search.dart';
 
 class ShowDescriptionMenu extends StatelessWidget {
   final BuildContext context;
