@@ -1,8 +1,8 @@
 import 'dart:collection';
 
-import 'package:prototype/POI/Connection.dart';
-import 'package:prototype/POI/Graph.dart';
-import 'package:prototype/POI/PointOfInterest.dart';
+import 'Connection.dart';
+import 'Graph.dart';
+import 'PointOfInterest.dart';
 
 
 /// Breadth-first search implementation

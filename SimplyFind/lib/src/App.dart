@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'screens/OptionsMenu.dart';
 import 'screens/Search.dart';
 import 'screens/Results.dart';
 import 'screens/Results2.dart';
 import 'Controller.dart';
+import 'screens/Menus/EventsMenu.dart';
+import 'screens/Widgets/LocateImage.dart';
+import 'screens/Widgets/LocateText.dart';
+import 'screens/Menus/FoodMenu.dart';
+import 'screens/Menus/WcMenu.dart';
+import 'screens/Menus/OptionsMenu.dart';
+import 'screens/Widgets/Button.dart';
 
 class MVCApp extends AppMVC {
   MVCApp({Key key}) : super(con: _controller, key: key);
@@ -30,12 +36,10 @@ class MVCApp extends AppMVC {
         '/': (context) => MyHomePage(),
         '/Options': (context) => OptionsMenu(),
         '/Lectures': (context) => EventsMenu(title: "Lectures"),
-        '/Networking': (context) => NetworkingMenu(),
         '/Food': (context) => FoodMenu(),
         '/Workshops': (context) => EventsMenu(title: "Workshops"),
         '/Wc': (context) => WcMenu(),
-        '/Exits': (context) => Exits(),
-        '/Search': (context) => Search(),
+        '/Search': (context) => Search( myLocation: 'my location', destination: 'Choose Destination', backMenu: '/',),
         '/Results': (context) => Results(),
         '/Results2': (context) => Results2(),
       },
@@ -103,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.location]);
     PermissionStatus permission;
     if((permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.contacts)) == PermissionStatus.denied) {
-    print("NO LOCATION ALLOWED. APP WONT FUNCTION PROPERLY.");
+      print("NO LOCATION ALLOWED. APP WONT FUNCTION PROPERLY.");
     }
   }
 }

@@ -7,16 +7,19 @@ class Event {
   final String _speaker;
   /// Name of the room in which the event will take place
   final String _room;
+  /// Date of the event (day-month-year)
+  final String _date;
+  /// Hour of the begin of the event
+  final String _hour;
   /// Integer indicating a POI in the map
   final int _pointId;
   /// Small description about the content of the event
   final String _description;
   /// List containing the tags related to the event
   final List<String> _tags;
-  //final String _date;
 
   /// Constructor
-  Event(this._name, this._speaker, this._room, this._pointId, this._description, this._tags);
+  Event(this._name, this._speaker, this._room, this._date, this._hour, this._pointId, this._description, this._tags);
 
   /// Getter member function for [_name]
   /// return a [String] with the name of the event
@@ -30,6 +33,14 @@ class Event {
   /// return a [String] with the name of the room for the event
   String get room => _room;
 
+  /// Getter member function for [_date]
+  /// return a [String] with the date of the event
+  String get date => _date;
+
+  /// Getter member function for [_hour]
+  /// return a [String] with the date of the event
+  String get hour => _hour;
+
   /// Getter member function for [_pointId]
   /// return an [int] indicating the location of the Event
   int get pointId => _pointId;
@@ -41,8 +52,6 @@ class Event {
   /// Getter member function for [_tags]
   /// return a [List] of [String]s with the tags of the event
   List<String> get tags => _tags;
-
-  //String get date => _date;
 
   /// TODO: is this necessary??
   String getStringTags() {
@@ -68,6 +77,8 @@ class Event {
       json['name'] as String,
       json['speaker'] as String,
       json['room'] as String,
+      json['date'] as String,
+      json['hour'] as String,
       json['pointId'] as int,
       json['description'] as String,
       tags

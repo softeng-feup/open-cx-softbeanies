@@ -1,7 +1,7 @@
 import 'dart:collection';
 
-import 'package:prototype/POI/Connection.dart';
-import 'package:prototype/POI/PointOfInterest.dart';
+import 'Connection.dart';
+import 'PointOfInterest.dart';
 
 /// [PointOfInterest] Graph implementation using a [HashMap] as a Node container
 class Graph {

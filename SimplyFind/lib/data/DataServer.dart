@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:prototype/POI/BFS.dart';
-import 'package:prototype/POI/Connection.dart';
-import 'package:prototype/POI/Graph.dart';
-import 'package:prototype/POI/PointOfInterest.dart';
+import '../POI/BFS.dart';
+import '../POI/Connection.dart';
+import '../POI/Graph.dart';
+import '../POI/PointOfInterest.dart';
 
 import '../POI/Event.dart';
 
