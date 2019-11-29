@@ -30,12 +30,10 @@ class ShowDescriptionMenu extends StatelessWidget {
         body: SafeArea(
             child: new Column(
           crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            new Container(
-              width: (5 / 100) * MediaQuery.of(context).size.width,
-              height: (4 / 100) * MediaQuery.of(context).size.height,
-            ),
-            new Container(
+            new Container( //Container with the description of the event
+              alignment: Alignment.center,
                 width: (90 / 100) * MediaQuery.of(context).size.width,
                 height: (60 / 100) * MediaQuery.of(context).size.height,
                 padding: EdgeInsets.only(
@@ -104,7 +102,7 @@ class ShowDescriptionMenu extends StatelessWidget {
               padding: EdgeInsets.only(
                 left: (15 / 100) * MediaQuery.of(context).size.width,
                 right: (10 / 100) * MediaQuery.of(context).size.width,
-                top: (5 / 100) * MediaQuery.of(context).size.height,
+                bottom: (3 / 100) * MediaQuery.of(context).size.height,
               ),
               child: new MaterialButton(
                 child: new Text(
