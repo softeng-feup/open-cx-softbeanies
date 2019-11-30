@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-import 'NavigationPage.dart';
-import '../Model-POI/Event.dart';
-import '../Model-POI/PointOfInterest.dart';
-import '../Controller/DataServer.dart';
+import '../NavigationPage.dart';
+import '../../Model-POI/Event.dart';
+import '../../Model-POI/PointOfInterest.dart';
+import '../../Controller/DataServer.dart';
 
 class GoogleMapsWidget extends StatefulWidget {
   final List<Event> _markers;

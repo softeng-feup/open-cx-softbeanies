@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../MockGenerator.dart';
-import 'GoogleMapsWidget.dart';
+import 'Widgets/GoogleMapsWidget.dart';
 import 'AppBarCostumize.dart';
 
 
