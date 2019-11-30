@@ -21,13 +21,13 @@ class MockGenerator {
                                   new Event("Simplyfind app", "Helena Ferreira", "B306","14-4-2020", "17:15", 7, "Simplyfind is the best app ever", null),
                                   new Event("Theory of theorics", "Matt Matthews","B315", "14-4-2020", "19:25", 8, "Explaining the explainable explanation", null)];
 
-  static List<PointOfInterest> LocationWorkshops = [  new PointOfInterest(1, LatLng(41.177672,-8.595620),0),
-                                                      new PointOfInterest(2, LatLng(41.177374,-8.595221),2),
-                                                      new PointOfInterest(3, LatLng(41.177429,-8.595568),1),
-                                                      new PointOfInterest(4, LatLng(41.177439,-8.595524),2)];
+  static List<PointOfInterest> LocationWorkshops = [  new PointOfInterest(1, LatLng(41.177672,-8.595620),0, null),
+                                                      new PointOfInterest(2, LatLng(41.177374,-8.595221),2, null),
+                                                      new PointOfInterest(3, LatLng(41.177429,-8.595568),1, null),
+                                                      new PointOfInterest(4, LatLng(41.177439,-8.595524),2, null)];
 
-  static List<PointOfInterest> LocationLectures = [   new PointOfInterest(5, LatLng(41.177349,-8.595132),2),
-                                                      new PointOfInterest(6, LatLng(41.177251,-8.595167),2),
-                                                      new PointOfInterest(7, LatLng(41.177334,-8.595263),3),
-                                                      new PointOfInterest(8, LatLng(41.177334,-8.595263),3)];
+  static List<PointOfInterest> LocationLectures = [   new PointOfInterest(5, LatLng(41.177349,-8.595132),2, null),
+                                                      new PointOfInterest(6, LatLng(41.177251,-8.595167),2, null),
+                                                      new PointOfInterest(7, LatLng(41.177334,-8.595263),3, null),
+                                                      new PointOfInterest(8, LatLng(41.177334,-8.595263),3, null)];
 }
