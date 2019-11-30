@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Widgets/OptionButton.dart';
-import '../../../MockGenerator.dart';
-import '../../../POI/Event.dart';
+import '../../MockGenerator.dart';
+import '../../Model-POI/Event.dart';
 import '../AppBarCostumize.dart';
 import 'ShowDescriptionMenu.dart';
 

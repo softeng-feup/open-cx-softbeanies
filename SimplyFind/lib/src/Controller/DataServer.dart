@@ -2,12 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/services.dart' show rootBundle;
-import '../POI/BFS.dart';
-import '../POI/Connection.dart';
-import '../POI/Graph.dart';
-import '../POI/PointOfInterest.dart';
-
-import '../POI/Event.dart';
+import '../Model-POI/BFS.dart';
+import '../Model-POI/Connection.dart';
+import '../Model-POI/Graph.dart';
+import '../Model-POI/PointOfInterest.dart';
+import '../Model-POI/Event.dart';
 
 /// Data Server simulation
 class DataServer {

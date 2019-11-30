@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'AppBarCostumize.dart';
-import '../GoogleMapsWidget.dart';
-import '../../MockGenerator.dart';
+import 'GoogleMapsWidget.dart';
+import '../MockGenerator.dart';
 
 class Results2 extends StatelessWidget {
   @override
