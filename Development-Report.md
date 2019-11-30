@@ -48,11 +48,11 @@ We started this project because we understand how hard it is to find our way in 
 ## Requirements
 ### Use case diagram 
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%201.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%201.jpeg">
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%202.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%202.jpeg">
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/34-DomainModel/Diagrams/SimplyFind%20Use%20Case%203.jpeg">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%203.jpeg">
 
 ### User stories
 
@@ -73,7 +73,7 @@ We started this project because we understand how hard it is to find our way in 
 
 ### Domain model
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/46-ArchitectureDesign/Diagrams/DomainModel.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/DomainModel.png">
 
 
 ---
@@ -115,7 +115,7 @@ The main components of the physical architecture are the mobile devices, the dat
 The technologies used in the project had a lot of research before we came with the final decisions. Initially we thought to use microbits with Bluetooth to locate the users but we ended up using GPS intead. 
 The framework choosen was Flutter (that uses Dart) in deteriment to ReactNative since after a time of reflection and investigation we came to the conclusion that flutter was more intuitive and a better technology for the development of mobile apps for less experienced people.
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/46-ArchitectureDesign/Diagrams/DeploymentDiagram.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/DeploymentDiagram.png">
 
 ### Prototype
 
