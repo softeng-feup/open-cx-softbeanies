@@ -12,7 +12,7 @@ class GoogleMapsWidget extends StatefulWidget {
   final List<Event> _markers;
   final List<PointOfInterest> _points;
 
-  GoogleMapsWidget([this._markers, this._points ]);
+  GoogleMapsWidget([this._markers, this._points]);
 
   @override
   _GoogleMapsWidgetState createState() =>
@@ -25,8 +25,8 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   DataServer server = new DataServer();
   LocationData _currentLocation;
   Location _myLocation = new Location();
-   final Set<Marker> _markers = new Set();
-   final Set<Polyline> _polyLines = new Set();
+  final Set<Marker> _markers = new Set();
+  final Set<Polyline> _polyLines = new Set();
 
   static const LatLng _center = const LatLng(41.177634, -8.595764);
   LatLng _lastMapPosition = _center; // usage is unsure
@@ -39,56 +39,41 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   @override
   void initState() {
     super.initState();
-    initLocationState();
-  }
-
-  initLocationState() async {
-    await _myLocation.changeSettings(accuracy: LocationAccuracy.NAVIGATION);
-
-    try {
-      bool activeService = await _myLocation.serviceEnabled();
-      if(activeService) {
-        if(await _myLocation.requestPermission()) {
-          _currentLocation = await _myLocation.getLocation();
-          _myLocation.onLocationChanged().listen((LocationData data) async {
-            _currentLocation = data;
-            if(_polyLines.isNotEmpty) {
-              controller.animateCamera(CameraUpdate.newCameraPosition(
-                  CameraPosition(target: LatLng(data.latitude,data.longitude),zoom: 16)));
-            }
-          });
-        }
+    _myLocation.onLocationChanged().listen((LocationData location) {
+      _currentLocation = location;
+      if (_polyLines.isNotEmpty) {
+        controller.animateCamera(CameraUpdate.newCameraPosition(
+            CameraPosition(
+                target: LatLng(location.latitude, location.longitude), zoom: 16)));
       }
-    } on PlatformException catch(e) {
-      print(e);
-    }
-
+    });
   }
 
   void makeMarkers(List<Event> markers) {
-    if(markers != null) {
+    if (markers != null) {
       markers.forEach((M) => {
-        _markers.add(Marker(
-          markerId: MarkerId(M.hashCode.toString()),
-          position: server.getPOI(M.pointId).location,
-          infoWindow: InfoWindow(
-          title: M.name,
-          snippet: M.description + " | " + M.room,
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => NavigationPage()));
-            },
-          ),
-          icon: BitmapDescriptor.defaultMarkerWithHue(215),
-          zIndex: server.getPOI(M.pointId).floor.toDouble(),
-        )),
-      });
+            _markers.add(Marker(
+              markerId: MarkerId(M.hashCode.toString()),
+              position: server.getPOI(M.pointId).location,
+              infoWindow: InfoWindow(
+                title: M.name,
+                snippet: M.description + " | " + M.room,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NavigationPage()));
+                },
+              ),
+              icon: BitmapDescriptor.defaultMarkerWithHue(215),
+              zIndex: server.getPOI(M.pointId).floor.toDouble(),
+            )),
+          });
     }
   }
 
   void makePolyline(List<PointOfInterest> points) {
-    if(points != null) {
-
+    if (points != null) {
       List<LatLng> polyPoints = new List();
       points.forEach((P) => {polyPoints.add(P.location)});
 
@@ -110,13 +95,12 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   }
 
   void _resetPosition() {
-    if(_markers != null) {
+    if (_markers != null) {
       controller.animateCamera(CameraUpdate.newCameraPosition(
           CameraPosition(target: _markers.first.position, zoom: 17)));
-    }
-    else {
+    } else {
       controller.animateCamera(CameraUpdate.newCameraPosition(
-          CameraPosition(target: _center, zoom: 17,bearing: 90)));
+          CameraPosition(target: _center, zoom: 17, bearing: 90)));
     }
   }
 

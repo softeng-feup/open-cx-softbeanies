@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'screens/Search.dart';
@@ -104,9 +105,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future requestLocationPermission() async {
-    Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.location]);
-    PermissionStatus permission;
-    if((permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.contacts)) == PermissionStatus.denied) {
+    try {
+      await PermissionHandler()
+          .requestPermissions([PermissionGroup.location]);
+    } on PlatformException catch(e) {
+      print(e);
+    }
+    if((await PermissionHandler().checkPermissionStatus(PermissionGroup.contacts)) == PermissionStatus.denied) {
       print("NO LOCATION ALLOWED. APP WONT FUNCTION PROPERLY.");
     }
   }
