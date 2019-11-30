@@ -3,133 +3,171 @@ import 'package:flutter/material.dart';
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
+  final String myLocation;
+  final String destination;
+  final String backMenu;
 
   const MyCustomAppBar({
     Key key,
     @required this.height,
     @required this.context,
+    @required this.myLocation,
+    @required this.destination,
+    @required this.backMenu
   }) : super(key: key);
 
   @override
   Widget build(BuildContext c) {
-    return Column(
-      children: [
-        Container(
-          height: 190,
-          color: Color.fromRGBO(1, 38, 90, 1),
-          child: new Form(
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 40, bottom:20),
-                  child: Row(
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(Icons.arrow_back),
-                        color: Colors.white,
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/');
-                        },
-                      ),
-                      Expanded(
-                        child: new TextFormField(
-                          decoration: new InputDecoration(
-                            filled: true,
-                            labelText: 'My Localization',
-                            fillColor: Colors.white,
-                            border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(30.0),
-                            ),
-                            prefixIcon: Icon(
-                              Icons.search,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+    double finalHeight = (MediaQuery.of(context).size.height / 100 * this.height);
+    return Container(
+      height: finalHeight,
+      color: Color.fromRGBO(1, 38, 90, 1),
+      child: new Form(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(
+                  top: 0.20 *
+                      finalHeight, //puts the first button in the correct y
+                  bottom: 0.05 * finalHeight //puts 2 buttons closer
                   ),
-                ),
-                Padding(padding: EdgeInsets.only(bottom:10, left:50),
-                child:
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: new TextFormField(
-                          decoration: new InputDecoration(
-                          labelText: 'Choose Destination',
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(30.0),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Colors.grey,
-                          ),
+              child: Row(
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    color: Colors.white,
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, backMenu);
+                    },
+                  ),
+                  Expanded(
+                    child: new TextFormField(
+                      decoration: new InputDecoration(
+                        filled: true,
+                        labelText: myLocation ,
+                        fillColor: Colors.white,
+                        contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
+                        border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.grey,
                         ),
                       ),
                     ),
-                  ],
-                ),),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
+            new Padding(
+              padding: EdgeInsets.only(
+                bottom: 0.05 * finalHeight,
+                left: MediaQuery.of(context).size.width * 0.12 ,
+              ),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: new TextFormField(
+                      decoration: new InputDecoration(
+                        labelText: destination,
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
+                        border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+           Expanded(
+              child:    
+              new Container(
+              height: 0.1 * finalHeight, //change size of yellow line
+              color: Color.fromRGBO(249, 228, 183, 1),
+                ),
+              ),
+        
+          ],
         ),
-        new Container(
-          height: 30,
-          color: Color.fromRGBO(249, 228, 183, 1),
-        )
-      ],
+      ),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(height);
+  Size get preferredSize => Size.fromHeight((MediaQuery.of(context).size.height / 100 * this.height)); //change size of app bar
 }
 
 class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
+  final String title;
+  final String backMenu;
 
-  const MyCustomAppBar2({
-    Key key,
-    @required this.height,
-    @required this.context,
-  }) : super(key: key);
+  const MyCustomAppBar2(
+      {Key key,
+      @required this.height,
+      @required this.context,
+      @required this.title,
+      @required this.backMenu})
+      : super(key: key);
 
   @override
   Widget build(BuildContext c) {
+    double finalHeight =
+        (MediaQuery.of(context).size.height / 100 * this.height);
+    double finalWidth = (MediaQuery.of(context).size.width / 100);
+    double topHeight = 0.90 * finalHeight;
     return Container(
-      height: 120,
+      height: finalHeight,
       color: Color.fromRGBO(1, 38, 90, 1),
       child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           new Row(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 40, left: 0, bottom: 12),
+                padding:
+                    EdgeInsets.only(top: topHeight * 0.35, left: 0, bottom: 0),
                 child: IconButton(
                   icon: Icon(Icons.arrow_back),
                   color: Colors.white,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/');
+                    Navigator.pushReplacementNamed(context, this.backMenu);
                   },
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 40, left: 10, bottom: 12),
+                padding: EdgeInsets.only(
+                  top: 0.35 * topHeight,
+                  left: 0.25 * finalWidth,
+                ),
                 child: new Text(
-                  "Machine2",
+                  this.title,
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
             ],
           ),
-          new Container(
-            height: 20,
-            color: Color.fromRGBO(249, 228, 183, 1),
+          Expanded(
+            child:
+          Padding(
+                padding: EdgeInsets.only(
+                  top: topHeight - 0.95*topHeight,
+                ),
+              child:    
+              new Container(
+              height: 0.1 * finalHeight, //change size of yellow line
+              color: Color.fromRGBO(249, 228, 183, 1),
+                ),
+              ),
           ),
         ],
       ),
@@ -137,5 +175,6 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(height);
+  Size get preferredSize =>
+      Size.fromHeight((MediaQuery.of(context).size.height / 100 * this.height));
 }

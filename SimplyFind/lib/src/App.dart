@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-import '../GoogleMapsPage.dart';
-import 'screens/OptionsMenu.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'screens/Search.dart';
 import 'screens/Results.dart';
 import 'screens/Results2.dart';
 import 'Controller.dart';
+import 'screens/Menus/EventsMenu.dart';
+import 'screens/Widgets/LocateImage.dart';
+import 'screens/Widgets/LocateText.dart';
+import 'screens/Menus/FoodMenu.dart';
+import 'screens/Menus/WcMenu.dart';
+import 'screens/Menus/OptionsMenu.dart';
+import 'screens/Widgets/Button.dart';
 
 class MVCApp extends AppMVC {
-
   MVCApp({Key key}) : super(con: _controller, key: key);
 
   /// An external reference to the Controller if you wish. -gp
@@ -17,6 +22,7 @@ class MVCApp extends AppMVC {
   static MaterialApp _app;
 
   static String get title => _app.title.toString();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -29,20 +35,18 @@ class MVCApp extends AppMVC {
       routes: {
         '/': (context) => MyHomePage(),
         '/Options': (context) => OptionsMenu(),
-        '/Lectures': (context) => Lectures(),
-        '/Networking': (context) => Networking(),
-        '/Food': (context) => Food(),
-        '/Workshops': (context) => Workshops(),
-        '/Wc': (context) => Wc(),
-        '/Exits': (context) => Exits(),
-        '/Search': (context) => Search(),
+        '/Lectures': (context) => EventsMenu(title: "Lectures"),
+        '/Food': (context) => FoodMenu(),
+        '/Workshops': (context) => EventsMenu(title: "Workshops"),
+        '/Wc': (context) => WcMenu(),
+        '/Search': (context) => Search( myLocation: 'my location', destination: 'Choose Destination', backMenu: '/',),
         '/Results': (context) => Results(),
         '/Results2': (context) => Results2(),
-        '/GoogleMaps' : (context) => GoogleMapsPage(),
       },
     );
     return _app;
   }
+
 }
 
 class MyHomePage extends StatefulWidget {
@@ -67,32 +71,43 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    requestLocationPermission();
     return Scaffold(
-        body: SafeArea(
-            child: Container(
-      color: Color.fromRGBO(249, 228, 183, 1),
-      child: Stack(
-        children: <Widget>[
-          Button(
-            x: 12,
-            y: 60,
-            title: "Search",
-            onPressed: () {
-              Navigator.pushNamed(context, '/Options');
-            },
+      body: SafeArea(
+        child: Container(
+          color: Color.fromRGBO(249, 228, 183, 1),
+          child: Stack(
+            children: <Widget>[
+              Button(
+                x: 12,
+                y: 60,
+                title: "Search",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Options');
+                },
+              ),
+              Button(
+                x: 12,
+                y: 75,
+                title: "Explore",
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Search'); // /Search
+                },
+              ),
+              LocateImage(x: 20, y: 20, imageName: "assets/images/start.png"),
+              LocateText(x: 12, y: 10, title: "Simplyfind", size: 60.0, color: 0xFF073763,),
+            ],
           ),
-          Button(
-            x: 12,
-            y: 75,
-            title: "Explore",
-            onPressed: () {
-              Navigator.pushNamed(context, '/Search'); // /Search
-            },
-          ),
-          LocateImage(x: 20, y: 20, imageName: "assets/images/start.png"),
-          LocateText(x: 15, y: 10, title: "Simplyfind", size: 60.0),
-        ],
-      ),
-    )));
+        )
+      )
+    );
+  }
+
+  Future requestLocationPermission() async {
+    Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.location]);
+    PermissionStatus permission;
+    if((permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.contacts)) == PermissionStatus.denied) {
+      print("NO LOCATION ALLOWED. APP WONT FUNCTION PROPERLY.");
+    }
   }
 }

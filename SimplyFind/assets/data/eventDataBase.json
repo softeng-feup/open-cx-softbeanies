@@ -3,28 +3,39 @@
     "name": "5G - The Future of Telecommunications",
     "speaker": "Maria Josefina",
     "room": "B201",
+    "date": "11-04-2019",
+    "hour" : "12:45",
     "description": "5G is super cool",
     "tags":[
       "5G",
       "Telecommunications"
     ],
-    "location": {
-      "latitude": 41.177470,
-      "longitude": -8.596464
-    }
+    "poiId": 1
   },
   "2": {
     "name": "Quantum Computing 101",
     "speaker": "Ademar Aguiar",
     "room": "B204",
+    "date": "11-04-2019",
+    "hour" : "12:45",
     "description": "So is the cat dead or alive? Now you can find out :)",
     "tags":[
       "Computing",
       "Physics"
     ],
-    "location": {
-      "latitude": 41.177395,
-      "longitude": -8.596044
-    }
+    "poiId": 2
+    },
+  "3": {
+    "name": "Simplyfind App",
+    "speaker": "Helena Ferreira",
+    "room": "B306",
+    "date": "11-04-2019",
+    "hour" : "12:45",
+    "description": "Simplyfind is the best app ever",
+    "tags":[
+      "World",
+      "Physics"
+    ],
+    "poiId": 8
   }
 }
