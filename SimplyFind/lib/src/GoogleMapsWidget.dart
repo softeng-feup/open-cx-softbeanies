@@ -59,10 +59,9 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
                 title: M.name,
                 snippet: M.description + " | " + M.room,
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NavigationPage()));
+                  setState(() {
+                    makePath(M);
+                  });
                 },
               ),
               icon: BitmapDescriptor.defaultMarkerWithHue(215),
@@ -171,5 +170,29 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
         ),
       ),
     );
+  }
+
+  void makePath(Event M) {
+    _markers.clear();
+    _markers.add(Marker(
+      markerId: MarkerId(M.hashCode.toString()),
+      position: server.getPOI(M.pointId).location,
+      infoWindow: InfoWindow(
+        title: M.name,
+        snippet: M.description + " | " + M.room,
+      ),
+      icon: BitmapDescriptor.defaultMarkerWithHue(215),
+      zIndex: server.getPOI(M.pointId).floor.toDouble(),
+    ));
+    //make path
+    _polyLines.add(Polyline(
+      polylineId: PolylineId(M.toString()),
+      visible: true,
+      points: List<LatLng>.of([LatLng(_currentLocation.latitude,_currentLocation.longitude),server.getPOI(M.pointId).location]), // replace with path finding list
+      color: Colors.blue,
+      jointType: JointType.round,
+      startCap: Cap.roundCap,
+      endCap: Cap.roundCap,
+    ));
   }
 }
