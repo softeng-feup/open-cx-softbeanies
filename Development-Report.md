@@ -89,8 +89,11 @@ The software division of the project follows the **MVC (Model-View-Controller)**
 -**Controller**: Exists between the Model and View working as intermediate of information.
 
 Our project is centered in the implementation of three main parts:
+
 	- Storage of the data;
+	
 	- Route computation with map integration;
+	
 	- App design and functionalities;
 
 
@@ -106,8 +109,11 @@ In addiction the map and the display of the routes is developed with the assista
 
 Like we said above the architecture pattern followed in this project was the MVC Model. 
 To accomplish this we divided the project in three logical components/packages - **Controller**, **Model-POI** and **Views**. 
+
 The **View** is divided into pages and widgets used namely the GoogleMapsWidget and this component's main functionality is to represent the information stored in model component.
+
 The **Model** stores all the information into a logical structure supported by related funtions.
+
 The **Controller** processes actions triggered by the view to update the model. (ex: by clicking in a button to display a route the user starts a chain of requests where the view communicates to the controller the request; the controller collects the information needed and calculates in the model the route to be the displayed by the view);
 
 <img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/45-MVCrefactor/Diagrams/ComponentDiagram.png">
