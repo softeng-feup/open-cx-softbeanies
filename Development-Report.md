@@ -100,7 +100,7 @@ Our project is centered in the implementation of three main parts:
 The information from the server needs to be processed and organized into classes present in the package - Model-POI. 
 Those classes allows us to represent the events in the conference and the points of interest associated with them. Furthermore we implemented a graph with connections that allows to represent the paths from point to point. This way we are able to represent the paths available in the building.
 
-Like previously said the graph representation enables us to represent all the paths possible in the building. Hence we can use this representation to compute the routes desired by implementing a simple Dijstra method. In the end we have a list of connected points of interest from the origin to the destination point to represent in the map. 
+Like previously said the graph representation enables us to represent all the paths possible in the building. Hence we can use this representation to compute the routes desired by implementing a simple Dijkstra method. In the end we have a list of connected points of interest from the origin to the destination point to represent in the map. 
 
 The app design is the related to the GUI interface of the application. This includes the associated visual components of the pages and the correct handle of the information requested to present there and also the the respective implementation of all the functionalities associated with the GUI.
 In addiction the map and the display of the routes is developed with the assistance of the **GoogleMapsAPI**.
