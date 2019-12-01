@@ -13,7 +13,7 @@ class Button extends StatelessWidget {
       child: new Text(
         title,
         style: new TextStyle(
-          fontSize: 30.0,
+          fontSize: (8.2/ 100) * MediaQuery.of(context).size.width,
           color: Colors.white,
         ),
       ),

@@ -54,7 +54,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                         event.name,
                         textAlign: TextAlign.center,
                         style: new TextStyle(
-                            fontSize: 20.0, color: Color(0xFF073763)),
+                            fontSize: (6.7/ 100) * MediaQuery.of(context).size.width, color: Color(0xFF073763)),
                       ),
                     ),
                     for (int i = 0; i < text.length; i++)
@@ -66,7 +66,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                           text[i],
                           textAlign: TextAlign.center,
                           style: new TextStyle(
-                              fontSize: 17.0, color: Color(0xFF000000)),
+                              fontSize: (5/ 100) * MediaQuery.of(context).size.width, color: Color(0xFF000000)),
                         ),
                       ),
                     new Container(
@@ -77,7 +77,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                         "Description: ",
                         textAlign: TextAlign.center,
                         style: new TextStyle(
-                            fontSize: 16.0, color: Color(0xFF000000)),
+                            fontSize: (4.7/ 100) * MediaQuery.of(context).size.width, color: Color(0xFF000000)),
                       ),
                     ),
                     new Container(
@@ -90,7 +90,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                         event.description,
                         textAlign: TextAlign.center,
                         style: new TextStyle(
-                            fontSize: 16.0, color: Color(0xFF000000)),
+                            fontSize: (4.3/ 100) * MediaQuery.of(context).size.width, color: Color(0xFF000000)),
                       ),
                     ),
                   ])
@@ -105,7 +105,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                 child: new Text(
                   "Path",
                   style: new TextStyle(
-                    fontSize: 30.0,
+                    fontSize: (10/ 100) * MediaQuery.of(context).size.width,
                     color: Colors.white,
                   ),
                 ),

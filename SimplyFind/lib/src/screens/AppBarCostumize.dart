@@ -154,7 +154,7 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 child: new Text(
                   this.title,
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: (6/ 100) * MediaQuery.of(context).size.width),
                 ),
               ),
             ],
@@ -163,7 +163,7 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
             child:
           Padding(
                 padding: EdgeInsets.only(
-                  top: topHeight - 0.95*topHeight,
+                  top: topHeight - 0.95 *topHeight,
                 ),
               child:    
               new Container(

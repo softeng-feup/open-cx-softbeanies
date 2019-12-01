@@ -16,7 +16,7 @@ class ButtonOrange extends StatelessWidget {
           child: new Text(
             title,
             style: new TextStyle(
-              fontSize: 30.0,
+              fontSize: (11/ 100) * MediaQuery.of(context).size.width,
               color: Color.fromRGBO(1, 38, 90, 1),
             ),
           ),

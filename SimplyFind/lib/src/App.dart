@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   textAlign: TextAlign.center,
                   style: new TextStyle(
                     //fontWeight: FontWeight.bold,
-                    fontSize: (17/ 100) * MediaQuery.of(context).size.width, 
+                    fontSize: (17.1/ 100) * MediaQuery.of(context).size.width, 
                     color: Color(0xFF073763)),  
                 )),
               Image.asset(
@@ -97,9 +97,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 0.6 * MediaQuery.of(context).size.width,
                 height: 0.4 * MediaQuery.of(context).size.height,
               ),
-              Button(onPressed: () {
+              new Container(
+                margin: new EdgeInsets.only(
+                  bottom: (2.5/ 100) * MediaQuery.of(context).size.width
+                ),
+                child: Button(onPressed: () {
                   Navigator.pushNamed(context, '/Options'); // /Search
                 } ,title: "Categories",
+                )
               ),
               new Container(
                 margin: new EdgeInsets.only(

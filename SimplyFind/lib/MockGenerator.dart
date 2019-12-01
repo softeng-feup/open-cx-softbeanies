@@ -11,15 +11,19 @@ class MockGenerator {
 
   MockGenerator._internal();
 
-  static List<Event> Workshops = [  new Event("Turning Your Phone Off and On - IT support hands-on", "My Name is Jeff", "B003", "14-4-2020", "12:30", 1, "It works 99.9% of the times", null),
-                                    new Event("How To Tackle The Semester With AGILEty", "Ademar Aguiar", "B206","14-4-2020", "13:15", 2, "You will learn it all by yourself, i promise it!", null),
-                                    new Event("Flutter Apps - The Real Deal", "Helena Ferreira", "B107", "14-4-2020", "12:30", 3, "I will teach you everything you didn't learn at class.", null),
-                                    new Event("Practical Practices", "Todd Toddler","B207", "14-4-2020", "12:30", 4, "Doing the doable",null)];
+  static List<Event> Workshops = [  new Event("Turning Your Phone Off and On - IT support hands-on", "My Name is Jeff", "B003", "14-04-2020", "12:30", 1, "It works 99.9% of the times", null),
+                                    new Event("How To Tackle The Semester With AGILEty", "Ademar Aguiar", "B206","14-04-2020", "13:15", 2, "You will learn it all by yourself, i promise it!", null),
+                                    new Event("Flutter Apps - The Real Deal", "Helena Ferreira", "B107", "14-04-2020", "12:30", 3, "I will teach you everything you didn't learn at class.", null),
+                                    new Event("Practical Practices", "Todd Toddler","B207", "01-12-2019", "12:30", 4, "Doing the doable",null),
+                                    new Event("Turning Your Phone Off and On - IT support hands-on", "My Name is Jeff", "B003", "14-04-2020", "12:30", 1, "It works 99.9% of the times", null),
+                                    new Event("How To Tackle The Semester With AGILEty", "Ademar Aguiar", "B206","14-04-2020", "13:15", 2, "You will learn it all by yourself, i promise it!", null),
+                                    new Event("Flutter Apps - The Real Deal", "Helena Ferreira", "B107", "01-12-2019", "16:15", 3, "I will teach you everything you didn't learn at class.", null),
+                                    new Event("The true behind everything", "John Snow","B207", "12-12-2019", "12:30", 4, "Doing the doable",null)];
 
-  static List<Event> Lectures = [ new Event("5G-The Future of Telecommunications", "Maria Josefina", "B201", "14-4-2020", "15:40", 5, "5G is super cool", null),
-                                  new Event("Quantum Computing 101", "Ademar Aguiar", "B204", "14-4-2020", "16:30", 6, "So is the cat dead or alive? Now you can find out :)", null),
-                                  new Event("Simplyfind app", "Helena Ferreira", "B306","14-4-2020", "17:15", 7, "Simplyfind is the best app ever", null),
-                                  new Event("Theory of theorics", "Matt Matthews","B315", "14-4-2020", "19:25", 8, "Explaining the explainable explanation", null)];
+  static List<Event> Lectures = [ new Event("5G - The Future of Telecommunications", "Maria Josefina", "B201", "14-04-2020", "15:40", 5, "5G is super cool", null),
+                                  new Event("Quantum Computing 101", "Ademar Aguiar", "B204", "14-04-2020", "16:30", 6, "So is the cat dead or alive? Now you can find out :)", null),
+                                  new Event("Simplyfind app", "Helena Ferreira", "B306","14-04-2020", "17:15", 7, "Simplyfind is the best app ever", null),
+                                  new Event("Theory of theorics", "Matt Matthews","B315", "01-12-2019", "16:14", 8, "Explaining the explainable explanation", null)];
 
   static List<PointOfInterest> LocationWorkshops = [  new PointOfInterest(1, LatLng(41.177672,-8.595620),0),
                                                       new PointOfInterest(2, LatLng(41.177374,-8.595221),2),

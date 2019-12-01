@@ -7,7 +7,7 @@ import '../Search.dart';
 class WcMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<String> buttonTitles = ["Men", "Woman"];
+    List<String> buttonTitles = ["Men", "Women"];
     return Scaffold(
         appBar: new MyCustomAppBar2(
             height: 14, context: context, title: "Wc",),
