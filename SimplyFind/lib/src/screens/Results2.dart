@@ -9,7 +9,7 @@ class Results2 extends StatelessWidget {
     return new MaterialApp(
       title: "SearchPage",
       home: new Scaffold(
-        appBar: new MyCustomAppBar2(height: 14, context: ctxt, title: "Map", backMenu: '/Search', ),
+        appBar: new MyCustomAppBar2(height: 14, context: ctxt, title: "Map", ),
           body: new GoogleMapsWidget(MockGenerator.Workshops),
         ),
     );

@@ -10,7 +10,7 @@ class WcMenu extends StatelessWidget {
     List<String> buttonTitles = ["Men", "Woman"];
     return Scaffold(
         appBar: new MyCustomAppBar2(
-            height: 14, context: context, title: "Wc", backMenu: '/Options'),
+            height: 14, context: context, title: "Wc",),
         body: SafeArea(
             child: Container(
                 color: Colors.white,
@@ -26,7 +26,7 @@ class WcMenu extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            myLocation: 'my location', destination: "Wc " + buttonTitles[i], backMenu: '/Options'),
+                            myLocation: 'my location', destination: "Wc " + buttonTitles[i],),
                         ));
                         },
                       )

@@ -6,12 +6,10 @@ import '../Search.dart';
 class ShowDescriptionMenu extends StatelessWidget {
   final BuildContext context;
   final String title;
-  final String backMenu;
   final Event event;
   ShowDescriptionMenu(
       {this.context,
       @required this.title,
-      @required this.backMenu,
       @required this.event});
 
   @override
@@ -25,7 +23,7 @@ class ShowDescriptionMenu extends StatelessWidget {
 
     return Scaffold(
         appBar: new MyCustomAppBar2(
-            height: 14, context: context, title: title, backMenu: backMenu),
+            height: 14, context: context, title: title,),
         body: SafeArea(
             child: new Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -116,7 +114,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            Search( backMenu: backMenu, destination: event.room, myLocation: 'my Location',),
+                            Search(destination: event.room, myLocation: 'my Location',),
                       ));
                 },
                 padding: EdgeInsets.all(1.0),

@@ -6,8 +6,6 @@ import 'screens/Results.dart';
 import 'screens/Results2.dart';
 import 'Controller.dart';
 import 'screens/Menus/EventsMenu.dart';
-import 'screens/Widgets/LocateImage.dart';
-import 'screens/Widgets/LocateText.dart';
 import 'screens/Menus/FoodMenu.dart';
 import 'screens/Menus/WcMenu.dart';
 import 'screens/Menus/OptionsMenu.dart';
@@ -39,7 +37,7 @@ class MVCApp extends AppMVC {
         '/Food': (context) => FoodMenu(),
         '/Workshops': (context) => EventsMenu(title: "Workshops"),
         '/Wc': (context) => WcMenu(),
-        '/Search': (context) => Search( myLocation: 'my location', destination: 'Choose Destination', backMenu: '/',),
+        '/Search': (context) => Search( myLocation: '', destination: '',),
         '/Results': (context) => Results(),
         '/Results2': (context) => Results2(),
       },
@@ -75,27 +73,45 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           color: Color.fromRGBO(249, 228, 183, 1),
-          child: Stack(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Button(
-                x: 12,
-                y: 60,
-                title: "Search",
-                onPressed: () {
-                  Navigator.pushNamed(context, '/Options');
-                },
+              new Container(
+                alignment: Alignment.center,
+                margin: new EdgeInsets.only(
+                top: (10/ 100) * MediaQuery.of(context).size.width
+                ),
+                child: new Text(
+                  "Simplyfind",
+                  textAlign: TextAlign.center,
+                  style: new TextStyle(
+                    //fontWeight: FontWeight.bold,
+                    fontSize: (17/ 100) * MediaQuery.of(context).size.width, 
+                    color: Color(0xFF073763)),  
+                )),
+              Image.asset(
+                "assets/images/start.png",
+                width: 0.6 * MediaQuery.of(context).size.width,
+                height: 0.4 * MediaQuery.of(context).size.height,
               ),
-              Button(
-                x: 12,
-                y: 75,
-                title: "Explore",
-                onPressed: () {
-                  Navigator.pushNamed(context, '/Search'); // /Search
-                },
+              Button(onPressed: () {
+                  Navigator.pushNamed(context, '/Options'); // /Search
+                } ,title: "Categories",
               ),
-              LocateImage(x: 20, y: 20, imageName: "assets/images/start.png"),
-              LocateText(x: 12, y: 10, title: "Simplyfind", size: 60.0, color: 0xFF073763,),
+              new Container(
+                margin: new EdgeInsets.only(
+                  bottom: (10/ 100) * MediaQuery.of(context).size.width
+                ),
+                child:  Button(
+                  title: "Explore",
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Search'); // /Search
+                  } ,
+                ),
+              )
             ],
           ),
         )

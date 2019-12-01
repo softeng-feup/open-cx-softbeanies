@@ -3,15 +3,12 @@ import '../../MockGenerator.dart';
 import '../GoogleMapsWidget.dart';
 import 'AppBarCostumize.dart';
 
-
 class Search extends StatelessWidget {
-  final String myLocation;
-  final String destination, backMenu;
+  final String myLocation, destination;
   const Search({
     Key key,
     @required this.myLocation,
     @required this.destination, 
-    @required this.backMenu
   }) : super(key: key);
 
   @override
@@ -19,7 +16,7 @@ class Search extends StatelessWidget {
     return new MaterialApp(
       title: "SearchPage",
       home: new Scaffold(
-        appBar: new MyCustomAppBar(height: 24, context: ctxt, myLocation: myLocation, destination: destination, backMenu: backMenu,),
+        appBar: new MyCustomAppBar(height: 24, context: ctxt, myLocation: myLocation, destination: destination,),
         body: new GoogleMapsWidget(MockGenerator.Workshops),
         ),
     );

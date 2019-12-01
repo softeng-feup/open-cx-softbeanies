@@ -5,15 +5,13 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final BuildContext context;
   final String myLocation;
   final String destination;
-  final String backMenu;
 
   const MyCustomAppBar({
     Key key,
     @required this.height,
     @required this.context,
     @required this.myLocation,
-    @required this.destination,
-    @required this.backMenu
+    @required this.destination
   }) : super(key: key);
 
   @override
@@ -37,14 +35,15 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     icon: Icon(Icons.arrow_back),
                     color: Colors.white,
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, backMenu);
+                      Navigator.pop(context);
                     },
                   ),
                   Expanded(
                     child: new TextFormField(
+                      initialValue: myLocation,
                       decoration: new InputDecoration(
                         filled: true,
-                        labelText: myLocation ,
+                        labelText: "starting point" ,
                         fillColor: Colors.white,
                         contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
                         border: new OutlineInputBorder(
@@ -63,16 +62,22 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             new Padding(
               padding: EdgeInsets.only(
                 bottom: 0.05 * finalHeight,
-                left: MediaQuery.of(context).size.width * 0.12 ,
               ),
               child: Row(
                 children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    color: Color.fromRGBO(1, 38, 90, 1),
+                    onPressed: () {},
+                  ),
                   Expanded(
                     child: new TextFormField(
+                      initialValue: destination,
                       decoration: new InputDecoration(
-                        labelText: destination,
+                        labelText: "Destination",
                         filled: true,
                         fillColor: Colors.white,
+                        enabled: true,                        
                         contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
                         border: new OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(30.0),
@@ -109,14 +114,12 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
   final String title;
-  final String backMenu;
 
   const MyCustomAppBar2(
       {Key key,
       @required this.height,
       @required this.context,
-      @required this.title,
-      @required this.backMenu})
+      @required this.title})
       : super(key: key);
 
   @override
@@ -140,7 +143,7 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                   icon: Icon(Icons.arrow_back),
                   color: Colors.white,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, this.backMenu);
+                    Navigator.pop(context);
                   },
                 ),
               ),

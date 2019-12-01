@@ -12,7 +12,6 @@ class FoodMenu extends StatelessWidget {
           height: 14,
           context: context,
           title: "Food",
-          backMenu: '/Options',
         ),
         body: SafeArea(
             child: new Container(
@@ -29,7 +28,7 @@ class FoodMenu extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            myLocation: 'my location', destination: buttonTitles[i], backMenu: '/Options'),
+                            myLocation: 'my location', destination: buttonTitles[i],),
                         ));
                     }),
             ],

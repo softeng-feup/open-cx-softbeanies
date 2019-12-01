@@ -9,24 +9,22 @@ import 'ShowDescriptionMenu.dart';
 class EventsMenu extends StatelessWidget {
   final BuildContext context;
   final String title;
-  String nextMenu, backMenu;
+  String nextMenu;
   List<Event> events;
   EventsMenu({this.context, @required this.title });
 
   @override
   Widget build(BuildContext context) {
     if(title == "Lectures"){
-      backMenu = '/Lectures';
       events = MockGenerator.Lectures; //get lectures appening next
     }      
     else {
-      backMenu = '/Workshops';
       events = MockGenerator.Workshops; //get Workshops appening next
     }
     var numberOfevents = events.length;
 
     return Scaffold(
-      appBar: new MyCustomAppBar2(height: 14, context: context, title: title, backMenu: '/Options',),
+      appBar: new MyCustomAppBar2(height: 14, context: context, title: title,),
       body: SafeArea(
           child: Container(
           color: Colors.white,
@@ -51,7 +49,7 @@ class EventsMenu extends StatelessWidget {
                   room: events[i].room,
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute( builder: (context) 
-                      => ShowDescriptionMenu(title: title, backMenu: backMenu, event: events[i], ),
+                      => ShowDescriptionMenu(title: title, event: events[i], ),
                     )); 
                   }),                 
             ],
