@@ -183,12 +183,12 @@ class DataServer {
 
   /// Loads json file related to male bathrooms and returns json string
   Future<String> _loadMaleBathroomDataAsset() async {
-    return await rootBundle.loadString('assets/data/maleBathroonDataBase.json');
+    return await rootBundle.loadString('assets/data/maleBathroomDataBase.json');
   }
 
   /// Loads json file related to female bathrooms and returns json string
   Future<String> _loadFemaleBathroomDataAsset() async {
-    return await rootBundle.loadString('assets/data/femaleBathroonDataBase.json');
+    return await rootBundle.loadString('assets/data/femaleBathroomDataBase.json');
   }
 
   /// Creates [Place] objects from json file and stores them in a map
@@ -202,12 +202,12 @@ class DataServer {
        }
     );
 
-    jsonData = await this._loadFemaleBathroomDataAsset();
-    jsonEvents = jsonDecode(jsonData);
+    String jsonData2 = await this._loadFemaleBathroomDataAsset();
+    Map jsonEvents2 = jsonDecode(jsonData2);
 
-    jsonEvents.forEach(
+    jsonEvents2.forEach(
             (k, v) {
-          this._maleBathrooms.add(Place.fromJson(v));
+          this._femaleBathrooms.add(Place.fromJson(v));
         }
     );
   }

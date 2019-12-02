@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:simplyfind/POI/Place.dart';
+
 import 'package:simplyfind/POI/PointOfInterest.dart';
-import '../../MockGenerator.dart';
+import '../../POI/Place.dart';
 import '../GoogleMapsWidget.dart';
 import 'AppBarCostumize.dart';
 
@@ -20,7 +20,7 @@ class Search extends StatelessWidget {
       title: "SearchPage",
       home: new Scaffold(
         appBar: new MyCustomAppBar(height: 24, context: ctxt, destination: destination,),
-        body: new GoogleMapsWidget(MockGenerator.Workshops),
+        body: new GoogleMapsWidget(wantedPlaces),
         ),
     );
   }

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'screens/Search.dart';
-import 'screens/Results.dart';
-import 'screens/Results2.dart';
 import 'Controller.dart';
 import 'screens/Menus/EventsMenu.dart';
 import 'screens/Menus/FoodMenu.dart';
@@ -38,8 +36,6 @@ class MVCApp extends AppMVC {
         '/Workshops': (context) => EventsMenu(title: "Workshops"),
         '/Wc': (context) => WcMenu(),
         '/Search': (context) => Search( destination: '', wantedPlaces: null,),
-        '/Results': (context) => Results(),
-        '/Results2': (context) => Results2(),
       },
     );
     return _app;

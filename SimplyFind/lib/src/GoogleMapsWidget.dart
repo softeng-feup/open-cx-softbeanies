@@ -3,18 +3,18 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../NavigationPage.dart';
 import '../POI/Event.dart';
+import '../POI/Place.dart';
 import '../POI/PointOfInterest.dart';
 import '../data/DataServer.dart';
 
 class GoogleMapsWidget extends StatefulWidget {
-  final List<Event> _markers;
-  final List<PointOfInterest> _points;
+  final List<Place> _markers;
 
-  GoogleMapsWidget([this._markers, this._points ]);
+  GoogleMapsWidget([this._markers]);
 
   @override
   _GoogleMapsWidgetState createState() =>
-      _GoogleMapsWidgetState(_markers, _points);
+      _GoogleMapsWidgetState(_markers);
 }
 
 class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
@@ -28,33 +28,32 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   static const LatLng _center = const LatLng(41.177634, -8.595764);
   LatLng _lastMapPosition = _center; // usage is unsure
 
-  _GoogleMapsWidgetState(List<Event> markers, List<PointOfInterest> points) {
+  _GoogleMapsWidgetState(List<Place> markers) {
     this.makeMarkers(markers);
-    this.makePolyline(points);
   }
 
-  void makeMarkers(List<Event> markers) {
+  void makeMarkers(List<Place> markers) {
     if(markers != null) {
       markers.forEach((M) => {
         _markers.add(Marker(
           markerId: MarkerId(M.hashCode.toString()),
-          position: server.getPOI(M.pointId).location,
+          position: server.pointsOfInterest[M.pointId].location,
           infoWindow: InfoWindow(
           title: M.name,
-          snippet: M.description + " | " + M.room,
+          snippet: M.room,
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => NavigationPage()));
             },
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(215),
-          zIndex: server.getPOI(M.pointId).floor.toDouble(),
+          zIndex: server.pointsOfInterest[M.pointId].floor.toDouble(),
         )),
       });
     }
   }
 
-  void makePolyline(List<PointOfInterest> points) {
+  /*void makePolyline(List<PointOfInterest> points) {
     if(points != null) {
 
       List<LatLng> polyPoints = new List();
@@ -70,7 +69,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
         endCap: Cap.roundCap,
       ));
     }
-  }
+  }*/
 
   void _onCameraMove(CameraPosition position) {
     _lastMapPosition = position.target;
