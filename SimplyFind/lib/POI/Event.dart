@@ -3,18 +3,12 @@ import 'package:simplyfind/POI/Place.dart';
 
 /// Event
 class Event extends Place {
-  /// Name of the event
-  String _name;
   /// Name of the speaker responsible
   final String _speaker;
-  /// Name of the room in which the event will take place
-  String _room;
   /// Date of the event (day-month-year)
   final String _date;
   /// Hour of the begin of the event
   final String _hour;
-  /// Integer indicating a POI in the map
-  int _pointId;
   /// Small description about the content of the event
   final String _description;
   /// List containing the tags related to the event
