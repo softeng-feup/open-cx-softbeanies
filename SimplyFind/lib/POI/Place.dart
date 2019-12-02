@@ -19,4 +19,14 @@ class Place {
   /// Getter member function for [_pointId]
   /// return an [int] indicating the location of the Event
   int get pointId => _pointId;
+
+  /// Factory constructor
+  /// Returns a [Place] object given a json style [Map]
+  factory Place.fromJson(Map<String, dynamic> json) {
+    return Place(
+        json['name'] as String,
+        json['room'] as String,
+        json['pointId'] as int
+    );
+  }
 }

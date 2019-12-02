@@ -10,7 +10,7 @@
       "Maintenance",
       "Telecommunications"
     ],
-    "poiId": 1
+    "poiId": 4
   },
   "2": {
     "name": "Introduction to React Native",
@@ -23,7 +23,7 @@
       "Framework",
       "Mobile"
     ],
-    "poiId": 2
+    "poiId": 5
   },
   "3": {
     "name": "Build your own portfolio with Django",
@@ -36,6 +36,6 @@
       "Framework",
       "Web"
     ],
-    "poiId": 8
+    "poiId": 6
   }
 }
