@@ -41,9 +41,9 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       _currentLocation = location;
       if (_polyLines.isNotEmpty) {
         controller.animateCamera(CameraUpdate.newCameraPosition(
-            CameraPosition(
-                target: LatLng(location.latitude, location.longitude), zoom: 19)));
-        setState(() {
+          CameraPosition(
+            target: LatLng(location.latitude, location.longitude), zoom: 19)));
+        /*setState(() {
           _polyLines.clear();
           _polyLines.add(Polyline(
             polylineId: PolylineId(_markers.first.toString()),
@@ -55,7 +55,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
             startCap: Cap.roundCap,
             endCap: Cap.roundCap,
           ));
-        });
+        });*/
       }
     });
   }
@@ -153,11 +153,11 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
             children: <Widget>[
               FittedBox(
                 child: FloatingActionButton(
-                    heroTag: "home",
-                    onPressed: _resetPosition,
-                    materialTapTargetSize: MaterialTapTargetSize.padded,
-                    backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-                    child: const Icon(Icons.home, size: 24.0)),
+                  heroTag: "home",
+                  onPressed: _resetPosition,
+                  materialTapTargetSize: MaterialTapTargetSize.padded,
+                  backgroundColor: Color.fromRGBO(1, 38, 90, 1),
+                  child: const Icon(Icons.home, size: 24.0)),
               )
             ],
           ),
@@ -181,24 +181,31 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   void makePath(Event M) {
     _destination = M;
     _markers.clear();
+
+    List<LatLng> path = server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), M.pointId);
+
     // add final marker
-    _markers.add(Marker(
-      markerId: MarkerId(M.hashCode.toString()),
-      position: server.getPOI(M.pointId).location,
-      infoWindow: InfoWindow(
-        title: M.name,
-        snippet: M.description + " | " + M.room,
-      ),
-      icon: BitmapDescriptor.defaultMarkerWithHue(215),
-      zIndex: server.getPOI(M.pointId).floor.toDouble(),
-    ));
+    path.forEach(
+        (p) {
+      _markers.add(Marker(
+        markerId: MarkerId(p.hashCode.toString()),
+        position: p,
+        infoWindow: InfoWindow(
+          title: M.name,
+          snippet: M.description + " | " + M.room,
+        ),
+        icon: BitmapDescriptor.defaultMarkerWithHue(215),
+        zIndex: server.getPOI(M.pointId).floor.toDouble(),
+      ));
+      }
+    );
 
     //make path
     _polyLines.add(Polyline(
       polylineId: PolylineId(M.toString()),
       visible: true,
-      points: List<LatLng>.of([LatLng(_currentLocation.latitude,_currentLocation.longitude),server.getPOI(M.pointId).location]),
-      //points:  server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), M.pointId),
+      //points: List<LatLng>.of([LatLng(_currentLocation.latitude,_currentLocation.longitude),server.getPOI(M.pointId).location]),
+      points:  path,
       // replace with path finding list
       color: Colors.blue,
       jointType: JointType.round,
