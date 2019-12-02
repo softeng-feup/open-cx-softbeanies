@@ -11,8 +11,10 @@ import '../POI/Event.dart';
 
 /// Data Server simulation
 class DataServer {
-  /// [Map] containing all events
-  Map<int, Event> _events;
+  /// [Map] containing all lectures
+  Map<int, Event> _lectures;
+  /// [Map] containing all workshops
+  Map<int, Event> _workshops;
   /// [Map] containing all POIs
   Map<int, PointOfInterest> _pointsOfInterest;
   /// [Graph] representing FEUP's building
@@ -24,7 +26,8 @@ class DataServer {
 
   /// Private Constructor
   DataServer._constructor() {
-    this._events = new Map<int, Event>();
+    this._lectures = new Map<int, Event>();
+    this._workshops = new Map<int, Event>();
     this._pointsOfInterest = new Map<int, PointOfInterest>();
     this._poiGraph = new Graph();
     this._bfs = new BFS(this._poiGraph);
@@ -35,9 +38,13 @@ class DataServer {
     return _dataServerInstance;
   }
 
-  /// Getter member function for [_events]
+  /// Getter member function for [_lectures]
   /// returns a [Map] of [Event] Objects
-  Map<int, Event> get events => _events;
+  Map<int, Event> get lectures => _lectures;
+
+  /// Getter member function for [_workshops]
+  /// returns a [Map] of [Event] Objects
+  Map<int, Event> get workshops => _workshops;
 
   /// Getter member function for [_pointsOfInterest]
   /// returns a [Map] of [PointOfInterest] Objects
@@ -47,11 +54,6 @@ class DataServer {
   /// returns a [BFS] Object
   BFS get bfs => _bfs;
 
-  /// Returns an event given its id
-  Event getEvent(int eventId) {
-    return this._events[eventId];
-  }
-
   /// Returns a POI given its id
   PointOfInterest getPOI(int pointId) {
     return this._pointsOfInterest[pointId];
@@ -60,7 +62,7 @@ class DataServer {
   /// Loads entire json files
   Future<void> loadData() async {
     // load event data
-    await this.loadEventData();
+    await this.loadLectureData();
     // load POI data (Nodes and Edges)
     await this._loadPOIData();
     await this._loadConnectionData();
@@ -79,22 +81,39 @@ class DataServer {
   }
 
   /// Loads json file related to Events and returns json string
-  Future<String> _loadEventDataAsset() async {
-    return await rootBundle.loadString('assets/data/eventDataBase.json');
+  Future<String> _loadLectureDataAsset() async {
+    return await rootBundle.loadString('assets/data/lectureDataBase.json');
   }
 
   /// Creates [Event] objects from json file and stores them in a map
-  Future<void> loadEventData() async {
-    String jsonData = await this._loadEventDataAsset();
+  Future<void> loadLectureData() async {
+    String jsonData = await this._loadLectureDataAsset();
     Map jsonEvents = jsonDecode(jsonData);
 
     jsonEvents.forEach(
       (k, v) {
         int actualKey = int.parse(k);
-        this._events[actualKey] = Event.fromJson(v);
+        this._lectures[actualKey] = Event.fromJson(v);
       }
     );
+  }
 
+  /// Loads json file related to Events and returns json string
+  Future<String> _loadWorkshopDataAsset() async {
+    return await rootBundle.loadString('assets/data/lectureDataBase.json');
+  }
+
+  /// Creates [Event] objects from json file and stores them in a map
+  Future<void> loadWorkshopData() async {
+    String jsonData = await this._loadWorkshopDataAsset();
+    Map jsonEvents = jsonDecode(jsonData);
+
+    jsonEvents.forEach(
+            (k, v) {
+          int actualKey = int.parse(k);
+          this._workshops[actualKey] = Event.fromJson(v);
+        }
+    );
   }
 
   /// Loads json file related to POIs and returns json string
