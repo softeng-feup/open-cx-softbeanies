@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-import '../NavigationPage.dart';
 import '../POI/Event.dart';
 import '../POI/PointOfInterest.dart';
 import '../data/DataServer.dart';
@@ -27,11 +25,11 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   Location _myLocation = new Location();
   final Set<Marker> _markers = new Set();
   final Set<Polyline> _polyLines = new Set();
+  Event _destination;
 
   static const LatLng _center = const LatLng(41.177634, -8.595764);
-  LatLng _lastMapPosition = _center; // usage is unsure
 
-  _GoogleMapsWidgetState(List<Event> markers, List<PointOfInterest> points) {
+  _GoogleMapsWidgetState(List<Event> markers, List<PointOfInterest> points)  {
     this.makeMarkers(markers);
     this.makePolyline(points);
   }
@@ -44,7 +42,20 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       if (_polyLines.isNotEmpty) {
         controller.animateCamera(CameraUpdate.newCameraPosition(
             CameraPosition(
-                target: LatLng(location.latitude, location.longitude), zoom: 16)));
+                target: LatLng(location.latitude, location.longitude), zoom: 19)));
+        setState(() {
+          _polyLines.clear();
+          _polyLines.add(Polyline(
+            polylineId: PolylineId(_markers.first.toString()),
+            visible: true,
+            points: List<LatLng>.of([LatLng(_currentLocation.latitude,_currentLocation.longitude),server.getPOI(_destination.pointId).location]),
+            //points: server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), _places.first.pointId),
+            color: Colors.blue,
+            jointType: JointType.round,
+            startCap: Cap.roundCap,
+            endCap: Cap.roundCap,
+          ));
+        });
       }
     });
   }
@@ -88,10 +99,6 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
     }
   }
 
-  /* NOT USED */
-  void _onCameraMove(CameraPosition position) {
-    _lastMapPosition = position.target;
-  }
 
   void _resetPosition() {
     if (_markers != null) {
@@ -128,7 +135,6 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       myLocationButtonEnabled: true,
       indoorViewEnabled: true,
       markers: _markers,
-      onCameraMove: _onCameraMove,
       mapType: MapType.terrain,
       polylines: _polyLines,
       minMaxZoomPreference: MinMaxZoomPreference(2, 24),
@@ -173,7 +179,9 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   }
 
   void makePath(Event M) {
+    _destination = M;
     _markers.clear();
+    // add final marker
     _markers.add(Marker(
       markerId: MarkerId(M.hashCode.toString()),
       position: server.getPOI(M.pointId).location,
@@ -184,11 +192,14 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       icon: BitmapDescriptor.defaultMarkerWithHue(215),
       zIndex: server.getPOI(M.pointId).floor.toDouble(),
     ));
+
     //make path
     _polyLines.add(Polyline(
       polylineId: PolylineId(M.toString()),
       visible: true,
-      points: List<LatLng>.of([LatLng(_currentLocation.latitude,_currentLocation.longitude),server.getPOI(M.pointId).location]), // replace with path finding list
+      points: List<LatLng>.of([LatLng(_currentLocation.latitude,_currentLocation.longitude),server.getPOI(M.pointId).location]),
+      //points:  server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), M.pointId),
+      // replace with path finding list
       color: Colors.blue,
       jointType: JointType.round,
       startCap: Cap.roundCap,
