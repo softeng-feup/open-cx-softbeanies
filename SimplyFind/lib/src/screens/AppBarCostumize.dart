@@ -3,20 +3,22 @@ import 'package:flutter/material.dart';
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
-  final String myLocation;
   final String destination;
 
-  const MyCustomAppBar({
+  MyCustomAppBar({
     Key key,
     @required this.height,
     @required this.context,
-    @required this.myLocation,
     @required this.destination
   }) : super(key: key);
 
+  String myLocation = "myLocation";
   @override
   Widget build(BuildContext c) {
     double finalHeight = (MediaQuery.of(context).size.height / 100 * this.height);
+    if (destination == "") {
+      myLocation = "";
+    }
     return Container(
       height: finalHeight,
       color: Color.fromRGBO(1, 38, 90, 1),

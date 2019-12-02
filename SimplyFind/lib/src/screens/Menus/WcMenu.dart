@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simplyfind/POI/Place.dart';
 import '../Widgets/ButtonOrange.dart';
 
 import '../AppBarCostumize.dart';
@@ -26,7 +27,7 @@ class WcMenu extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            myLocation: 'my location', destination: "Wc " + buttonTitles[i],),
+                             destination: "Wc " + buttonTitles[i], wantedPlaces: null,),
                         ));
                         },
                       )

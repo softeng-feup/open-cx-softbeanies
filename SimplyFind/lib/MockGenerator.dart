@@ -1,4 +1,5 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:simplyfind/POI/Place.dart';
 
 import 'POI/Event.dart';
 import 'POI/PointOfInterest.dart';
@@ -25,6 +26,21 @@ class MockGenerator {
                                   new Event("Simplyfind app", "Helena Ferreira", "B306","14-04-2020", "17:15", 7, "Simplyfind is the best app ever", null),
                                   new Event("Theory of theorics", "Matt Matthews","B315", "01-12-2019", "16:14", 8, "Explaining the explainable explanation", null)];
 
+  static List<Place> WcWoman =[new Place("Wc Woman", "", 5),
+                               new Place("Wc Woman", "", 6),
+                               new Place("Wc Woman", "", 7),
+                               new Place("Wc Woman","", 8)];
+
+  static List<Place> WcMen =[new Place("Wc Men", "", 5),
+                             new Place("Wc Men", "", 6),
+                             new Place("Wc Men", "", 7),
+                             new Place("Wc Men", "", 8)];
+
+  static List<Place> Machines = [new Place("Machine", "", 5),
+                                 new Place("Machine", "", 6),
+                                 new Place("Machine", "", 7),
+                                 new Place("Machine", "", 8)];
+
   static List<PointOfInterest> LocationWorkshops = [  new PointOfInterest(1, LatLng(41.177672,-8.595620),0),
                                                       new PointOfInterest(2, LatLng(41.177374,-8.595221),2),
                                                       new PointOfInterest(3, LatLng(41.177429,-8.595568),1),
@@ -34,4 +50,5 @@ class MockGenerator {
                                                       new PointOfInterest(6, LatLng(41.177251,-8.595167),2),
                                                       new PointOfInterest(7, LatLng(41.177334,-8.595263),3),
                                                       new PointOfInterest(8, LatLng(41.177334,-8.595263),3)];
+                                
 }

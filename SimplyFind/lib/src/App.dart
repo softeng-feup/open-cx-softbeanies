@@ -37,7 +37,7 @@ class MVCApp extends AppMVC {
         '/Food': (context) => FoodMenu(),
         '/Workshops': (context) => EventsMenu(title: "Workshops"),
         '/Wc': (context) => WcMenu(),
-        '/Search': (context) => Search( myLocation: '', destination: '',),
+        '/Search': (context) => Search( destination: '', wantedPlaces: null,),
         '/Results': (context) => Results(),
         '/Results2': (context) => Results2(),
       },
@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   bottom: (2.5/ 100) * MediaQuery.of(context).size.width
                 ),
                 child: Button(onPressed: () {
-                  Navigator.pushNamed(context, '/Options'); // /Search
+                  Navigator.pushNamed(context, '/Options');  // /Options
                 } ,title: "Categories",
                 )
               ),
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child:  Button(
                   title: "Explore",
                   onPressed: () {
-                    Navigator.pushNamed(context, '/Search'); // /Search
+                    Navigator.pushNamed(context, '/Search');  // /Search
                   } ,
                 ),
               )

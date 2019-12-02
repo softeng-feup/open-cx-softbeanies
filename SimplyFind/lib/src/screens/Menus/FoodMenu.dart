@@ -28,7 +28,7 @@ class FoodMenu extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            myLocation: 'my location', destination: buttonTitles[i],),
+                            destination: buttonTitles[i], wantedPlaces: null,),
                         ));
                     }),
             ],
