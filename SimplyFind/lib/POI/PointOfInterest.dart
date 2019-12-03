@@ -11,13 +11,13 @@ class PointOfInterest {
   /// Floor number
   final int _floor;
   /// Rooms accessible through this POI
-  final List<String> _rooms;
+  // final List<String> _rooms;
   /// Other POIs accessible through this POI
   List<Connection> _connections;
 
 
   /// Constructor
-  PointOfInterest(this._id, this._location, this._floor, this._rooms) {
+  PointOfInterest(this._id, this._location, this._floor) { //this._rooms
     this._connections = new List<Connection>();
   }
 
@@ -39,7 +39,7 @@ class PointOfInterest {
 
   /// Getter member function for [_rooms]
   /// returns a [List] containing all rooms accessible through for this POI
-  List<String> get rooms => _rooms;
+  // List<String> get rooms => _rooms;
 
   /// Adds a new [Connection] to the [_connections] list
   /// creating a new instance of [Connection] given its ID
@@ -50,9 +50,9 @@ class PointOfInterest {
 
   /// Adds a new [String] to the [_rooms] list
   /// and destination POI ID
-  void addRoom(String room) {
-    this._rooms.add(room);
-  }
+  //void addRoom(String room) {
+  //  this._rooms.add(room);
+  //}
 
   /// Factory constructor
   /// Given a a JSON Map ([json]) a new instance of [PointOfInterest]
@@ -61,15 +61,11 @@ class PointOfInterest {
     // get latitude and longitude
     var locationJson = json['location'];
     LatLng location = new LatLng(locationJson['latitude'] as double, locationJson['longitude'] as double);
-    // get rooms list
-    var roomsList = json['rooms'];
-    List<String> rooms = new List<String>.from(roomsList);
 
     return PointOfInterest (
       json['id'] as int,
       location,
-      json['floor'] as int,
-      rooms
+      json['floor'] as int
     );
   }
 }
