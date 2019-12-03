@@ -75,6 +75,10 @@ class DataServer {
   /// returns a [List] of [Place] Objects
   List<Place> get vendingMachines => _vendingMachines;
 
+  /// Getter member function for [_checkIn]
+  /// returns a [Place] Object containing information about Check-in location
+  Place get checkIn => _checkIn;
+
   /// Getter member function for [_pointsOfInterest]
   /// returns a [Map] of [PointOfInterest] Objects
   Map<int, PointOfInterest> get pointsOfInterest => _pointsOfInterest;
