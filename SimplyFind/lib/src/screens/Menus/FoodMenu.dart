@@ -20,8 +20,8 @@ class FoodMenu extends StatelessWidget {
             children: <Widget>[
               ButtonOrange(
                   x: 10,
-                  y: 4,
-                  title: "Vending Machines",
+                  y: 17,
+                  title: "Machines",
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -33,7 +33,7 @@ class FoodMenu extends StatelessWidget {
                   }),
               ButtonOrange(
                   x: 10,
-                  y: 24,
+                  y: 47,
                   title: "Coffee Lounge",
                   onPressed: () {
                     Navigator.push(
