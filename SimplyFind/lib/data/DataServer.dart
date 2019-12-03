@@ -23,6 +23,8 @@ class DataServer {
   List<Place> _femaleBathrooms;
   /// [Map] containing all male bathrooms
   List<Place> _vendingMachines;
+  /// [Place] representative of check-in location
+  Place _checkIn;
   /// [Map] containing all POIs
   Map<int, PointOfInterest> _pointsOfInterest;
   /// [Graph] representing FEUP's building
@@ -41,6 +43,7 @@ class DataServer {
     this._maleBathrooms = new List<Place>();
     this._femaleBathrooms = new List<Place>();
     this._vendingMachines = new List<Place>();
+    this._checkIn = new Place("Check In", "InfoDesk", 2);
     // Graph and POI
     this._pointsOfInterest = new Map<int, PointOfInterest>();
     this._poiGraph = new Graph();
@@ -238,7 +241,7 @@ class DataServer {
 
   /// Loads json file related to Vending Machines and returns json string
   Future<String> _loadVendingMachinesDataAsset() async {
-    return await rootBundle.loadString('assets/data/lectureDataBase.json');
+    return await rootBundle.loadString('assets/data/vendingMachinesDataBase.json');
   }
 
   /// Creates [Place] objects from json file and stores them in a map

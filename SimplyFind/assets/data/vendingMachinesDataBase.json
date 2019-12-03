@@ -1,0 +1,12 @@
+{
+  "1": {
+    "name": "Vending Machine",
+    "room": "Hallway",
+    "pointId": 15
+  },
+  "2": {
+    "name": "Vending Machine",
+    "room": "Hallway",
+    "pointId": 16
+  }
+}

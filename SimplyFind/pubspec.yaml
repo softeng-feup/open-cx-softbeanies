@@ -62,3 +62,4 @@ flutter:
     - assets/data/femaleBathroomDataBase.json
     - assets/data/connectionsDataBase.json
     - assets/data/auxiliarPOIDataBase.json
+    - assets/data/vendingMachinesDataBase.json
