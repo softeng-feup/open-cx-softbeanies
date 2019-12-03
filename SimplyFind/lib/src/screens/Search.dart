@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:simplyfind/POI/PointOfInterest.dart';
 import '../../POI/Place.dart';
 import '../GoogleMapsWidget.dart';
 import 'AppBarCostumize.dart';
@@ -13,7 +11,6 @@ class Search extends StatelessWidget {
     @required this.wantedPlaces, /*if null the user is seaching by name and not category */
     @required this.destination,
   }) : super(key: key);
-  List<PointOfInterest> points;
   @override
   Widget build(BuildContext ctxt) {
     return new MaterialApp(

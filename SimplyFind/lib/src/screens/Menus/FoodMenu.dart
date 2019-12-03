@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../../data/DataServer.dart';
 import '../Widgets/ButtonOrange.dart';
 import '../AppBarCostumize.dart';
 import '../Search.dart';
 
 class FoodMenu extends StatelessWidget {
-  List<String> buttonTitles = ["Bar", "Grill", "Machines", "Coffe break"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,19 +18,32 @@ class FoodMenu extends StatelessWidget {
           color: Colors.white,
           child: Stack(
             children: <Widget>[
-              for (int i = 0; i < buttonTitles.length; i++)
-                ButtonOrange(
-                    x: 10,
-                    y: 4 + i * 20,
-                    title: buttonTitles[i],
-                    onPressed: () {
-                      Navigator.push(
+              ButtonOrange(
+                  x: 10,
+                  y: 4,
+                  title: "Vending Machines",
+                  onPressed: () {
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            destination: buttonTitles[i], wantedPlaces: null,),
+                              destination: "Vending Machines",
+                              wantedPlaces: DataServer().vendingMachines),
                         ));
-                    }),
+                  }),
+              ButtonOrange(
+                  x: 10,
+                  y: 24,
+                  title: "Coffee Lounge",
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Search(
+                              destination: "Coffee Lounge",
+                              wantedPlaces: DataServer().vendingMachines),
+                        ));
+                  }),
             ],
           ),
         )));

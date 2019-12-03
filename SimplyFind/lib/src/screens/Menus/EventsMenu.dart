@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../data/DataServer.dart';
 import '../Widgets/OptionButton.dart';
-import '../../../MockGenerator.dart';
 import '../../../POI/Event.dart';
 import '../AppBarCostumize.dart';
 import 'ShowDescriptionMenu.dart';
@@ -20,11 +20,15 @@ class EventsMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (title == "Lectures") {
-      events = MockGenerator.Lectures; //get lectures appening next
+      events = DataServer().lectures; //get lectures appening next
     } else {
-      events = MockGenerator.Workshops; //get Workshops appening next
+      events = DataServer().workshops; //get Workshops appening next
     }
-    var numberOfevents = events.length;
+    var numberOfEvents = events.length;
+
+    events.forEach((E) => {
+      print(E.name)
+    });
 
     return Scaffold(
         appBar: new MyCustomAppBar2(
@@ -39,7 +43,7 @@ class EventsMenu extends StatelessWidget {
             shrinkWrap: true,
             physics: AlwaysScrollableScrollPhysics(),
             children: <Widget>[
-              if (numberOfevents == 0)
+              if (numberOfEvents == 0)
                 new Padding(
                     padding: EdgeInsets.only(
                       top: (35 / 100) * MediaQuery.of(context).size.height,
@@ -51,7 +55,7 @@ class EventsMenu extends StatelessWidget {
                         fontSize: (10/ 100) * MediaQuery.of(context).size.width,
                         color: Color.fromRGBO(1, 38, 90, 1)),
                     )),
-              for (int i = 0; i < numberOfevents; i++)
+              for (int i = 0; i < numberOfEvents; i++)
                 if (
                   //event was a year greater than the current Date
                   int.parse(currentDate.substring(0, 4)) < int.parse(events[i].date.substring(6, 10)) ||
@@ -74,7 +78,7 @@ class EventsMenu extends StatelessWidget {
                             int.parse(events[i].date.substring(0, 2))) &&
                         (int.parse(currentTime.substring(0,2)) * 60 + (int.parse(currentTime.substring(4, 6)))) <
                           (int.parse(events[i].hour.substring(0,2))* 60 + int.parse(events[i].hour.substring(4,6)) + 15))   // 15 tolerance
-                  )                            
+                  )
                   OptionButton(
                       title: events[i].name,
                       time: events[i].hour,
@@ -89,7 +93,8 @@ class EventsMenu extends StatelessWidget {
                                 event: events[i],
                               ),
                             ));
-                      }),
+                      })
+                 ,
             ],
           ),
         )));
