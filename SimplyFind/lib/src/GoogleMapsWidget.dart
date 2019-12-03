@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 import '../NavigationPage.dart';
 import '../POI/Place.dart';
@@ -19,7 +21,8 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   GoogleMapController controller;
 
   DataServer server = new DataServer();
-
+  LocationData _currentLocation;
+  Location _myLocation = new Location();
    final Set<Marker> _markers = new Set();
    final Set<Polyline> _polyLines = new Set();
 
@@ -28,8 +31,37 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   _GoogleMapsWidgetState(List<Place> markers) {
     this.makeMarkers(markers);
   }
+  
+  @override
+  void initState() {
+    super.initState();
+    initLocationState();
+  }
 
-  void makeMarkers(List<Place> markers) {
+  initLocationState() async {
+    await _myLocation.changeSettings(accuracy: LocationAccuracy.NAVIGATION);
+
+    try {
+      bool activeService = await _myLocation.serviceEnabled();
+      if(activeService) {
+        if(await _myLocation.requestPermission()) {
+          _currentLocation = await _myLocation.getLocation();
+          _myLocation.onLocationChanged().listen((LocationData data) async {
+            _currentLocation = data;
+            if(_polyLines.isNotEmpty) {
+              controller.animateCamera(CameraUpdate.newCameraPosition(
+                  CameraPosition(target: LatLng(data.latitude,data.longitude),zoom: 16)));
+            }
+          });
+        }
+      }
+    } on PlatformException catch(e) {
+      print(e);
+    }
+
+  }
+
+   void makeMarkers(List<Place> markers) {
     if(markers != null) {
       markers.forEach((M) => {
         _markers.add(Marker(
@@ -49,7 +81,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       });
     }
   }
-
+  
   void _resetPosition() {
     if(_markers != null) {
       controller.animateCamera(CameraUpdate.newCameraPosition(
