@@ -26,7 +26,7 @@ class ButtonWithImage extends StatelessWidget {
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(legend,
                             style: new TextStyle(
-                              fontSize: 25,
+                              fontSize: (6.7/ 100) * MediaQuery.of(context).size.width,
                               color: Color.fromRGBO(1, 38, 90, 1),
                             ))),
                     new Image.asset(

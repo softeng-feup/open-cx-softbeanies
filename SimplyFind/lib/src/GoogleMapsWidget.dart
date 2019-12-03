@@ -4,19 +4,17 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
 import '../NavigationPage.dart';
-import '../POI/Event.dart';
-import '../POI/PointOfInterest.dart';
+import '../POI/Place.dart';
 import '../data/DataServer.dart';
 
 class GoogleMapsWidget extends StatefulWidget {
-  final List<Event> _markers;
-  final List<PointOfInterest> _points;
+  final List<Place> _markers;
 
-  GoogleMapsWidget([this._markers, this._points ]);
+  GoogleMapsWidget([this._markers]);
 
   @override
   _GoogleMapsWidgetState createState() =>
-      _GoogleMapsWidgetState(_markers, _points);
+      _GoogleMapsWidgetState(_markers);
 }
 
 class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
@@ -29,13 +27,11 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
    final Set<Polyline> _polyLines = new Set();
 
   static const LatLng _center = const LatLng(41.177634, -8.595764);
-  LatLng _lastMapPosition = _center; // usage is unsure
 
-  _GoogleMapsWidgetState(List<Event> markers, List<PointOfInterest> points) {
+  _GoogleMapsWidgetState(List<Place> markers) {
     this.makeMarkers(markers);
-    this.makePolyline(points);
   }
-
+  
   @override
   void initState() {
     super.initState();
@@ -65,50 +61,27 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
   }
 
-  void makeMarkers(List<Event> markers) {
+   void makeMarkers(List<Place> markers) {
     if(markers != null) {
       markers.forEach((M) => {
         _markers.add(Marker(
           markerId: MarkerId(M.hashCode.toString()),
-          position: server.getPOI(M.pointId).location,
+          position: server.pointsOfInterest[M.pointId].location,
           infoWindow: InfoWindow(
           title: M.name,
-          snippet: M.description + " | " + M.room,
+          snippet: M.room,
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => NavigationPage()));
             },
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(215),
-          zIndex: server.getPOI(M.pointId).floor.toDouble(),
+          zIndex: server.pointsOfInterest[M.pointId].floor.toDouble(),
         )),
       });
     }
   }
-
-  void makePolyline(List<PointOfInterest> points) {
-    if(points != null) {
-
-      List<LatLng> polyPoints = new List();
-      points.forEach((P) => {polyPoints.add(P.location)});
-
-      _polyLines.add(Polyline(
-        polylineId: PolylineId(points.toString()),
-        visible: true,
-        points: polyPoints,
-        color: Colors.blue,
-        jointType: JointType.round,
-        startCap: Cap.roundCap,
-        endCap: Cap.roundCap,
-      ));
-    }
-  }
-
-  /* NOT USED */
-  void _onCameraMove(CameraPosition position) {
-    _lastMapPosition = position.target;
-  }
-
+  
   void _resetPosition() {
     if(_markers != null) {
       controller.animateCamera(CameraUpdate.newCameraPosition(
@@ -145,7 +118,6 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       myLocationButtonEnabled: true,
       indoorViewEnabled: true,
       markers: _markers,
-      onCameraMove: _onCameraMove,
       mapType: MapType.terrain,
       polylines: _polyLines,
       minMaxZoomPreference: MinMaxZoomPreference(2, 24),

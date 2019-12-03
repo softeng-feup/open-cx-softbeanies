@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../data/DataServer.dart';
 import '../Widgets/ButtonOrange.dart';
 
 import '../AppBarCostumize.dart';
@@ -7,29 +8,45 @@ import '../Search.dart';
 class WcMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<String> buttonTitles = ["Men", "Woman"];
     return Scaffold(
         appBar: new MyCustomAppBar2(
-            height: 14, context: context, title: "Wc", backMenu: '/Options'),
+          height: 14,
+          context: context,
+          title: "Wc",
+        ),
         body: SafeArea(
             child: Container(
                 color: Colors.white,
                 child: Stack(
                   children: <Widget>[
-                    for (int i = 0; i < buttonTitles.length; i++)
-                      ButtonOrange(
-                        x: 10,
-                        y: 18 + i * 27,
-                        title: buttonTitles[i],
-                        onPressed: () {
-                          Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Search(
-                            myLocation: 'my location', destination: "Wc " + buttonTitles[i], backMenu: '/Options'),
-                        ));
-                        },
-                      )
+                    ButtonOrange(
+                      x: 10,
+                      y: 18,
+                      title: "Men",
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Search(
+                                  destination: "Wc Men",
+                                  wantedPlaces: DataServer().maleBathrooms),
+                            ));
+                      },
+                    ),
+                    ButtonOrange(
+                      x: 10,
+                      y: 45,
+                      title: "Women",
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Search(
+                                  destination: "Wc Women",
+                                  wantedPlaces: DataServer().femaleBathrooms),
+                            ));
+                      },
+                    )
                   ],
                 ))));
   }

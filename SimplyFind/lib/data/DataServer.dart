@@ -5,14 +5,23 @@ import 'package:flutter/services.dart' show rootBundle;
 import '../POI/BFS.dart';
 import '../POI/Connection.dart';
 import '../POI/Graph.dart';
+import '../POI/Place.dart';
 import '../POI/PointOfInterest.dart';
 
 import '../POI/Event.dart';
 
 /// Data Server simulation
 class DataServer {
-  /// [Map] containing all events
-  Map<int, Event> _events;
+  /// [Map] containing all lectures
+  List<Event> _lectures;
+  /// [Map] containing all workshops
+  List<Event> _workshops;
+  /// [Map] containing all male bathrooms
+  List<Place> _maleBathrooms;
+  /// [Map] containing all female bathrooms
+  List<Place> _femaleBathrooms;
+  /// [Map] containing all male bathrooms
+  List<Place> _vendingMachines;
   /// [Map] containing all POIs
   Map<int, PointOfInterest> _pointsOfInterest;
   /// [Graph] representing FEUP's building
@@ -24,7 +33,14 @@ class DataServer {
 
   /// Private Constructor
   DataServer._constructor() {
-    this._events = new Map<int, Event>();
+    // Events
+    this._lectures = new List<Event>();
+    this._workshops = new List<Event>();
+    // places
+    this._maleBathrooms = new List<Place>();
+    this._femaleBathrooms = new List<Place>();
+    this._vendingMachines = new List<Place>();
+    // Graph and POI
     this._pointsOfInterest = new Map<int, PointOfInterest>();
     this._poiGraph = new Graph();
     this._bfs = new BFS(this._poiGraph);
@@ -35,9 +51,25 @@ class DataServer {
     return _dataServerInstance;
   }
 
-  /// Getter member function for [_events]
-  /// returns a [Map] of [Event] Objects
-  Map<int, Event> get events => _events;
+  /// Getter member function for [_lectures]
+  /// returns a [List] of [Event] Objects
+  List<Event> get lectures => _lectures;
+
+  /// Getter member function for [_workshops]
+  /// returns a [List] of [Event] Objects
+  List<Event> get workshops => _workshops;
+
+  /// Getter member function for [_maleBathrooms]
+  /// returns a [List] of [Place] Objects
+  List<Place> get maleBathrooms => _maleBathrooms;
+
+  /// Getter member function for [_femaleBathrooms]
+  /// returns a [List] of [Place] Objects
+  List<Place> get femaleBathrooms => _femaleBathrooms;
+
+  /// Getter member function for [_femaleBathrooms]
+  /// returns a [List] of [Place] Objects
+  List<Place> get vendingMachines => _vendingMachines;
 
   /// Getter member function for [_pointsOfInterest]
   /// returns a [Map] of [PointOfInterest] Objects
@@ -47,20 +79,14 @@ class DataServer {
   /// returns a [BFS] Object
   BFS get bfs => _bfs;
 
-  /// Returns an event given its id
-  Event getEvent(int eventId) {
-    return this._events[eventId];
-  }
-
-  /// Returns a POI given its id
-  PointOfInterest getPOI(int pointId) {
-    return this._pointsOfInterest[pointId];
-  }
-
   /// Loads entire json files
   Future<void> loadData() async {
     // load event data
-    await this.loadEventData();
+    await this._loadLectureData();
+    await this._loadWorkshopData();
+    // load place data
+    await this._loadBathroomData();
+    await this._loadVendingMachinesData();
     // load POI data (Nodes and Edges)
     await this._loadPOIData();
     await this._loadConnectionData();
@@ -78,25 +104,6 @@ class DataServer {
     );
   }
 
-  /// Loads json file related to Events and returns json string
-  Future<String> _loadEventDataAsset() async {
-    return await rootBundle.loadString('assets/data/eventDataBase.json');
-  }
-
-  /// Creates [Event] objects from json file and stores them in a map
-  Future<void> loadEventData() async {
-    String jsonData = await this._loadEventDataAsset();
-    Map jsonEvents = jsonDecode(jsonData);
-
-    jsonEvents.forEach(
-      (k, v) {
-        int actualKey = int.parse(k);
-        this._events[actualKey] = Event.fromJson(v);
-      }
-    );
-
-  }
-
   /// Loads json file related to POIs and returns json string
   Future<String> _loadPOIDataAsset() async {
     return await rootBundle.loadString('assets/data/auxiliarPOIDataBase.json');
@@ -109,10 +116,10 @@ class DataServer {
     Map jsonPOIs = jsonDecode(jsonData);
 
     jsonPOIs.forEach(
-      (k, v) {
-        int actualKey = int.parse(k);
-        this._pointsOfInterest[actualKey] = PointOfInterest.fromJson(v);
-      }
+            (k, v) {
+          int actualKey = int.parse(k);
+          this._pointsOfInterest[actualKey] = PointOfInterest.fromJson(v);
+        }
     );
   }
 
@@ -129,15 +136,96 @@ class DataServer {
 
     int connectionId = 1;
     jsonPOIs.forEach(
-      (k, v) {
-        int sourcePointId = int.parse(k);
-        v.forEach(
-          (destPointId) {
-            this._pointsOfInterest[sourcePointId].addConnection(connectionId++, destPointId as int);
-          }
-        );
-      }
+            (k, v) {
+          int sourcePointId = int.parse(k);
+          v.forEach(
+                  (destPointId) {
+                this._pointsOfInterest[sourcePointId].addConnection(connectionId++, destPointId as int);
+              }
+          );
+        }
     );
   }
 
+  /// Loads json file related to lectures and returns json string
+  Future<String> _loadLectureDataAsset() async {
+    return await rootBundle.loadString('assets/data/lectureDataBase.json');
+  }
+
+  /// Creates [Event] objects from json file related to lectures and stores them in a map
+  Future<void> _loadLectureData() async {
+    String jsonData = await this._loadLectureDataAsset();
+    Map jsonEvents = jsonDecode(jsonData);
+
+    jsonEvents.forEach(
+            (k, v) {
+          this._lectures.add(Event.fromJson(v));
+        }
+    );
+  }
+
+  /// Loads json file related to workshops and returns json string
+  Future<String> _loadWorkshopDataAsset() async {
+    return await rootBundle.loadString('assets/data/workshopDataBase.json');
+  }
+
+  /// Creates [Event] objects from json file related to workshops and stores them in a map
+  Future<void> _loadWorkshopData() async {
+    String jsonData = await this._loadWorkshopDataAsset();
+    Map jsonEvents = jsonDecode(jsonData);
+
+    jsonEvents.forEach(
+            (k, v) {
+          this._workshops.add(Event.fromJson(v));
+        }
+    );
+  }
+
+  /// Loads json file related to male bathrooms and returns json string
+  Future<String> _loadMaleBathroomDataAsset() async {
+    return await rootBundle.loadString('assets/data/maleBathroomDataBase.json');
+  }
+
+  /// Loads json file related to female bathrooms and returns json string
+  Future<String> _loadFemaleBathroomDataAsset() async {
+    return await rootBundle.loadString('assets/data/femaleBathroomDataBase.json');
+  }
+
+  /// Creates [Place] objects from json file and stores them in a map
+  Future<void> _loadBathroomData() async {
+    String jsonData = await this._loadMaleBathroomDataAsset();
+    Map jsonEvents = jsonDecode(jsonData);
+
+    jsonEvents.forEach(
+       (k, v) {
+        this._maleBathrooms.add(Place.fromJson(v));
+       }
+    );
+
+    String jsonData2 = await this._loadFemaleBathroomDataAsset();
+    Map jsonEvents2 = jsonDecode(jsonData2);
+
+    jsonEvents2.forEach(
+            (k, v) {
+          this._femaleBathrooms.add(Place.fromJson(v));
+        }
+    );
+  }
+
+  /// Loads json file related to Vending Machines and returns json string
+  Future<String> _loadVendingMachinesDataAsset() async {
+    return await rootBundle.loadString('assets/data/lectureDataBase.json');
+  }
+
+  /// Creates [Place] objects from json file and stores them in a map
+  Future<void> _loadVendingMachinesData() async {
+    String jsonData = await this._loadVendingMachinesDataAsset();
+    Map jsonEvents = jsonDecode(jsonData);
+
+    jsonEvents.forEach(
+            (k, v) {
+          this._vendingMachines.add(Place.fromJson(v));
+        }
+    );
+  }
 }
