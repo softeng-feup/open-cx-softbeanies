@@ -262,5 +262,21 @@
       "longitude": -8.595094
     },
     "floor": 0
+  },
+  "34": {
+    "id": 34,
+    "location": {
+      "latitude": 41.177327,
+      "longitude": -8.595188
+    },
+    "floor": 0
+  },
+  "35": {
+    "id": 35,
+    "location": {
+      "latitude": 41.177471,
+      "longitude": -8.596009
+    },
+    "floor": 0
   }
 }
