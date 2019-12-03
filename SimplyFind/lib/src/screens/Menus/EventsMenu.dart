@@ -26,10 +26,6 @@ class EventsMenu extends StatelessWidget {
     }
     var numberOfEvents = events.length;
 
-    events.forEach((E) => {
-      print(E.name)
-    });
-
     return Scaffold(
         appBar: new MyCustomAppBar2(
           height: 14,
