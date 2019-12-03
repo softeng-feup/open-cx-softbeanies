@@ -3,39 +3,39 @@
     "name": "Cleaning you computer",
     "speaker": "Typical TechGuy",
     "room": "B201",
-    "date": "13-04-2019",
+    "date": "22-03-2020",
     "hour" : "9:45",
     "description": "Your momma would be so proud",
     "tags":[
       "Maintenance",
       "Telecommunications"
     ],
-    "poiId": 4
+    "pointId": 4
   },
   "2": {
     "name": "Introduction to React Native",
     "speaker": "NIAEFEUP",
     "room": "B204",
-    "date": "11-04-2019",
+    "date": "20-03-2020",
     "hour" : "12:45",
     "description": "Get money",
     "tags":[
       "Framework",
       "Mobile"
     ],
-    "poiId": 5
+    "pointId": 5
   },
   "3": {
     "name": "Build your own portfolio with Django",
     "speaker": "IEEE UP SB",
     "room": "B306",
-    "date": "11-04-2019",
+    "date": "20-03-2020",
     "hour" : "12:45",
     "description": "Show the web the cool things you do",
     "tags":[
       "Framework",
       "Web"
     ],
-    "poiId": 6
+    "pointId": 6
   }
 }
