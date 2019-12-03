@@ -1,5 +1,6 @@
 
-import 'package:simplyfind/POI/Place.dart';
+
+import 'Place.dart';
 
 /// Event
 class Event extends Place {

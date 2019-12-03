@@ -121,9 +121,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future requestLocationPermission() async {
-    Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.location]);
-    PermissionStatus permission;
-    if((permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.contacts)) == PermissionStatus.denied) {
+    await PermissionHandler().requestPermissions([PermissionGroup.location]);
+    if((await PermissionHandler().checkPermissionStatus(PermissionGroup.contacts)) == PermissionStatus.denied) {
       print("NO LOCATION ALLOWED. APP WONT FUNCTION PROPERLY.");
     }
   }

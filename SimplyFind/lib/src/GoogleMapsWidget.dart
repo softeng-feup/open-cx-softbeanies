@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../NavigationPage.dart';
-import '../POI/Event.dart';
 import '../POI/Place.dart';
-import '../POI/PointOfInterest.dart';
 import '../data/DataServer.dart';
 
 class GoogleMapsWidget extends StatefulWidget {
@@ -26,7 +24,6 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
    final Set<Polyline> _polyLines = new Set();
 
   static const LatLng _center = const LatLng(41.177634, -8.595764);
-  LatLng _lastMapPosition = _center; // usage is unsure
 
   _GoogleMapsWidgetState(List<Place> markers) {
     this.makeMarkers(markers);
@@ -51,28 +48,6 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
         )),
       });
     }
-  }
-
-  /*void makePolyline(List<PointOfInterest> points) {
-    if(points != null) {
-
-      List<LatLng> polyPoints = new List();
-      points.forEach((P) => {polyPoints.add(P.location)});
-
-      _polyLines.add(Polyline(
-        polylineId: PolylineId(_lastMapPosition.toString()),
-        visible: true,
-        points: polyPoints,
-        color: Colors.blue,
-        jointType: JointType.round,
-        startCap: Cap.roundCap,
-        endCap: Cap.roundCap,
-      ));
-    }
-  }*/
-
-  void _onCameraMove(CameraPosition position) {
-    _lastMapPosition = position.target;
   }
 
   void _resetPosition() {
@@ -111,7 +86,6 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       myLocationButtonEnabled: true,
       indoorViewEnabled: true,
       markers: _markers,
-      onCameraMove: _onCameraMove,
       mapType: MapType.terrain,
       polylines: _polyLines,
       minMaxZoomPreference: MinMaxZoomPreference(2, 24),
