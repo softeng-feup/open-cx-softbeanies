@@ -43,23 +43,15 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
         controller.animateCamera(CameraUpdate.newCameraPosition(
           CameraPosition(
             target: LatLng(location.latitude, location.longitude), zoom: 19)));
-        /*setState(() {
-          _polyLines.clear();
-          _polyLines.add(Polyline(
-            polylineId: PolylineId(_markers.first.toString()),
-            visible: true,
-            points: List<LatLng>.of([LatLng(_currentLocation.latitude,_currentLocation.longitude),server.getPOI(_destination.pointId).location]),
-            //points: server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), _places.first.pointId),
-            color: Colors.blue,
-            jointType: JointType.round,
-            startCap: Cap.roundCap,
-            endCap: Cap.roundCap,
-          ));
-        });*/
+        setState(() {
+          makePath(_destination);
+        });
       }
     });
     if(_destination != null) {
-      makePath(_destination);
+      setState(() {
+        makePath(_destination);
+      });
     }
   }
 
@@ -164,6 +156,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   }
 
   Future makePath(Place M) async {
+    _destination = M;
     if(_currentLocation == null)
       _currentLocation = await _myLocation.getLocation();
 
@@ -190,7 +183,6 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
     _polyLines.add(Polyline(
       polylineId: PolylineId(M.toString()),
       visible: true,
-      //points: List<LatLng>.of([LatLng(_currentLocation.latitude,_currentLocation.longitude),server.getPOI(M.pointId).location]),
       points:  path,
       // replace with path finding list
       color: Colors.blue,

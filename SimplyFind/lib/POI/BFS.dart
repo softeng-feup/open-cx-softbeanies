@@ -55,6 +55,8 @@ class BFS {
     // clear queue and visited points
     this._visitedPoints.clear();
     this._queue.clear();
+    this._path.clear();
+    this._predecessor.clear();
     // add sourcePoint to visited points
     this.addVisited(sourcePoint);
     // queue sourcePoint so it is the next POI to be visited
