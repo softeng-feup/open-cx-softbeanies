@@ -23,6 +23,8 @@ class DataServer {
   List<Place> _femaleBathrooms;
   /// [Map] containing all male bathrooms
   List<Place> _vendingMachines;
+  /// [Place] representative of Coffee Lounge location
+  Place _coffeeLounge;
   /// [Place] representative of check-in location
   Place _checkIn;
   /// [Map] containing all POIs
@@ -43,6 +45,7 @@ class DataServer {
     this._maleBathrooms = new List<Place>();
     this._femaleBathrooms = new List<Place>();
     this._vendingMachines = new List<Place>();
+    this._coffeeLounge = new Place("Coffee Lounge", "Coffee Lounge", 14);
     this._checkIn = new Place("Check In", "InfoDesk", 2);
     // Graph and POI
     this._pointsOfInterest = new Map<int, PointOfInterest>();
@@ -74,6 +77,10 @@ class DataServer {
   /// Getter member function for [_femaleBathrooms]
   /// returns a [List] of [Place] Objects
   List<Place> get vendingMachines => _vendingMachines;
+
+  /// Getter member function for [_coffeeLounge]
+  /// returns a [Place] Object containing information about Coffee Lounge location
+  Place get coffeeLounge => _coffeeLounge;
 
   /// Getter member function for [_checkIn]
   /// returns a [Place] Object containing information about Check-in location
