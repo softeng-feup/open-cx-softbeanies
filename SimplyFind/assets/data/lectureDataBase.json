@@ -2,7 +2,7 @@
   "1": {
     "name": "5G - The Future of Telecommunications",
     "speaker": "Maria Josefina",
-    "room": "B201",
+    "room": "B001",
     "date": "20-03-2020",
     "hour" : "12:45",
     "description": "5G is super cool",
@@ -10,12 +10,12 @@
       "5G",
       "Telecommunications"
     ],
-    "pointId": 1
+    "pointId": 11
   },
   "2": {
     "name": "Quantum Computing 101",
     "speaker": "Ademar Aguiar",
-    "room": "B204",
+    "room": "B002",
     "date": "20-03-2020",
     "hour" : "12:45",
     "description": "So is the cat dead or alive? Now you can find out :)",
@@ -23,12 +23,12 @@
       "Computing",
       "Physics"
     ],
-    "pointId": 2
+    "pointId": 12
     },
   "3": {
     "name": "Simplyfind App",
     "speaker": "Helena Ferreira",
-    "room": "B306",
+    "room": "B003",
     "date": "21-03-2020",
     "hour" : "12:45",
     "description": "Simplyfind is the best app ever",
@@ -36,6 +36,6 @@
       "World",
       "Physics"
     ],
-    "pointId": 8
+    "pointId": 13
   }
 }
