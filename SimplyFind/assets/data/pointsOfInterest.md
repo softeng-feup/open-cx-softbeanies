@@ -8,7 +8,7 @@
  - 5 - Second Hallway Junction
  - 6 - Third Hallway Junction
  - 7 - Fourth Hallway Junction
- - 8 - Cheeses :)
+ - 8 - Cheeses :)`(41.177650, -8.595751)`
  - 9 - Fifth Hallway Junction
  - 10 - Sixth Hallway Junction
  - 29 - First and Second Hallway Middle `(41.177875, -8.596998)`
