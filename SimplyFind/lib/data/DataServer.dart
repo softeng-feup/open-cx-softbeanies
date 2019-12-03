@@ -93,7 +93,7 @@ class DataServer {
       return coordsPath;
     }
     // get POI path
-    List<int> path = this._bfs.path;
+    List<int> path = this._bfs.path.reversed.toList();
     // build LatLng path from POI's id
     path.forEach(
       (pointId) {

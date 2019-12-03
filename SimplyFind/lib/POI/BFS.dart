@@ -75,7 +75,6 @@ class BFS {
           this._predecessor[connection.destPointId] = currentPoint;
           // add destination POI to queue
           this._queue.add(connection.destPointId);
-
           // stop BFS search when destination POI is found
           if (connection.destPointId == destinationPoint)
             return true;
