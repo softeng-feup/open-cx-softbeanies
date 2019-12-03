@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../Controller/DataServer.dart';
 import '../Widgets/ButtonOrange.dart';
 import '../AppBarCostumize.dart';
 import '../Search.dart';
 
 class FoodMenu extends StatelessWidget {
-  List<String> buttonTitles = ["Bar", "Grill", "Machines", "Coffe break"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,26 +12,38 @@ class FoodMenu extends StatelessWidget {
           height: 14,
           context: context,
           title: "Food",
-          backMenu: '/Options',
         ),
         body: SafeArea(
             child: new Container(
           color: Colors.white,
           child: Stack(
             children: <Widget>[
-              for (int i = 0; i < buttonTitles.length; i++)
-                ButtonOrange(
-                    x: 10,
-                    y: 4 + i * 20,
-                    title: buttonTitles[i],
-                    onPressed: () {
-                      Navigator.push(
+              ButtonOrange(
+                  x: 10,
+                  y: 17,
+                  title: "Machines",
+                  onPressed: () {
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            myLocation: 'my location', destination: buttonTitles[i], backMenu: '/Options'),
+                              destination: "Vending Machines",
+                              wantedPlaces: DataServer().vendingMachines),
                         ));
-                    }),
+                  }),
+              ButtonOrange(
+                  x: 10,
+                  y: 47,
+                  title: "Coffee Lounge",
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Search(
+                              destination: "Coffee Lounge",
+                              wantedPlaces: DataServer().vendingMachines),
+                        ));
+                  }),
             ],
           ),
         )));

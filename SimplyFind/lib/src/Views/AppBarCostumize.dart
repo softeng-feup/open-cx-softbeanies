@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
-  final String myLocation;
   final String destination;
-  final String backMenu;
 
-  const MyCustomAppBar({
+  MyCustomAppBar({
     Key key,
     @required this.height,
     @required this.context,
-    @required this.myLocation,
-    @required this.destination,
-    @required this.backMenu
+    @required this.destination
   }) : super(key: key);
 
+  String myLocation = "myLocation";
   @override
   Widget build(BuildContext c) {
     double finalHeight = (MediaQuery.of(context).size.height / 100 * this.height);
+    if (destination == "") {
+      myLocation = "";
+    }
     return Container(
       height: finalHeight,
       color: Color.fromRGBO(1, 38, 90, 1),
@@ -37,14 +37,15 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     icon: Icon(Icons.arrow_back),
                     color: Colors.white,
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, backMenu);
+                      Navigator.pop(context);
                     },
                   ),
                   Expanded(
                     child: new TextFormField(
+                      initialValue: myLocation,
                       decoration: new InputDecoration(
                         filled: true,
-                        labelText: myLocation ,
+                        labelText: "starting point" ,
                         fillColor: Colors.white,
                         contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
                         border: new OutlineInputBorder(
@@ -63,16 +64,22 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             new Padding(
               padding: EdgeInsets.only(
                 bottom: 0.05 * finalHeight,
-                left: MediaQuery.of(context).size.width * 0.12 ,
               ),
               child: Row(
                 children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    color: Color.fromRGBO(1, 38, 90, 1),
+                    onPressed: () {},
+                  ),
                   Expanded(
                     child: new TextFormField(
+                      initialValue: destination,
                       decoration: new InputDecoration(
-                        labelText: destination,
+                        labelText: "Destination",
                         filled: true,
                         fillColor: Colors.white,
+                        enabled: true,                        
                         contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
                         border: new OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(30.0),
@@ -109,14 +116,12 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
   final String title;
-  final String backMenu;
 
   const MyCustomAppBar2(
       {Key key,
       @required this.height,
       @required this.context,
-      @required this.title,
-      @required this.backMenu})
+      @required this.title})
       : super(key: key);
 
   @override
@@ -140,7 +145,7 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                   icon: Icon(Icons.arrow_back),
                   color: Colors.white,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, this.backMenu);
+                    Navigator.pop(context);
                   },
                 ),
               ),
@@ -151,7 +156,7 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 child: new Text(
                   this.title,
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: (6/ 100) * MediaQuery.of(context).size.width),
                 ),
               ),
             ],
@@ -160,7 +165,7 @@ class MyCustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
             child:
           Padding(
                 padding: EdgeInsets.only(
-                  top: topHeight - 0.95*topHeight,
+                  top: topHeight - 0.95 *topHeight,
                 ),
               child:    
               new Container(

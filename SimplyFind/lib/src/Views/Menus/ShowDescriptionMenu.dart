@@ -6,12 +6,10 @@ import '../Search.dart';
 class ShowDescriptionMenu extends StatelessWidget {
   final BuildContext context;
   final String title;
-  final String backMenu;
   final Event event;
   ShowDescriptionMenu(
       {this.context,
       @required this.title,
-      @required this.backMenu,
       @required this.event});
 
   @override
@@ -25,7 +23,7 @@ class ShowDescriptionMenu extends StatelessWidget {
 
     return Scaffold(
         appBar: new MyCustomAppBar2(
-            height: 14, context: context, title: title, backMenu: backMenu),
+            height: 14, context: context, title: title,),
         body: SafeArea(
             child: new Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -56,7 +54,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                         event.name,
                         textAlign: TextAlign.center,
                         style: new TextStyle(
-                            fontSize: 20.0, color: Color(0xFF073763)),
+                            fontSize: (6.7/ 100) * MediaQuery.of(context).size.width, color: Color(0xFF073763)),
                       ),
                     ),
                     for (int i = 0; i < text.length; i++)
@@ -68,7 +66,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                           text[i],
                           textAlign: TextAlign.center,
                           style: new TextStyle(
-                              fontSize: 17.0, color: Color(0xFF000000)),
+                              fontSize: (5/ 100) * MediaQuery.of(context).size.width, color: Color(0xFF000000)),
                         ),
                       ),
                     new Container(
@@ -79,7 +77,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                         "Description: ",
                         textAlign: TextAlign.center,
                         style: new TextStyle(
-                            fontSize: 16.0, color: Color(0xFF000000)),
+                            fontSize: (4.7/ 100) * MediaQuery.of(context).size.width, color: Color(0xFF000000)),
                       ),
                     ),
                     new Container(
@@ -92,7 +90,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                         event.description,
                         textAlign: TextAlign.center,
                         style: new TextStyle(
-                            fontSize: 16.0, color: Color(0xFF000000)),
+                            fontSize: (4.3/ 100) * MediaQuery.of(context).size.width, color: Color(0xFF000000)),
                       ),
                     ),
                   ])
@@ -107,7 +105,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                 child: new Text(
                   "Path",
                   style: new TextStyle(
-                    fontSize: 30.0,
+                    fontSize: (10/ 100) * MediaQuery.of(context).size.width,
                     color: Colors.white,
                   ),
                 ),
@@ -116,7 +114,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            Search( backMenu: backMenu, destination: event.room, myLocation: 'my Location',),
+                            Search(destination: event.room, wantedPlaces: [event]),
                       ));
                 },
                 padding: EdgeInsets.all(1.0),

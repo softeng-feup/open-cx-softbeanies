@@ -11,7 +11,6 @@ class OptionsMenu extends StatelessWidget {
           height: 14,
           context: context,
           title: "Options",
-          backMenu: '/',
         ),
         body: SafeArea(
             child: Container(
@@ -35,7 +34,7 @@ class OptionsMenu extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            myLocation: 'my location', destination: "Check-in", backMenu: '/Options'),
+                            destination: "Check-in", wantedPlaces: null,),
                         ));
                   },
                   legend: "Check In"),
@@ -72,7 +71,7 @@ class OptionsMenu extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            myLocation: 'my location', destination: "exit", backMenu: '/Options'
+                            destination: "exit", wantedPlaces: null,
                           ),
                         ));
                   },
