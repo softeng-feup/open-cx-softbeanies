@@ -164,20 +164,16 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
     _markers.clear();
     // add final marker
-    path.forEach(
-        (p) {
-      _markers.add(Marker(
-        markerId: MarkerId(p.hashCode.toString()),
-        position: p,
-        infoWindow: InfoWindow(
-          title: M.name,
-          snippet: M.room,
-        ),
-        icon: BitmapDescriptor.defaultMarkerWithHue(215),
-        zIndex: server.pointsOfInterest[M.pointId].floor.toDouble(),
-      ));
-      }
-    );
+    _markers.add(Marker(
+      markerId: MarkerId(M.hashCode.toString()),
+      position: server.pointsOfInterest[M.pointId].location,
+      infoWindow: InfoWindow(
+        title: M.name,
+        snippet: M.room,
+      ),
+      icon: BitmapDescriptor.defaultMarkerWithHue(215),
+      zIndex: server.pointsOfInterest[M.pointId].floor.toDouble(),
+    ));
 
     //make path
     _polyLines.add(Polyline(
