@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
 import 'package:permission_handler/permission_handler.dart';
+import '../data/DataServer.dart';
 import 'screens/Search.dart';
 import 'Controller.dart';
 import 'screens/Menus/EventsMenu.dart';
@@ -35,7 +37,7 @@ class MVCApp extends AppMVC {
         '/Food': (context) => FoodMenu(),
         '/Workshops': (context) => EventsMenu(title: "Workshops"),
         '/Wc': (context) => WcMenu(),
-        '/Search': (context) => Search( destination: '', wantedPlaces: null,),
+        '/Search': (context) => Search( destination: '', wantedPlaces: DataServer().everything,),
       },
     );
     return _app;
@@ -121,7 +123,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future requestLocationPermission() async {
-    await PermissionHandler().requestPermissions([PermissionGroup.location]);
+    try {
+      await PermissionHandler()
+          .requestPermissions([PermissionGroup.location]);
+    } on PlatformException catch(e) {
+      print(e);
+    }
     if((await PermissionHandler().checkPermissionStatus(PermissionGroup.contacts)) == PermissionStatus.denied) {
       print("NO LOCATION ALLOWED. APP WONT FUNCTION PROPERLY.");
     }

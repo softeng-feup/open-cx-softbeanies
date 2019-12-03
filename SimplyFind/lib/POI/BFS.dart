@@ -38,14 +38,15 @@ class BFS {
   List<int> get path => _path;
 
   /// Main member function to perform search and build path
-  void execute(int sourcePoint, int destinationPoint) {
+  bool execute(int sourcePoint, int destinationPoint) {
     // perform search
     if (!this.performSearch(sourcePoint, destinationPoint)) {
-      // search failed, there is no possible path (warn user)
-      return;
+      // search failed, there is no possible path
+      return false;
     }
     // build path
     this.buildPath(sourcePoint, destinationPoint);
+    return true;
   }
 
   /// Performs a breadth-first search, clear [_visitedPoints] and [queue],
@@ -54,6 +55,8 @@ class BFS {
     // clear queue and visited points
     this._visitedPoints.clear();
     this._queue.clear();
+    this._path.clear();
+    this._predecessor.clear();
     // add sourcePoint to visited points
     this.addVisited(sourcePoint);
     // queue sourcePoint so it is the next POI to be visited
@@ -74,7 +77,6 @@ class BFS {
           this._predecessor[connection.destPointId] = currentPoint;
           // add destination POI to queue
           this._queue.add(connection.destPointId);
-
           // stop BFS search when destination POI is found
           if (connection.destPointId == destinationPoint)
             return true;

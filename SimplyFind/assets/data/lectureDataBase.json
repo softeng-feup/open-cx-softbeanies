@@ -10,7 +10,7 @@
       "5G",
       "Telecommunications"
     ],
-    "pointId": 7
+    "pointId": 11
   },
   "2": {
     "name": "Quantum Computing 101",
@@ -23,7 +23,7 @@
       "Computing",
       "Physics"
     ],
-    "pointId": 8
+    "pointId": 12
     },
   "3": {
     "name": "Simplyfind App",
@@ -36,6 +36,45 @@
       "World",
       "Physics"
     ],
-    "pointId":9
+    "pointId":13
+  },
+  "4": {
+    "name": "Flutter is the new mobile king",
+    "speaker": "Google",
+    "room": "B003",
+    "date": "21-03-2020",
+    "hour" : "12:45",
+    "description": "Get to know the next big thing in mobile development",
+    "tags":[
+      "World",
+      "Physics"
+    ],
+    "pointId":13
+  },
+  "5": {
+    "name": "Can chickens even cross roads?",
+    "speaker": "A random guy",
+    "room": "B001",
+    "date": "21-03-2020",
+    "hour" : "12:45",
+    "description": "Quack?",
+    "tags":[
+      "World",
+      "Physics"
+    ],
+    "pointId":11
+  },
+  "6": {
+    "name": "Getting super rich by laying on your ass",
+    "speaker": "A random guy",
+    "room": "B002",
+    "date": "21-03-2020",
+    "hour" : "12:45",
+    "description": "Ever watched a random youtube add about getting rich? Watch it in person.",
+    "tags":[
+      "World",
+      "Physics"
+    ],
+    "pointId":12
   }
 }

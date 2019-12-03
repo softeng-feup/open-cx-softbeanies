@@ -1,0 +1,42 @@
+{
+  "1": {
+    "name": "Main Entrance",
+    "room": "Building A",
+    "pointId": 1
+  },
+  "2": {
+    "name": "Fire Exit",
+    "room": "Building B",
+    "pointId": 23
+  },
+  "3": {
+    "name": "Fire Exit",
+    "room": "Building B",
+    "pointId": 24
+  },
+  "4": {
+    "name": "Fire Exit",
+    "room": "Building B",
+    "pointId": 25
+  },
+  "5": {
+    "name": "Fire Exit",
+    "room": "Building B",
+    "pointId": 26
+  },
+  "6": {
+    "name": "Garden Exit",
+    "room": "Building B",
+    "pointId": 27
+  },
+  "7": {
+    "name": "Garden Exit",
+    "room": "Building B",
+    "pointId": 28
+  },
+  "8": {
+    "name": "Library Exit",
+    "room": "Building B",
+    "pointId": 33
+  }
+}
