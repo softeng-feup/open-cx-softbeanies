@@ -94,6 +94,10 @@ class DataServer {
   /// returns a [Place] Object containing information about Check-in location
   Place get checkIn => _checkIn;
 
+  ///TEMPORARY GETTER
+  ///gets every Place in database
+  List<Place> get everything => [_lectures,_workshops,_maleBathrooms,_femaleBathrooms,_vendingMachines,_exits,[_coffeeLounge,_checkIn]].expand((x) => x).toList();
+
   /// Getter member function for [_pointsOfInterest]
   /// returns a [Map] of [PointOfInterest] Objects
   Map<int, PointOfInterest> get pointsOfInterest => _pointsOfInterest;
