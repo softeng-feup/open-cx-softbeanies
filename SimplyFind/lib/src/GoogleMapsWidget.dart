@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-import '../NavigationPage.dart';
 import '../POI/Place.dart';
 import '../data/DataServer.dart';
 
@@ -23,8 +21,9 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   DataServer server = new DataServer();
   LocationData _currentLocation;
   Location _myLocation = new Location();
-   final Set<Marker> _markers = new Set();
-   final Set<Polyline> _polyLines = new Set();
+  final Set<Marker> _markers = new Set();
+  final Set<Polyline> _polyLines = new Set();
+  Event _destination;
 
   static const LatLng _center = const LatLng(41.177634, -8.595764);
 
@@ -35,30 +34,27 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   @override
   void initState() {
     super.initState();
-    initLocationState();
-  }
-
-  initLocationState() async {
-    await _myLocation.changeSettings(accuracy: LocationAccuracy.NAVIGATION);
-
-    try {
-      bool activeService = await _myLocation.serviceEnabled();
-      if(activeService) {
-        if(await _myLocation.requestPermission()) {
-          _currentLocation = await _myLocation.getLocation();
-          _myLocation.onLocationChanged().listen((LocationData data) async {
-            _currentLocation = data;
-            if(_polyLines.isNotEmpty) {
-              controller.animateCamera(CameraUpdate.newCameraPosition(
-                  CameraPosition(target: LatLng(data.latitude,data.longitude),zoom: 16)));
-            }
-          });
-        }
+    _myLocation.onLocationChanged().listen((LocationData location) {
+      _currentLocation = location;
+      if (_polyLines.isNotEmpty) {
+        controller.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(
+            target: LatLng(location.latitude, location.longitude), zoom: 19)));
+        /*setState(() {
+          _polyLines.clear();
+          _polyLines.add(Polyline(
+            polylineId: PolylineId(_markers.first.toString()),
+            visible: true,
+            points: List<LatLng>.of([LatLng(_currentLocation.latitude,_currentLocation.longitude),server.getPOI(_destination.pointId).location]),
+            //points: server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), _places.first.pointId),
+            color: Colors.blue,
+            jointType: JointType.round,
+            startCap: Cap.roundCap,
+            endCap: Cap.roundCap,
+          ));
+        });*/
       }
-    } on PlatformException catch(e) {
-      print(e);
-    }
-
+    });
   }
 
    void makeMarkers(List<Place> markers) {
@@ -71,10 +67,10 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
           title: M.name,
           snippet: M.room,
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => NavigationPage()));
-            },
-          ),
+                  setState(() {
+                    makePath(M);
+                  });
+                },
           icon: BitmapDescriptor.defaultMarkerWithHue(215),
           zIndex: server.pointsOfInterest[M.pointId].floor.toDouble(),
         )),
@@ -83,13 +79,12 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   }
   
   void _resetPosition() {
-    if(_markers != null) {
+    if (_markers != null) {
       controller.animateCamera(CameraUpdate.newCameraPosition(
           CameraPosition(target: _markers.first.position, zoom: 17)));
-    }
-    else {
+    } else {
       controller.animateCamera(CameraUpdate.newCameraPosition(
-          CameraPosition(target: _center, zoom: 17,bearing: 90)));
+          CameraPosition(target: _center, zoom: 17, bearing: 90)));
     }
   }
 
@@ -136,11 +131,11 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
             children: <Widget>[
               FittedBox(
                 child: FloatingActionButton(
-                    heroTag: "home",
-                    onPressed: _resetPosition,
-                    materialTapTargetSize: MaterialTapTargetSize.padded,
-                    backgroundColor: Color.fromRGBO(1, 38, 90, 1),
-                    child: const Icon(Icons.home, size: 24.0)),
+                  heroTag: "home",
+                  onPressed: _resetPosition,
+                  materialTapTargetSize: MaterialTapTargetSize.padded,
+                  backgroundColor: Color.fromRGBO(1, 38, 90, 1),
+                  child: const Icon(Icons.home, size: 24.0)),
               )
             ],
           ),
@@ -159,5 +154,41 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
         ),
       ),
     );
+  }
+
+  void makePath(Event M) {
+    _destination = M;
+    _markers.clear();
+
+    List<LatLng> path = server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), M.pointId);
+
+    // add final marker
+    path.forEach(
+        (p) {
+      _markers.add(Marker(
+        markerId: MarkerId(p.hashCode.toString()),
+        position: p,
+        infoWindow: InfoWindow(
+          title: M.name,
+          snippet: M.description + " | " + M.room,
+        ),
+        icon: BitmapDescriptor.defaultMarkerWithHue(215),
+        zIndex: server.getPOI(M.pointId).floor.toDouble(),
+      ));
+      }
+    );
+
+    //make path
+    _polyLines.add(Polyline(
+      polylineId: PolylineId(M.toString()),
+      visible: true,
+      //points: List<LatLng>.of([LatLng(_currentLocation.latitude,_currentLocation.longitude),server.getPOI(M.pointId).location]),
+      points:  path,
+      // replace with path finding list
+      color: Colors.blue,
+      jointType: JointType.round,
+      startCap: Cap.roundCap,
+      endCap: Cap.roundCap,
+    ));
   }
 }

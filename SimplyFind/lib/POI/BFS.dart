@@ -38,14 +38,15 @@ class BFS {
   List<int> get path => _path;
 
   /// Main member function to perform search and build path
-  void execute(int sourcePoint, int destinationPoint) {
+  bool execute(int sourcePoint, int destinationPoint) {
     // perform search
     if (!this.performSearch(sourcePoint, destinationPoint)) {
-      // search failed, there is no possible path (warn user)
-      return;
+      // search failed, there is no possible path
+      return false;
     }
     // build path
     this.buildPath(sourcePoint, destinationPoint);
+    return true;
   }
 
   /// Performs a breadth-first search, clear [_visitedPoints] and [queue],

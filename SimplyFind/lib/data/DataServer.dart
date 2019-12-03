@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../POI/BFS.dart';
 import '../POI/Connection.dart';
 import '../POI/Graph.dart';
@@ -78,6 +79,29 @@ class DataServer {
   /// Getter member function for [_bfs]
   /// returns a [BFS] Object
   BFS get bfs => _bfs;
+
+  /// return path from event given
+  List<LatLng> getPathToPOI(LatLng userPosition, int destinationPoint) {
+    List<LatLng> coordsPath = new List<LatLng>();
+    // user position is the first element to be displayed on list
+    coordsPath.add(userPosition);
+    // get closest POI from userPosition and find path from closest POI to destination POI
+    PointOfInterest closestPOI = this._poiGraph.getClosestPointOfInterest(userPosition);
+    if (!this._bfs.execute(closestPOI.id, destinationPoint)) {
+      // search failed, return list with user position and destination point
+      coordsPath.add(this._pointsOfInterest[destinationPoint].location);
+      return coordsPath;
+    }
+    // get POI path
+    List<int> path = this._bfs.path;
+    // build LatLng path from POI's id
+    path.forEach(
+      (pointId) {
+        coordsPath.add(this._pointsOfInterest[pointId].location);
+      }
+    );
+    return coordsPath;
+  }
 
   /// Loads entire json files
   Future<void> loadData() async {
