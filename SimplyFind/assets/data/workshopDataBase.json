@@ -2,7 +2,7 @@
   "1": {
     "name": "Cleaning you computer",
     "speaker": "Typical TechGuy",
-    "room": "B201",
+    "room": "B004",
     "date": "22-03-2020",
     "hour" : "9:45",
     "description": "Your momma would be so proud",
@@ -28,7 +28,7 @@
   "3": {
     "name": "Build your own portfolio with Django",
     "speaker": "IEEE UP SB",
-    "room": "B306",
+    "room": "B014",
     "date": "20-03-2020",
     "hour" : "12:45",
     "description": "Show the web the cool things you do",
@@ -37,5 +37,44 @@
       "Web"
     ],
     "pointId": 35
+  },
+  "4": {
+    "name": "WebDesign 101",
+    "speaker": "FakeCompany",
+    "room": "B020",
+    "date": "20-03-2020",
+    "hour" : "12:45",
+    "description": "Show the web the cool things you do",
+    "tags":[
+      "Framework",
+      "Web"
+    ],
+    "pointId": 36
+  },
+  "5": {
+    "name": "Enhance your Photoshop Skills",
+    "speaker": "Julieta Frade",
+    "room": "B035",
+    "date": "20-03-2020",
+    "hour" : "12:45",
+    "description": "Ever tried to do a face swap with your dog? Now you can!",
+    "tags":[
+      "Framework",
+      "Web"
+    ],
+    "pointId": 37
+  },
+  "6": {
+    "name": "Crypto Currency is dead",
+    "speaker": "Art of Money",
+    "room": "B033",
+    "date": "20-03-2020",
+    "hour" : "12:45",
+    "description": "Show the web the cool things you do",
+    "tags":[
+      "Money",
+      "Rich"
+    ],
+    "pointId": 38
   }
 }
