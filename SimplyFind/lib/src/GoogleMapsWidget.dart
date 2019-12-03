@@ -63,7 +63,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
           position: server.pointsOfInterest[M.pointId].location,
           infoWindow: InfoWindow(
           title: M.name,
-          snippet: M.room,
+          snippet: M.room + " Floor: " +  server.pointsOfInterest[M.pointId].floor.toString(),
             onTap: () {
                   setState(() {
                     makePath(M);
@@ -71,7 +71,6 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
                 },
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(215),
-          zIndex: server.pointsOfInterest[M.pointId].floor.toDouble(),
         )),
       });
     }
@@ -169,10 +168,9 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       position: server.pointsOfInterest[M.pointId].location,
       infoWindow: InfoWindow(
         title: M.name,
-        snippet: M.room,
+        snippet: M.room + " Floor: " + server.pointsOfInterest[M.pointId].floor.toString(),
       ),
       icon: BitmapDescriptor.defaultMarkerWithHue(215),
-      zIndex: server.pointsOfInterest[M.pointId].floor.toDouble(),
     ));
 
     //make path
