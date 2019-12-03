@@ -13,16 +13,18 @@ import '../POI/Event.dart';
 
 /// Data Server simulation
 class DataServer {
-  /// [Map] containing all lectures
+  /// [List] containing all lectures
   List<Event> _lectures;
-  /// [Map] containing all workshops
+  /// [List] containing all workshops
   List<Event> _workshops;
-  /// [Map] containing all male bathrooms
+  /// [List] containing all male bathrooms
   List<Place> _maleBathrooms;
-  /// [Map] containing all female bathrooms
+  /// [List] containing all female bathrooms
   List<Place> _femaleBathrooms;
-  /// [Map] containing all male bathrooms
+  /// [List] containing all male bathrooms
   List<Place> _vendingMachines;
+  /// [List] containing all male bathrooms
+  List<Place> _exits;
   /// [Place] representative of Coffee Lounge location
   Place _coffeeLounge;
   /// [Place] representative of check-in location
@@ -45,6 +47,8 @@ class DataServer {
     this._maleBathrooms = new List<Place>();
     this._femaleBathrooms = new List<Place>();
     this._vendingMachines = new List<Place>();
+    this._exits = new List<Place>();
+    // specific places
     this._coffeeLounge = new Place("Coffee Lounge", "Coffee Lounge", 14);
     this._checkIn = new Place("Check In", "InfoDesk", 2);
     // Graph and POI
@@ -74,9 +78,13 @@ class DataServer {
   /// returns a [List] of [Place] Objects
   List<Place> get femaleBathrooms => _femaleBathrooms;
 
-  /// Getter member function for [_femaleBathrooms]
+  /// Getter member function for [_vendingMachines]
   /// returns a [List] of [Place] Objects
   List<Place> get vendingMachines => _vendingMachines;
+
+  /// Getter member function for [_exits]
+  /// returns a [List] of [Place] Objects
+  List<Place> get exits => _exits;
 
   /// Getter member function for [_coffeeLounge]
   /// returns a [Place] Object containing information about Coffee Lounge location
@@ -125,6 +133,7 @@ class DataServer {
     // load place data
     await this._loadBathroomData();
     await this._loadVendingMachinesData();
+    await this._loadExitsData();
     // load POI data (Nodes and Edges)
     await this._loadPOIData();
     await this._loadConnectionData();
@@ -263,6 +272,23 @@ class DataServer {
     jsonEvents.forEach(
             (k, v) {
           this._vendingMachines.add(Place.fromJson(v));
+        }
+    );
+  }
+
+  /// Loads json file related to Vending Machines and returns json string
+  Future<String> _loadExitsDataAsset() async {
+    return await rootBundle.loadString('assets/data/exitsDataBase.json');
+  }
+
+  /// Creates [Place] objects from json file and stores them in a map
+  Future<void> _loadExitsData() async {
+    String jsonData = await this._loadExitsDataAsset();
+    Map jsonEvents = jsonDecode(jsonData);
+
+    jsonEvents.forEach(
+            (k, v) {
+          this._exits.add(Place.fromJson(v));
         }
     );
   }
