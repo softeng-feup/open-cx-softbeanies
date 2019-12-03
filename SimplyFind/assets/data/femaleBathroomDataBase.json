@@ -2,16 +2,16 @@
   "1": {
     "name": "Female WC",
     "room": "Female WC",
-    "pointId": 20
+    "pointId": 1
   },
   "2": {
     "name": "Female WC",
     "room": "Female WC",
-    "pointId": 21
+    "pointId": 2
   },
   "3": {
     "name": "Female WC",
     "room": "Female WC",
-    "pointId": 22
+    "pointId": 3
   }
 }

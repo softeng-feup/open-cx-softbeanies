@@ -10,7 +10,7 @@
       "Maintenance",
       "Telecommunications"
     ],
-    "pointId": 34
+    "pointId": 4
   },
   "2": {
     "name": "Introduction to React Native",
@@ -23,7 +23,7 @@
       "Framework",
       "Mobile"
     ],
-    "pointId": 34
+    "pointId": 5
   },
   "3": {
     "name": "Build your own portfolio with Django",
@@ -36,6 +36,6 @@
       "Framework",
       "Web"
     ],
-    "pointId": 35
+    "pointId": 6
   }
 }

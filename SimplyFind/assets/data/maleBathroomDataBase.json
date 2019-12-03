@@ -2,16 +2,16 @@
   "1": {
     "name": "Male WC",
     "room": "Male WC",
-    "pointId": 17
+    "pointId": 1
   },
   "2": {
     "name": "Male WC",
     "room": "Male WC",
-    "pointId": 18
+    "pointId": 2
   },
   "3": {
     "name": "Male WC",
     "room": "Male WC",
-    "pointId": 19
+    "pointId": 3
   }
 }
