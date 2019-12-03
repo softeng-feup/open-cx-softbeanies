@@ -10,7 +10,7 @@
       "5G",
       "Telecommunications"
     ],
-    "pointId": 7
+    "pointId": 11
   },
   "2": {
     "name": "Quantum Computing 101",
@@ -23,7 +23,7 @@
       "Computing",
       "Physics"
     ],
-    "pointId": 8
+    "pointId": 12
     },
   "3": {
     "name": "Simplyfind App",
@@ -36,6 +36,6 @@
       "World",
       "Physics"
     ],
-    "pointId":9
+    "pointId":13
   }
 }

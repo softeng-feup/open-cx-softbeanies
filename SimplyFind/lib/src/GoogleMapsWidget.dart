@@ -23,12 +23,15 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   Location _myLocation = new Location();
   final Set<Marker> _markers = new Set();
   final Set<Polyline> _polyLines = new Set();
-  Event _destination;
+  Place _destination;
 
   static const LatLng _center = const LatLng(41.177634, -8.595764);
 
   _GoogleMapsWidgetState(List<Place> markers) {
     this.makeMarkers(markers);
+    if(markers.length == 1) {
+      _destination = markers.first;
+    }
   }
   
   @override
@@ -55,6 +58,9 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
         });*/
       }
     });
+    if(_destination != null) {
+      makePath(_destination);
+    }
   }
 
    void makeMarkers(List<Place> markers) {
@@ -71,6 +77,7 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
                     makePath(M);
                   });
                 },
+          ),
           icon: BitmapDescriptor.defaultMarkerWithHue(215),
           zIndex: server.pointsOfInterest[M.pointId].floor.toDouble(),
         )),
@@ -156,12 +163,13 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
     );
   }
 
-  void makePath(Event M) {
-    _destination = M;
-    _markers.clear();
+  Future makePath(Place M) async {
+    if(_currentLocation == null)
+      _currentLocation = await _myLocation.getLocation();
 
     List<LatLng> path = server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), M.pointId);
 
+    _markers.clear();
     // add final marker
     path.forEach(
         (p) {
@@ -170,10 +178,10 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
         position: p,
         infoWindow: InfoWindow(
           title: M.name,
-          snippet: M.description + " | " + M.room,
+          snippet: M.room,
         ),
         icon: BitmapDescriptor.defaultMarkerWithHue(215),
-        zIndex: server.getPOI(M.pointId).floor.toDouble(),
+        zIndex: server.pointsOfInterest[M.pointId].floor.toDouble(),
       ));
       }
     );
