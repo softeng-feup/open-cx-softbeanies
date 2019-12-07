@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../Controller/DataServer.dart';
 import '../Search.dart';
 import '../AppBarCostumize.dart';
 import '../Widgets/ButtonWithImage.dart';
@@ -34,7 +35,7 @@ class OptionsMenu extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            destination: "Check-in", wantedPlaces: null,),
+                            destination: "Check-in", wantedPlaces: [DataServer().checkIn],),
                         ));
                   },
                   legend: "Check In"),
@@ -71,7 +72,7 @@ class OptionsMenu extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            destination: "exit", wantedPlaces: null,
+                            destination: "exit", wantedPlaces: DataServer().exits,
                           ),
                         ));
                   },

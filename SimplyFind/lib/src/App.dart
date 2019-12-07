@@ -5,6 +5,7 @@ import 'Views/Menus/FoodMenu.dart';
 import 'Views/Menus/WcMenu.dart';
 import 'Views/Menus/OptionsMenu.dart';
 import 'Views/HomePage.dart';
+import 'Controller/DataServer.dart';
 
 class MVCApp extends StatelessWidget {
 
@@ -24,7 +25,7 @@ class MVCApp extends StatelessWidget {
         '/Food': (context) => FoodMenu(),
         '/Workshops': (context) => EventsMenu(title: "Workshops"),
         '/Wc': (context) => WcMenu(),
-        '/Search': (context) => Search( destination: '', wantedPlaces: null,),
+        '/Search': (context) => Search( destination: '', wantedPlaces: DataServer().everything,),
       },
     );
     return _app;
