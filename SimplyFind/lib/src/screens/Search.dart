@@ -6,11 +6,13 @@ import 'AppBarCostumize.dart';
 class Search extends StatelessWidget {
   final String destination;
   final List<Place> wantedPlaces;
+
   Search({
     Key key,
     @required this.wantedPlaces, /*if null the user is seaching by name and not category */
     @required this.destination,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext ctxt) {
     return new MaterialApp(
@@ -22,3 +24,4 @@ class Search extends StatelessWidget {
     );
   }
 }
+
