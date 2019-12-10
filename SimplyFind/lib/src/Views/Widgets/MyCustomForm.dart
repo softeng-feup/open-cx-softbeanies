@@ -1,8 +1,8 @@
 // Define a corresponding State class.
 // This class holds the data related to the Form.
 import 'package:flutter/material.dart';
-import 'package:simplyfind/src/Controller/DataServer.dart';
-import 'package:simplyfind/src/Views/Search.dart';
+import '../../Controller/DataServer.dart';
+import '../Search.dart';
 
 // Define a custom Form widget.
 class MyCustomForm extends StatefulWidget {
