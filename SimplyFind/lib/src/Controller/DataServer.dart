@@ -105,6 +105,18 @@ class DataServer {
   /// returns a [BFS] Object
   BFS get bfs => _bfs;
 
+  List<Place> getRoom(String room){
+    List<Place> possiblePlaces = everything;
+    for(int i=0; i < possiblePlaces.length; i++){
+      if(possiblePlaces.elementAt(i).room == room){
+        List<Place> wantedPlace = new List<Place>();
+        wantedPlace.add(possiblePlaces.elementAt(i));
+        return wantedPlace;
+      }
+    }
+    return [];
+  }
+
   /// return path from event given
   List<LatLng> getPathToPOI(LatLng userPosition, int destinationPoint) {
     List<LatLng> coordsPath = new List<LatLng>();
@@ -294,17 +306,5 @@ class DataServer {
           this._exits.add(Place.fromJson(v));
         }
     );
-  }
-
-  List<Place> getRoom(String room){
-    List<Place> possiblePlaces = everything;
-    for(int i=0; i < possiblePlaces.length; i++){
-      if( possiblePlaces.elementAt(i).room == room){
-        List<Place> wantedPlace = new List<Place>();
-        wantedPlace.add(possiblePlaces.elementAt(i));
-        return wantedPlace;
-      }
-    }
-    return [];
   }
 }
