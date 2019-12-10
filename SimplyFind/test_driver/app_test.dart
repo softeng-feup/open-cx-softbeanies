@@ -1,11 +1,23 @@
-import 'package:flutter_driver/driver_extension.dart';
-import 'package:simplyfind/main.dart' as app;
+import 'dart:async';
+import 'package:flutter_gherkin/flutter_gherkin.dart';
+import 'package:gherkin/gherkin.dart';
+import 'package:glob/glob.dart';
 
-void main() {
-  // enable flutter driver extension.
-  enableFlutterDriverExtension();
-
-  // Call the `main()` function of the app, or call `runApp` with
-  // any widget you are interested in testing.
-  app.main();
+Future<void> main() {
+  final config = FlutterTestConfiguration()
+    ..features = [Glob(r"test_driver/features/**.feature")]
+    ..reporters = [
+      ProgressReporter(),
+      TestRunSummaryReporter(),
+      JsonReporter(path: './report.json')
+    ] // you can include the "StdoutReporter()" without the message level parameter for verbose log information
+    ..hooks = []
+    ..stepDefinitions = []
+    ..customStepParameterDefinitions = []
+    ..restartAppBetweenScenarios = true
+    ..targetAppPath = "test_driver/app.dart"
+  // ..tagExpression = "@smoke" // uncomment to see an example of running scenarios based on tag expressions
+    ..exitAfterTestRun = true; // set to false if debugging to exit cleanly
+  return GherkinRunner().execute(config);
 }
+
