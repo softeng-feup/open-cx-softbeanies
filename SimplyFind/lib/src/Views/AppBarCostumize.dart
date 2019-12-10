@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:simplyfind/src/Model-POI/Place.dart';
 import 'package:simplyfind/src/Views/Widgets/MyCustomForm.dart';
 
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
+  /*parameters needed fot the search bar */
   final String destination;
-  String location = "Starting point";
-  String dest = "Destination";
+  final String location;
+  final List<Place> wantedPlaces;
+  final Place origin;
 
   MyCustomAppBar({
     Key key,
     @required this.height,
     @required this.context,
-    @required this.destination
+    @required this.destination,
+    @required this.location,
+    @required this.wantedPlaces,
+    @required this.origin,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext c) {
     double finalHeight = (MediaQuery.of(context).size.height / 100 * this.height);
-    if (destination != "") {
-      location = "my location";
-      dest = this.destination ;
-    }
     return Container(
       height: finalHeight,
       color: Color.fromRGBO(1, 38, 90, 1),
@@ -44,7 +46,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     },
                   ),
                   Expanded(
-                    child: new MyCustomForm(finalHeight: finalHeight, label: location,context: context,),
+                    child: new MyCustomForm(finalHeight: finalHeight, context: context, type: "origin", origin: origin,wantedPlaces: wantedPlaces, destination: destination, location: location,),
                   ),
                 ],
               ),
@@ -61,7 +63,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: () {},
                   ),
                   Expanded(
-                    child: new MyCustomForm(finalHeight: finalHeight, label: dest, context: context,),
+                    child: new MyCustomForm(finalHeight: finalHeight, context: context, type: "destination", origin: origin, wantedPlaces: wantedPlaces, location: location, destination: destination,),
                   ),
                 ],
               ),

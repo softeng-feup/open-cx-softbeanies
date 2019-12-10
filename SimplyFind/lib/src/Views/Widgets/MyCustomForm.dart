@@ -1,23 +1,31 @@
 // Define a corresponding State class.
 // This class holds the data related to the Form.
 import 'package:flutter/material.dart';
+import 'package:simplyfind/src/Model-POI/Place.dart';
 import '../../Controller/DataServer.dart';
 import '../Search.dart';
 
 // Define a custom Form widget.
 class MyCustomForm extends StatefulWidget {
   final double finalHeight;
-  final String label;
+  final String location;
   final BuildContext context;
+  final String type;
+  final Place origin;
+  final String destination;
+  final List<Place> wantedPlaces;
 
   MyCustomForm( {
     Key key,
     @required this.finalHeight,
-    @required this.label,
-    @required this.context }) : super(key: key);
+    @required this.location,
+    @required this.type,
+    @required this.origin, this.destination,
+    @required this.context,
+    @required this.wantedPlaces }) : super(key: key);
 
   @override
-  MyCustomFormState createState() => MyCustomFormState( finalHeight, label, context);
+  MyCustomFormState createState() => MyCustomFormState( finalHeight, location, context, type, origin, destination, wantedPlaces);
 }
 
 class MyCustomFormState extends State<MyCustomForm> {
@@ -25,10 +33,16 @@ class MyCustomFormState extends State<MyCustomForm> {
   // of the TextField.
   final myController = TextEditingController();
   final double finalHeight;
-  final String label;
+  final String location;
   final BuildContext context;
+  final String type;
+  final Place origin;
+  final String destination;
+  final List<Place> wantedPlaces;
+  String label;
 
-  MyCustomFormState(this.finalHeight, this.label, this.context);
+
+  MyCustomFormState(this.finalHeight, this.location, this.context, this.type, this.origin, this.destination, this.wantedPlaces);
 
   @override
   void dispose() {
@@ -38,87 +52,74 @@ class MyCustomFormState extends State<MyCustomForm> {
   }
 
   void _handleSubmission(String text) {
+    List<Place> newPlaces = new List();
+
 // Not triggered when you press enter on keyboard in  android simulator
 // Triggers if you tap on the Done button.
   switch(myController.text.toUpperCase() ) {
     case "WC MALE":
     case "MALE WC":
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                Search(
-                    destination: myController.text,
-                    wantedPlaces: DataServer().maleBathrooms),
-          ));
+      newPlaces = DataServer().getRoom("Male WC");
       break;
 
     case "WC FEMALE":
     case "FEMALE WC":
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                Search(
-                    destination: myController.text,
-                    wantedPlaces: DataServer().femaleBathrooms),
-          ));
+      newPlaces = DataServer().getRoom("Female WC");
       break;
 
     case "MACHINES":
     case "VENDING MACHINES":
     case "MACHINE":
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                Search(
-                    destination: "Vending Machines",
-                    wantedPlaces: DataServer().vendingMachines),
-          ));
+      newPlaces = DataServer().vendingMachines;
       break;
-    case "COFFEE LOUNGE":case "COFFEE BREAK":
-    Navigator.pop(context);
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Search(
-                destination: "Coffee Lounge",
-                wantedPlaces: [DataServer().coffeeLounge]),
-          ));
+    case "COFFEE LOUNGE":
+    case "COFFEE BREAK":
+      newPlaces = [DataServer().coffeeLounge];
       break;
-    case "CHECK-IN":case"CHECKIN":case"CHECK IN":
-    Navigator.pop(context);
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Search(
-              destination: "Check-in", wantedPlaces: [DataServer().checkIn],),
-          ));
+    case "CHECK-IN":
+    case"CHECKIN":
+    case"CHECK IN":
+      newPlaces = [DataServer().checkIn];
       break;
-    case "EXIT":case"EXITS":
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Search(
-              destination: "exit", wantedPlaces: DataServer().exits,
-            ),
-          ));
+    case "EXIT":
+    case"EXITS":
+      newPlaces = DataServer().exits;
       break;
-    default:
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Search(
-              destination: myController.text.toUpperCase(), wantedPlaces: DataServer().getRoom(myController.text.toUpperCase()),
-            ),
-          ));
+    default: //it is a room our bad written
+      newPlaces = DataServer().getRoom(
+          myController.text.toUpperCase());
       break;
   }
+      if(type == "origin")
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  Search(
+                    destination: destination,
+                    wantedPlaces: wantedPlaces,
+                    origin: newPlaces.first,
+                    location: myController.text,),
+            ));
+      else
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  Search(
+                    destination: myController.text,
+                    wantedPlaces: newPlaces,
+                    origin: origin,
+                    location: location,),
+            ));
+
   }
 
   @override
   Widget build(BuildContext context) {
+    if(type == "origin")
+      label = location;
+    else label = destination;
     return new TextField(
       maxLines: 1,
       onSubmitted: _handleSubmission,
