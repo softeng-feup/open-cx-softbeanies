@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Controller/DataServer.dart';
 import '../Model-POI/Place.dart';
 import 'Widgets/GoogleMapsWidget.dart';
 import 'AppBarCostumize.dart';
@@ -17,7 +18,7 @@ class Search extends StatelessWidget {
       title: "SearchPage",
       home: new Scaffold(
         appBar: new MyCustomAppBar(height: 24, context: ctxt, destination: destination,),
-        body: new GoogleMapsWidget(wantedPlaces),
+        body: new GoogleMapsWidget(wantedPlaces,DataServer().checkIn),
         ),
     );
   }
