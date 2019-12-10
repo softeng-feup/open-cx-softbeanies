@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../POI/Place.dart';
-import '../GoogleMapsWidget.dart';
+import '../Model-POI/Place.dart';
+import 'Widgets/GoogleMapsWidget.dart';
 import 'AppBarCostumize.dart';
 
 class Search extends StatelessWidget {

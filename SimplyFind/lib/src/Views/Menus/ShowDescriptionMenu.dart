@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../POI/Event.dart';
+import '../../Model-POI/Event.dart';
 import '../AppBarCostumize.dart';
 import '../Search.dart';
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-import '../POI/Place.dart';
-import '../data/DataServer.dart';
+import '../../Model-POI/Place.dart';
+import '../../Controller/DataServer.dart';
 
 class GoogleMapsWidget extends StatefulWidget {
   final List<Place> _markers;

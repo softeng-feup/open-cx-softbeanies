@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../data/DataServer.dart';
+import '../../Controller/DataServer.dart';
 import '../Widgets/OptionButton.dart';
-import '../../../POI/Event.dart';
+import '../../Model-POI/Event.dart';
 import '../AppBarCostumize.dart';
 import 'ShowDescriptionMenu.dart';
 

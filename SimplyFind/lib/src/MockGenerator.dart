@@ -1,8 +1,8 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:simplyfind/POI/Place.dart';
+import 'Model-POI/Place.dart';
 
-import 'POI/Event.dart';
-import 'POI/PointOfInterest.dart';
+import 'Model-POI/Event.dart';
+import 'Model-POI/PointOfInterest.dart';
 
 class MockGenerator {
   static final _mockGenerator = MockGenerator._internal();

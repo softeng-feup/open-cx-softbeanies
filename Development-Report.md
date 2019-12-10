@@ -73,7 +73,7 @@ We started this project because we understand how hard it is to find our way in 
 
 ### Domain model
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/DomainModel.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/45-MVCrefactor/Diagrams/DomainModel.png">
 
 
 ---
@@ -86,25 +86,37 @@ The software division of the project follows the **MVC (Model-View-Controller)**
 
 -**View**: Represents the visualization of the data that model contains. 
 
--**Controller**: Exists between the view and the model. It listens to events triggered by the view and executes the appropriate reaction to these events.
+-**Controller**: Exists between the Model and View working as intermediate of information.
 
-We will focus on three main components of the project where the first two are inserted in the model category and the third in the view category: 
-- Data information storage: all the information related to then events and it's location 
--  Route computation and map integration 
--  App design and managment of functionalities in pages
+Our project is centered in the implementation of three main parts:
 
-The route computation and the map display is developed with the assistance of the **GoogleMaps API**. This way by giving the correct coordinates of the points of source and destination we can obtain the correct route. After that we need to compute the result and represent it in the map.
+	- Storage of the data;
+	
+	- Route computation with map integration;
+	
+	- App design and functionalities;
 
-The managment of the pages and correspondent functionalities is the section where all the visual components of the pages are implemented. In addiction this section also implies the use of the data storaged as arguments in order to display in the correct places (buttons, bars ,...) and allow to compute the right routes in the section above.
 
+The information from the server needs to be processed and organized into classes present in the package - Model-POI. 
+Those classes allows us to represent the events in the conference and the points of interest associated with them. Furthermore we implemented a graph with connections that allows to represent the paths from point to point. This way we are able to represent the paths available in the building.
+
+Like previously said the graph representation enables us to represent all the paths possible in the building. Hence we can use this representation to compute the routes desired by implementing a simple Dijkstra method. In the end we have a list of connected points of interest from the origin to the destination point to represent in the map. 
+
+The app design is the related to the GUI interface of the application. This includes the associated visual components of the pages and the correct handle of the information requested to present there and also the the respective implementation of all the functionalities associated with the GUI.
+In addiction the map and the display of the routes is developed with the assistance of the **GoogleMapsAPI**.
 
 ### Logical architecture
 
-The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
+Like we said above the architecture pattern followed in this project was the MVC Model. 
+To accomplish this we divided the project in three logical components/packages - **Controller**, **Model-POI** and **Views**. 
 
-It can be beneficial to present the system both in a horizontal or vertical decomposition:
-* horizontal decomposition may define layers and implementation concepts, such as the user interface, business logic and concepts; 
-* vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
+The **View** is divided into pages and widgets used namely the GoogleMapsWidget and this component's main functionality is to represent the information stored in model component.
+
+The **Model** stores all the information into a logical structure supported by related funtions.
+
+The **Controller** processes actions triggered by the view to update the model. (ex: by clicking in a button to display a route the user starts a chain of requests where the view communicates to the controller the request; the controller collects the information needed and calculates in the model the route to be the displayed by the view);
+
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/45-MVCrefactor/Diagrams/ComponentDiagram.png">
 
 ### Physical architecture
 
@@ -115,7 +127,7 @@ The main components of the physical architecture are the mobile devices, the dat
 The technologies used in the project had a lot of research before we came with the final decisions. Initially we thought to use microbits with Bluetooth to locate the users but we ended up using GPS intead. 
 The framework choosen was Flutter (that uses Dart) in deteriment to ReactNative since after a time of reflection and investigation we came to the conclusion that flutter was more intuitive and a better technology for the development of mobile apps for less experienced people.
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/DeploymentDiagram.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/45-MVCrefactor/Diagrams/DeploymentDiagram.png">
 
 ### Prototype
 
