@@ -4,7 +4,6 @@ import 'src/App.dart';
 
 
 Future main() async {
-  
   DataServer ds = DataServer();
   // wait for server to load information
   await ds.loadData();
