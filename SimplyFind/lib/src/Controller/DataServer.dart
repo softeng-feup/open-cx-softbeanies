@@ -295,4 +295,16 @@ class DataServer {
         }
     );
   }
+
+  List<Place> getRoom(String room){
+    List<Place> possiblePlaces = everything;
+    for(int i=0; i < possiblePlaces.length; i++){
+      if( possiblePlaces.elementAt(i).room == room){
+        List<Place> wantedPlace = new List<Place>();
+        wantedPlace.add(possiblePlaces.elementAt(i));
+        return wantedPlace;
+      }
+    }
+    return [];
+  }
 }

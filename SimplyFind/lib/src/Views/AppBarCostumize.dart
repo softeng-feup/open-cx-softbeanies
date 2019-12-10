@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:simplyfind/src/Views/Widgets/MyCustomForm.dart';
 
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
   final String destination;
+  String location = "Starting point";
+  String dest = "Destination";
 
   MyCustomAppBar({
     Key key,
@@ -12,12 +15,12 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     @required this.destination
   }) : super(key: key);
 
-  String myLocation = "myLocation";
   @override
   Widget build(BuildContext c) {
     double finalHeight = (MediaQuery.of(context).size.height / 100 * this.height);
-    if (destination == "") {
-      myLocation = "";
+    if (destination != "") {
+      location = "my location";
+      dest = this.destination ;
     }
     return Container(
       height: finalHeight,
@@ -30,7 +33,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   top: 0.20 *
                       finalHeight, //puts the first button in the correct y
                   bottom: 0.05 * finalHeight //puts 2 buttons closer
-                  ),
+              ),
               child: Row(
                 children: <Widget>[
                   IconButton(
@@ -41,22 +44,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     },
                   ),
                   Expanded(
-                    child: new TextFormField(
-                      initialValue: myLocation,
-                      decoration: new InputDecoration(
-                        filled: true,
-                        labelText: "starting point" ,
-                        fillColor: Colors.white,
-                        contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        ),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
+                    child: new MyCustomForm(finalHeight: finalHeight, label: location,context: context,),
                   ),
                 ],
               ),
@@ -73,35 +61,19 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: () {},
                   ),
                   Expanded(
-                    child: new TextFormField(
-                      initialValue: destination,
-                      decoration: new InputDecoration(
-                        labelText: "Destination",
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabled: true,                        
-                        contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        ),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
+                    child: new MyCustomForm(finalHeight: finalHeight, label: dest, context: context,),
                   ),
                 ],
               ),
             ),
-           Expanded(
-              child:    
+            Expanded(
+              child:
               new Container(
-              height: 0.1 * finalHeight, //change size of yellow line
-              color: Color.fromRGBO(249, 228, 183, 1),
-                ),
+                height: 0.1 * finalHeight, //change size of yellow line
+                color: Color.fromRGBO(249, 228, 183, 1),
               ),
-        
+            ),
+
           ],
         ),
       ),
