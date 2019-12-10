@@ -8,14 +8,16 @@ import 'package:simplyfind/src/screens/Search.dart';
 class MyCustomForm extends StatefulWidget {
   final double finalHeight;
   final String label;
+  final BuildContext context;
 
   MyCustomForm( {
     Key key,
     @required this.finalHeight,
-    @required this.label}) : super(key: key);
+    @required this.label,
+    @required this.context }) : super(key: key);
 
   @override
-  MyCustomFormState createState() => MyCustomFormState( finalHeight, label);
+  MyCustomFormState createState() => MyCustomFormState( finalHeight, label, context);
 }
 
 class MyCustomFormState extends State<MyCustomForm> {
@@ -24,8 +26,9 @@ class MyCustomFormState extends State<MyCustomForm> {
   final myController = TextEditingController();
   final double finalHeight;
   final String label;
+  final BuildContext context;
 
-  MyCustomFormState(this.finalHeight, this.label);
+  MyCustomFormState(this.finalHeight, this.label, this.context);
 
   @override
   void dispose() {
@@ -37,13 +40,81 @@ class MyCustomFormState extends State<MyCustomForm> {
   void _handleSubmission(String text) {
 // Not triggered when you press enter on keyboard in  android simulator
 // Triggers if you tap on the Done button.
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Search(
-              destination: myController.text,
-              wantedPlaces: DataServer().maleBathrooms),
-        ));
+  switch(myController.text.toUpperCase() ) {
+    case "WC MALE":
+    case "MALE WC":
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                Search(
+                    destination: myController.text,
+                    wantedPlaces: DataServer().maleBathrooms),
+          ));
+      break;
+
+    case "WC FEMALE":
+    case "FEMALE WC":
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                Search(
+                    destination: myController.text,
+                    wantedPlaces: DataServer().femaleBathrooms),
+          ));
+      break;
+
+    case "MACHINES":
+    case "VENDING MACHINES":
+    case "MACHINE":
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                Search(
+                    destination: "Vending Machines",
+                    wantedPlaces: DataServer().vendingMachines),
+          ));
+      break;
+    case "COFFEE LOUNGE":case "COFFEE BREAK":
+    Navigator.pop(context);
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Search(
+                destination: "Coffee Lounge",
+                wantedPlaces: [DataServer().coffeeLounge]),
+          ));
+      break;
+    case "CHECK-IN":case"CHECKIN":case"CHECK IN":
+    Navigator.pop(context);
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Search(
+              destination: "Check-in", wantedPlaces: [DataServer().checkIn],),
+          ));
+      break;
+    case "EXIT":case"EXITS":
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Search(
+              destination: "exit", wantedPlaces: DataServer().exits,
+            ),
+          ));
+      break;
+    default:
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Search(
+              destination: myController.text.toUpperCase(), wantedPlaces: DataServer().getRoom(myController.text.toUpperCase()),
+            ),
+          ));
+      break;
+  }
   }
 
   @override
