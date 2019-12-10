@@ -62,6 +62,8 @@ We started this project because we understand how hard it is to find our way in 
 
 + As a participant, I would want to know where I could do check-in as soon as I arrived, so I wouldn't have to ask.
 
++ As a participant, I would like to know more details about the events occurring in the conference. 
+
 + As a FEUP student, I'm interested in knowing where the coffee breaks are, and which speakers will be talking at what time because I already know how to find my way at FEUP.
 
 + As a forgetful person, I would like to know what conferences are going on today because I want a simple way to get this information.
