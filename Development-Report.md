@@ -34,11 +34,13 @@ Maria Helena Viegas Oliveira Ferreira*
 
 ---
 ## Product Vision
-Our vision is to help users navigate the conference building by guiding them from their current location to relevant spots in the conference
+
+For atendees who want a eficiently navigation, Simplyfind is the app that will help guide their way to a searchable spot inside a conference. 
 
 ---
 ## Elevator Pitch
-We started this project because we understand how hard it is to find our way in a conference building we have never been in. So why would you find your way when *SimplyFind* can do it for you? If you need to go somewhere and have no idea how to, just a couple of taps will make sure you go where you need to without ever getting you lost.
+
+We started this project because we understand how hard it is to find our way in a conference building we have never been in. So why would you find your way when *SimplyFind* can do it for you? If you need to go somewhere or you want to decide which activity to go next, just a couple of taps will make sure you go where you wish without **ever** getting lost!
 
 ---
 ## Requirements
