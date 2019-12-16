@@ -133,9 +133,25 @@ The framework choosen was Flutter (that uses Dart) in deteriment to ReactNative 
 
 ### Prototype
 
-To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
+Our application allows an user to choose between two diferent approaches of navigation.
 
-In this subsection please describe in more detail which, and how, user(s) story(ies) were implemented.
+In the first option we can choose a point of interest by exploring a menu organized by different categories: lectures, workshops, checkin , food, wc and exits. Here we can select a specific lecture or workshop and look at a detailed explanation about the event before deciding whether we want to compute the path to it. In addiction all the remaining categories that have more than one point of interest associated - bathrooms, food machines and exists - will display all the points in the map so we can choose to which point we want to go and calculate the route.
+
+In the second option we can introduce with the keyboard the origin and destination in the search bar to compute the path.
+
+This means that we concluded almost every user story we planed to do. Unfortunately we had to choose to leave the ability to connect users with each other and diferenciate different types of users (speaker, attendee).
+
+However all the other user stories were concluded with sucess: 
+
++ As a person with no sense of direction, I would like to have very precise directions to not get lost in the building - both options of in our application culminate with the abiliy to show the user the correct direction to a point of interest.
+
++ As a coffee drinker, I would like to know where the coffee machines are, because I don't want to be dependent on the coffee breaks - We incorporated food machines into our database as a point of interest so with a quick search the user will be able to know where he can buy a coffee.
+
++ As a participant, I would want to know where I could do check-in as soon as I arrived, so I wouldn't have to ask - similar to the coffe machines we incorporated the checkin into our database;
+
++ As a FEUP student, I'm interested in knowing where the coffee breaks are, and which speakers will be talking at what time because I already know how to find my way at FEUP - the coffee breaks were added to the database; the speakers can be consulted in the menu Explore in the option "Lectures" where we can see all the available lectures at the time and the respective speakers.
+
++ As a forgetful person, I would like to know what lectures are going on today because I want a simple way to get this information - by navigating in the  menu explore and choosing "Lectures" we can consukt all the available lectures for the day. Furthermore we can select each lecture for a more detailed description.
 
 ---
 
