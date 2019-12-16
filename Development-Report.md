@@ -50,6 +50,8 @@ We started this project because we understand how hard it is to find our way in 
 
 <img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%203.jpeg">
 
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Cases%20(Full).jpeg">
+
 ### User stories
 
 + As a person with no sense of direction, I would like to have very precise directions to not get lost in the building.
@@ -71,7 +73,7 @@ We started this project because we understand how hard it is to find our way in 
 
 ### Domain model
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/45-MVCrefactor/Diagrams/DomainModel.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/DomainModel.png">
 
 
 ---
@@ -116,7 +118,7 @@ The **Model** stores all the information into a logical structure supported by r
 
 The **Controller** processes actions triggered by the view to update the model. (ex: by clicking in a button to display a route the user starts a chain of requests where the view communicates to the controller the request; the controller collects the information needed and calculates in the model the route to be the displayed by the view);
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/45-MVCrefactor/Diagrams/ComponentDiagram.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/ComponentDiagram.png">
 
 ### Physical architecture
 
@@ -127,7 +129,7 @@ The main components of the physical architecture are the mobile devices, the dat
 The technologies used in the project had a lot of research before we came with the final decisions. Initially we thought to use microbits with Bluetooth to locate the users but we ended up using GPS intead. 
 The framework choosen was Flutter (that uses Dart) in deteriment to ReactNative since after a time of reflection and investigation we came to the conclusion that flutter was more intuitive and a better technology for the development of mobile apps for less experienced people.
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/45-MVCrefactor/Diagrams/DeploymentDiagram.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/DeploymentDiagram.png">
 
 ### Prototype
 
