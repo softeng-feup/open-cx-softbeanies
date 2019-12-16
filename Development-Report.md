@@ -78,7 +78,7 @@ We started this project because we understand how hard it is to find our way in 
 
 ## Architecture and Design
 
-###Architectural and design decisions
+### Architectural and design decisions
 
 The software division of the project follows the **MVC (Model-View-Controller)** architectural pattern. As the name implies this pattern divides the structure of the program in three interconnected parts:
 
