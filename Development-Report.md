@@ -12,13 +12,13 @@ You can find here detailed information about the (sub)product, hereby mentioned 
   * [User stories](#User-stories)
   * [Domain model](#Domain-model)
 * Architecture and Design
-  * [Architectural and design decisions](#Architectural-and-design- decisions)
+  * [Architectural and design decisions](#Architectural-and-design-decisions)
   * [Logical architecture](#Logical-architecture)
   * [Physical architecture](#Physical-architecture)
   * [Prototype](#Prototype)
 * Implementation
 * Test
-* [Change management](#Change-management)
+* [Change management](#Configuration-and-change-management)
 * [Project management](#Project-management)
 
 So far, contributions are exclusively made by the initial team, but we hope to open them to the community, in all areas and topics: requirements, technologies, development, experimentation, testing, etc.
