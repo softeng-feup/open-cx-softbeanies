@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../Controller/DataServer.dart';
 import '../Model-POI/Place.dart';
 import 'Widgets/GoogleMapsWidget.dart';
 import 'AppBarCostumize.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:simplyfind/src/Model-POI/Place.dart';
-import 'package:simplyfind/src/Views/Widgets/MyCustomForm.dart';
+import '../Model-POI/Place.dart';
+import 'Widgets/MyCustomForm.dart';
 
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;

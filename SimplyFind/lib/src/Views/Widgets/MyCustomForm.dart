@@ -1,8 +1,8 @@
 // Define a corresponding State class.
 // This class holds the data related to the Form.
 import 'package:flutter/material.dart';
-import 'package:simplyfind/src/Model-POI/Place.dart';
 import '../../Controller/DataServer.dart';
+import '../../Model-POI/Place.dart';
 import '../Search.dart';
 
 // Define a custom Form widget.
