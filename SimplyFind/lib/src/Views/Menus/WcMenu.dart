@@ -29,7 +29,8 @@ class WcMenu extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) => Search(
                                   destination: "Wc Men",
-                                  wantedPlaces: DataServer().maleBathrooms),
+                                  wantedPlaces: DataServer().maleBathrooms,
+                                  origin: null,  location: "my location",),
                             ));
                       },
                     ),
@@ -43,7 +44,8 @@ class WcMenu extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) => Search(
                                   destination: "Wc Women",
-                                  wantedPlaces: DataServer().femaleBathrooms),
+                                  wantedPlaces: DataServer().femaleBathrooms,
+                                  origin: null, location: "my location",),
                             ));
                       },
                     )

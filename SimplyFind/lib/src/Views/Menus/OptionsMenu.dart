@@ -35,7 +35,9 @@ class OptionsMenu extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            destination: "Check-in", wantedPlaces: [DataServer().checkIn],),
+                            destination: "Check-in",
+                            wantedPlaces: [DataServer().checkIn],
+                            origin : null, location: "my location",),
                         ));
                   },
                   legend: "Check In"),
@@ -72,7 +74,7 @@ class OptionsMenu extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => Search(
-                            destination: "exit", wantedPlaces: DataServer().exits,
+                            destination: "exit", wantedPlaces: DataServer().exits, origin: null, location: "my location",
                           ),
                         ));
                   },
