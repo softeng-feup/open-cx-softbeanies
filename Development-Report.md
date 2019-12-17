@@ -48,9 +48,68 @@ We started this project because we understand how hard it is to find our way in 
 
 <img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%201.jpeg">
 
+####Description 
+This user case represents the possibility to locate a user in the building.
+
+####Actor 
+The user is the actor in this functionality.
+
+####Preconditions and postconditions
+To execute this functionality the user needs to navigate in the app and go to the "Explore" section. Another option to archieve this is to select an option to find the path to a chosen location. In the end in both options it will be present the user location in the map. 
+
+####Normal flow
+After the user goes through one of the preconditions it will trigger a chain of action:
+
+* request location to the GPS system;
+* the resulting information will be passed by the backend to the Google Maps API;
+* The Google Maps IP will display the location of the user. 
+
+####Alternative Flows and Exceptions
+
+In case the request to the GPS can't be concluded the representation of the location of the user won't be displayed.
+
 <img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%202.jpeg">
 
+####Description 
+This user case represents the location of a POI in the building and display of the route to it.
+
+####Actor 
+The user and server are the actors in this functionality.
+
+####Preconditions and postconditions
+To execute this functionality the user needs to have already navigated in the app and selected any option to calculate a path to a chosen point of interest on the map. In the end the route to the chosen point will be displayed on the map.
+
+####Normal flow
+After the user goes through the precondition it will trigger a chain of action:
+
+* request the location of the chosen point of interest to the server;
+* the resulting information will be passed to the backend;
+* the backend will compute the correct path to the point of interest;
+* the information associated to the route will be passed to the Google Maps API
+* The Google Maps API will display the path computed in the backend. 
+
+####Alternative Flows and Exceptions
+
+In case the point of interest chosen doesn't exist on the database the server's answer will be NULL. However the page will still be redirected to the result page but the map represented will be empty.
+
 <img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%203.jpeg">
+
+####Description 
+This user case represents the selection and display of a point of intereset info.
+
+####Actor 
+The user and server are the actors in this functionality.
+
+####Preconditions and postconditions
+To execute this functionality the user needs to have already chosen any option that ends on the page with the representation of the map building and select a point of interest displayed there. In the end the user will be able to see displayed over the point the information to it related.
+
+####Normal flow
+After the user goes through the precondition it will trigger a chain of action:
+
+* request the information associated with the chosen point of interest to the server;
+* the resulting information will be passed to the backend;
+* the information will be passed to the Google Maps API
+* The Google Maps API will display the information on top of the point of interest. 
 
 <img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Cases%20(Full).jpeg">
 
