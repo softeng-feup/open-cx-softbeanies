@@ -42,7 +42,6 @@ class Graph {
   /// Returns closest [PointOfInterest] closest to given [LatLng]
   PointOfInterest getClosestPointOfInterest(LatLng coordinates) {
     // get first poi
-<<<<<<< Updated upstream:SimplyFind/lib/src/Model-POI/Graph.dart
     PointOfInterest returnPOI;
     // closest distance
     double distance = double.maxFinite;
@@ -56,25 +55,11 @@ class Graph {
           }
         }
     );
-=======
-    PointOfInterest returnPOI = this._pointsOfInterest[1];
-    // loop through all POIs
-    this._pointsOfInterest.forEach(
-        (key, poi) {
-          // get distance between two GPS coordinates
-        }
-    );
-
->>>>>>> Stashed changes:SimplyFind/lib/POI/Graph.dart
     return returnPOI;
   }
 
   /// Returns the distance between two GPS Coordinates
-<<<<<<< Updated upstream:SimplyFind/lib/src/Model-POI/Graph.dart
   double getDistance(LatLng pointA, LatLng pointB) {
-=======
-  double getDiste(LatLng pointA, LatLng pointB) {
->>>>>>> Stashed changes:SimplyFind/lib/POI/Graph.dart
     return sqrt(pow(pointA.latitude.abs() - pointB.latitude.abs(), 2) + pow(pointA.longitude.abs() - pointB.longitude.abs(), 2));
   }
 
