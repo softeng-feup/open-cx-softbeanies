@@ -5,6 +5,7 @@ import 'Connection.dart';
 import 'PointOfInterest.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+
 /// [PointOfInterest] Graph implementation using a [HashMap] as a Node container
 class Graph {
   /// POIs and their connections that make up a Graph
