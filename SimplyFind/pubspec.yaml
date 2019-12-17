@@ -65,4 +65,3 @@ flutter:
     - assets/data/auxiliarPOIDataBase.json
     - assets/data/vendingMachinesDataBase.json
     - assets/data/exitsDataBase.json
-    - .env

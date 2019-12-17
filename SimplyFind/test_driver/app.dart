@@ -1,5 +1,7 @@
 import 'package:flutter_driver/driver_extension.dart';
-import 'package:simplyfind/main.dart' as app;
+import 'package:flutter/widgets.dart';
+
+import '../lib/src/App.dart';
 
 void main() {
   // enable flutter driver extension.
@@ -7,5 +9,5 @@ void main() {
 
   // Call the `main()` function of the app, or call `runApp` with
   // any widget you are interested in testing.
-  app.main();
+  runApp(MVCApp());
 }
