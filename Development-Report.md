@@ -56,21 +56,21 @@ We started this project because we understand how hard it is to find our way in 
 
 ### User stories
 
-+ As a person with no sense of direction, I would like to have very precise directions to not get lost in the building.
++ As a person with no sense of direction, I would like to have very precise directions to not get lost in the building. Value:XL 
 
-+ As a coffee drinker, I would like to know where the coffee machines are, because I don't want to be dependent on the coffee breaks.
++ As a coffee drinker, I would like to know where the coffee machines are, because I don't want to be dependent on the coffee breaks. Value: M
 
-+ As a participant, I would want to know where I could do check-in as soon as I arrived, so I wouldn't have to ask.
++ As a participant, I would want to know where I could do check-in as soon as I arrived, so I wouldn't have to ask. Value: S
 
 + As a participant, I would like to know more details about the events occurring in the conference. 
 
-+ As a FEUP student, I'm interested in knowing where the coffee breaks are, and which speakers will be talking at what time because I already know how to find my way at FEUP.
++ As a forgetful person, I would like to know what conferences are going on today because I want a simple way to get this information. Value: L
 
-+ As a forgetful person, I would like to know what conferences are going on today because I want a simple way to get this information.
++ As a speaker, I would like to know the rooms where I am going to give a talk because those are the relevant locations for me. Value: M
 
-+ As a speaker, I would like to know the rooms where I am going to give a talk because those are the relevant locations for me.
++ As an user, I would like to know where my colleagues are if i get lost. Value: XL
 
-+ As an user, I would like to know where my colleagues are if i get lost.
+
 
 
 ### Domain model
