@@ -55,14 +55,14 @@ This user case represents the possibility to locate a user in the building.
 The user is the actor in this functionality.
 
 #### Preconditions and postconditions
-To execute this functionality the user needs to navigate in the app and go to the "Explore" section. Another option to archieve this is to select an option to find the path to a chosen location. In the end in both options it will be present the user location in the map. 
+To execute this functionality the user needs to have already chosen any option that ends on the page with the representation of the map building. In the end it will be present the user location in the map. 
 
 #### Normal flow
 After the user goes through one of the preconditions it will trigger a chain of action:
 
 * request location to the GPS system;
 * the resulting information will be passed by the backend to the Google Maps API;
-* The Google Maps IP will display the location of the user. 
+* The Google Maps API will display the location of the user. 
 
 #### Alternative Flows and Exceptions
 
@@ -108,7 +108,7 @@ After the user goes through the precondition it will trigger a chain of action:
 
 * request the information associated with the chosen point of interest to the server;
 * the resulting information will be passed to the backend;
-* the information will be passed to the Google Maps API
+* the information will be passed to the Google Maps API;
 * The Google Maps API will display the information on top of the point of interest. 
 
 <img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Cases%20(Full).jpeg">
