@@ -64,10 +64,10 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
       markers.forEach((M) => {
         _markers.add(Marker(
           markerId: MarkerId(M.hashCode.toString()),
-          position: server.pointsOfInterest[M.pointId].location,
+          position: server.pointsOfInterest[M.poiId].location,
           infoWindow: InfoWindow(
           title: M.name,
-          snippet: M.room + " Floor: " +  server.pointsOfInterest[M.pointId].floor.toString(),
+          snippet: M.room + " Floor: " +  server.pointsOfInterest[M.poiId].floor.toString(),
             onTap: () {
                   setState(() {
                     makePath(M);
@@ -165,19 +165,19 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
 
     List<LatLng> path;
     if(_origin == null)
-      path = server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), M.pointId);
+      path = server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), M.poiId);
     else {
-      path = server.getPathToPOI(server.pointsOfInterest[_origin.pointId].location, M.pointId);
+      path = server.getPathToPOI(server.pointsOfInterest[_origin.poiId].location, M.poiId);
     }
 
     _markers.clear();
     // add final marker
     _markers.add(Marker(
       markerId: MarkerId(M.hashCode.toString()),
-      position: server.pointsOfInterest[M.pointId].location,
+      position: server.pointsOfInterest[M.poiId].location,
       infoWindow: InfoWindow(
         title: M.name,
-        snippet: M.room + " Floor: " + server.pointsOfInterest[M.pointId].floor.toString(),
+        snippet: M.room + " Floor: " + server.pointsOfInterest[M.poiId].floor.toString(),
       ),
       icon: BitmapDescriptor.defaultMarkerWithHue(215),
     ));

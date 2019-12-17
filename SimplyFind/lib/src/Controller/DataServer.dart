@@ -14,6 +14,10 @@ import 'package:http/http.dart' as http;
 
 /// Data Server simulation
 class DataServer {
+  /// [String] containing coffee lounge [Place] id
+  String _coffeeLoungeId;
+  /// [String] containing check-in [Place] id
+  String _checkInId;
   /// [List] containing all lectures
   List<Event> _lectures;
   /// [List] containing all workshops
@@ -50,6 +54,8 @@ class DataServer {
     this._vendingMachines = new List<Place>();
     this._exits = new List<Place>();
     // specific places
+    this._coffeeLoungeId = "5df8c687cf507e6e32d9eebf";
+    this._checkInId = "5df8c6b1cf507e6e32d9eec0";
     this._coffeeLounge = new Place("Coffee Lounge", "Coffee Lounge", 14);
     this._checkIn = new Place("Check In", "InfoDesk", 2);
     // Graph and POI
@@ -107,12 +113,58 @@ class DataServer {
   /// returns a [BFS] Object
   BFS get bfs => _bfs;
 
+  /// Return [Place] object containing coffee lounge information gotten from server
+  Future<Place> getCoffeeLounge() async {
+    final response = await http.get('${DotEnv().env['HOST_IEEE']}/places/${this._coffeeLoungeId}');
+    // check if call was successful
+    if (response.statusCode == 200) {
+      // If the call to the server was successful, parse the JSON.
+      return Place.fromJson(json.decode(response.body));
+    } else {
+      // If that call was not successful, throw an error.
+      throw Exception('Failed to load Coffee Lounge');
+    }
+  }
+
+  /// Return [Place] object containing check in information gotten from server
+  Future<Place> getCheckIn() async {
+    final response = await http.get('${DotEnv().env['HOST_IEEE']}/places/${this._checkInId}');
+    // check if call was successful
+    if (response.statusCode == 200) {
+      // If the call to the server was successful, parse the JSON.
+      return Place.fromJson(json.decode(response.body));
+    } else {
+      // If that call was not successful, throw an error.
+      throw Exception('Failed to load Coffee Lounge');
+    }
+  }
+
+  /// Return [Place] object containing check in information gotten from server
+  Future<List<Place>> getCoffeeMachines() async {
+    final response = await http.get('${DotEnv().env['HOST_IEEE']}/places');
+    // check if call was successful
+    if (response.statusCode == 200) {
+      // If the call to the server was successful, parse the JSON.
+      List placesList = json.decode(response.body);
+      // Search for Vending Machines
+      List<Place> vendingMachines = new List<Place>();
+      for (var place in placesList) {
+        if(place["placeName"] == "VendingMachines")
+          vendingMachines.add(Place.fromJson(place));
+      }
+      return vendingMachines;
+    } else {
+      // If that call was not successful, throw an error.
+      throw Exception('Failed to load Coffee Lounge');
+    }
+  }
+
   List<Place> getRoom(String room){
     List<Place> possiblePlaces = everything;
     for(int i=0; i < possiblePlaces.length; i++){
       if(possiblePlaces.elementAt(i).room == room){
         Place place = new Place(possiblePlaces.elementAt(i).room,possiblePlaces.elementAt(i).room,
-            possiblePlaces.elementAt(i).pointId);
+            possiblePlaces.elementAt(i).poiId);
         List<Place> wantedPlace = new List<Place>();
         wantedPlace.add(place);
         return wantedPlace;
@@ -120,8 +172,6 @@ class DataServer {
     }
     return [];
   }
-
-
 
   /// return path from event given
   List<LatLng> getPathToPOI(LatLng userPosition, int destinationPoint) {
