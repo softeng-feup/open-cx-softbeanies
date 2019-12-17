@@ -85,7 +85,7 @@ After the user goes through the precondition it will trigger a chain of action:
 * request the location of the chosen point of interest to the server;
 * the resulting information will be passed to the backend;
 * the backend will compute the correct path to the point of interest;
-* the information associated to the route will be passed to the Google Maps API
+* the information associated to the route will be passed to the Google Maps API;
 * The Google Maps API will display the path computed in the backend. 
 
 #### Alternative Flows and Exceptions
