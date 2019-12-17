@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
+import '../Model-POI/Place.dart';
+import 'Widgets/MyCustomForm.dart';
 
 class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double height;
   final BuildContext context;
+  /*parameters needed fot the search bar */
   final String destination;
+  final String location;
+  final List<Place> wantedPlaces;
+  final Place origin;
 
   MyCustomAppBar({
     Key key,
     @required this.height,
     @required this.context,
-    @required this.destination
+    @required this.destination,
+    @required this.location,
+    @required this.wantedPlaces,
+    @required this.origin,
   }) : super(key: key);
 
-  String myLocation = "myLocation";
   @override
   Widget build(BuildContext c) {
     double finalHeight = (MediaQuery.of(context).size.height / 100 * this.height);
-    if (destination == "") {
-      myLocation = "";
-    }
     return Container(
       height: finalHeight,
       color: Color.fromRGBO(1, 38, 90, 1),
@@ -30,7 +35,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   top: 0.20 *
                       finalHeight, //puts the first button in the correct y
                   bottom: 0.05 * finalHeight //puts 2 buttons closer
-                  ),
+              ),
               child: Row(
                 children: <Widget>[
                   IconButton(
@@ -41,22 +46,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     },
                   ),
                   Expanded(
-                    child: new TextFormField(
-                      initialValue: myLocation,
-                      decoration: new InputDecoration(
-                        filled: true,
-                        labelText: "starting point" ,
-                        fillColor: Colors.white,
-                        contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        ),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
+                    child: new MyCustomForm(finalHeight: finalHeight, context: context, type: "origin", origin: origin,wantedPlaces: wantedPlaces, destination: destination, location: location,),
                   ),
                 ],
               ),
@@ -73,35 +63,19 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: () {},
                   ),
                   Expanded(
-                    child: new TextFormField(
-                      initialValue: destination,
-                      decoration: new InputDecoration(
-                        labelText: "Destination",
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabled: true,                        
-                        contentPadding: new EdgeInsets.symmetric(vertical: finalHeight*0.1),
-                        border: new OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        ),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
+                    child: new MyCustomForm(finalHeight: finalHeight, context: context, type: "destination", origin: origin, wantedPlaces: wantedPlaces, location: location, destination: destination,),
                   ),
                 ],
               ),
             ),
-           Expanded(
-              child:    
+            Expanded(
+              child:
               new Container(
-              height: 0.1 * finalHeight, //change size of yellow line
-              color: Color.fromRGBO(249, 228, 183, 1),
-                ),
+                height: 0.1 * finalHeight, //change size of yellow line
+                color: Color.fromRGBO(249, 228, 183, 1),
               ),
-        
+            ),
+
           ],
         ),
       ),

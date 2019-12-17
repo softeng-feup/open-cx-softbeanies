@@ -105,6 +105,22 @@ class DataServer {
   /// returns a [BFS] Object
   BFS get bfs => _bfs;
 
+  List<Place> getRoom(String room){
+    List<Place> possiblePlaces = everything;
+    for(int i=0; i < possiblePlaces.length; i++){
+      if(possiblePlaces.elementAt(i).room == room){
+        Place place = new Place(possiblePlaces.elementAt(i).room,possiblePlaces.elementAt(i).room,
+            possiblePlaces.elementAt(i).pointId);
+        List<Place> wantedPlace = new List<Place>();
+        wantedPlace.add(place);
+        return wantedPlace;
+      }
+    }
+    return [];
+  }
+
+
+
   /// return path from event given
   List<LatLng> getPathToPOI(LatLng userPosition, int destinationPoint) {
     List<LatLng> coordsPath = new List<LatLng>();

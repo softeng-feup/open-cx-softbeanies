@@ -25,7 +25,7 @@ class MVCApp extends StatelessWidget {
         '/Food': (context) => FoodMenu(),
         '/Workshops': (context) => EventsMenu(title: "Workshops"),
         '/Wc': (context) => WcMenu(),
-        '/Search': (context) => Search( destination: '', wantedPlaces: DataServer().everything,),
+        '/Search': (context) => Search( destination: "Destination", wantedPlaces: DataServer().everything, location: "starting point", origin: null,),
       },
     );
     return _app;
