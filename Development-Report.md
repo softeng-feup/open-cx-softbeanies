@@ -12,18 +12,14 @@ You can find here detailed information about the (sub)product, hereby mentioned 
   * [User stories](#User-stories)
   * [Domain model](#Domain-model)
 * Architecture and Design
-  * [Architectural and design decisions]()
-  * [Technological architecture]()
-  * [Logical architecture]()
+  * [Architectural and design decisions](#Architectural-and-design-decisions)
+  * [Logical architecture](#Logical-architecture)
+  * [Physical architecture](#Physical-architecture)
+  * [Prototype](#Prototype)
 * Implementation
-  * [Source code]()
-  * [Issues](): feature requests, bug fixes, improvements.
 * Test
-  * [Automated tests](): Functional tests, integration tests, acceptance tests, as much automated as possible.
-* Change management
-  * [Issues at Github]()
-* Project management
-  * Tasks management tool 
+* [Change management](#Configuration-and-change-management)
+* [Project management](#Project-management)
 
 So far, contributions are exclusively made by the initial team, but we hope to open them to the community, in all areas and topics: requirements, technologies, development, experimentation, testing, etc.
 
@@ -38,11 +34,13 @@ Maria Helena Viegas Oliveira Ferreira*
 
 ---
 ## Product Vision
-Our vision is to help users navigate the conference building by guiding them from their current location to relevant spots in the conference
+
+For atendees who want a eficiently navigation, Simplyfind is the app that will help guide their way to a searchable spot inside a conference. 
 
 ---
 ## Elevator Pitch
-We started this project because we understand how hard it is to find our way in a conference building we have never been in. So why would you find your way when *SimplyFind* can do it for you? If you need to go somewhere and have no idea how to, just a couple of taps will make sure you go where you need to without ever getting you lost.
+
+We started this project because we understand how hard it is to find our way in a conference building we have never been in. So why would you find your way when *SimplyFind* can do it for you? If you need to go somewhere or you want to decide which activity to go next, just a couple of taps will make sure you go where you wish without **ever** getting lost!
 
 ---
 ## Requirements
@@ -53,6 +51,8 @@ We started this project because we understand how hard it is to find our way in 
 <img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%202.jpeg">
 
 <img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Case%203.jpeg">
+
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/SimplyFind%20Use%20Cases%20(Full).jpeg">
 
 ### User stories
 
@@ -75,12 +75,14 @@ We started this project because we understand how hard it is to find our way in 
 
 ### Domain model
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/45-MVCrefactor/Diagrams/DomainModel.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/DomainModel.png">
 
 
 ---
 
 ## Architecture and Design
+
+### Architectural and design decisions
 
 The software division of the project follows the **MVC (Model-View-Controller)** architectural pattern. As the name implies this pattern divides the structure of the program in three interconnected parts:
 
@@ -118,7 +120,7 @@ The **Model** stores all the information into a logical structure supported by r
 
 The **Controller** processes actions triggered by the view to update the model. (ex: by clicking in a button to display a route the user starts a chain of requests where the view communicates to the controller the request; the controller collects the information needed and calculates in the model the route to be the displayed by the view);
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/45-MVCrefactor/Diagrams/ComponentDiagram.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/ComponentDiagram.png">
 
 ### Physical architecture
 
@@ -129,7 +131,7 @@ The main components of the physical architecture are the mobile devices, the dat
 The technologies used in the project had a lot of research before we came with the final decisions. Initially we thought to use microbits with Bluetooth to locate the users but we ended up using GPS intead. 
 The framework choosen was Flutter (that uses Dart) in deteriment to ReactNative since after a time of reflection and investigation we came to the conclusion that flutter was more intuitive and a better technology for the development of mobile apps for less experienced people.
 
-<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/45-MVCrefactor/Diagrams/DeploymentDiagram.png">
+<img src= "https://github.com/softeng-feup/open-cx-softbeanies/blob/master/Diagrams/DeploymentDiagram.png">
 
 ### Prototype
 
