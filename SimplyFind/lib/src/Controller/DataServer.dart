@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:core';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../Model-POI/BFS.dart';
 import '../Model-POI/Connection.dart';
@@ -9,6 +10,7 @@ import '../Model-POI/Graph.dart';
 import '../Model-POI/Place.dart';
 import '../Model-POI/PointOfInterest.dart';
 import '../Model-POI/Event.dart';
+import 'package:http/http.dart' as http;
 
 /// Data Server simulation
 class DataServer {
@@ -171,40 +173,40 @@ class DataServer {
   }
 
   /// Loads json file related to POIs and returns json string
-  Future<String> _loadPOIDataAsset() async {
-    return await rootBundle.loadString('assets/data/auxiliarPOIDataBase.json');
+  Future<List> _loadPOIDataAsset() async {
+    var response = await http.get('${DotEnv().env['HOST_IEEE']}/pois');
+    return json.decode(response.body);
   }
 
   /// Creates [PointOfInterest] objects from json file and stores them
   /// in [_pointsOfInterest] Map
   Future<void> _loadPOIData() async {
-    String jsonData = await this._loadPOIDataAsset();
-    Map jsonPOIs = jsonDecode(jsonData);
+    List jsonPOIs = await this._loadPOIDataAsset();
 
     jsonPOIs.forEach(
-            (k, v) {
-          int actualKey = int.parse(k);
+            (v) {
+          int actualKey = v['poiId'];
           this._pointsOfInterest[actualKey] = PointOfInterest.fromJson(v);
         }
     );
   }
 
   /// Loads json file related to POI connections and returns json string
-  Future<String> _loadConnectionDataAsset() async {
-    return await rootBundle.loadString('assets/data/connectionsDataBase.json');
+  Future<List> _loadConnectionDataAsset() async {
+    var response = await http.get('${DotEnv().env['HOST_IEEE']}/connections');
+    return json.decode(response.body);
   }
 
   /// Creates [Connection] objects from json file and adds them to
   /// respective [PointOfInterest] stored in [_pointsOfInterest] Map
   Future<void> _loadConnectionData() async {
-    String jsonData = await this._loadConnectionDataAsset();
-    Map jsonPOIs = jsonDecode(jsonData);
+    List jsonConnections = await this._loadConnectionDataAsset();
 
     int connectionId = 1;
-    jsonPOIs.forEach(
-            (k, v) {
-          int sourcePointId = int.parse(k);
-          v.forEach(
+    jsonConnections.forEach(
+            (v) {
+          int sourcePointId = v['connectionId'];
+          v['connections'].forEach(
                   (destPointId) {
                 this._pointsOfInterest[sourcePointId].addConnection(connectionId++, destPointId as int);
               }

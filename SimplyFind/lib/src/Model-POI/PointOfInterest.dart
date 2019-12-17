@@ -59,11 +59,10 @@ class PointOfInterest {
   /// is created and returned
   factory PointOfInterest.fromJson(Map<String, dynamic> json) {
     // get latitude and longitude
-    var locationJson = json['location'];
-    LatLng location = new LatLng(locationJson['latitude'] as double, locationJson['longitude'] as double);
+    LatLng location = new LatLng(json['latitude'] as double, json['longitude'] as double);
 
     return PointOfInterest (
-      json['id'] as int,
+      json['poiId'] as int,
       location,
       json['floor'] as int
     );
