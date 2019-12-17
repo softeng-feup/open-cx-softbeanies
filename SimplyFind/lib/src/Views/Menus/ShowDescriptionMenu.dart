@@ -114,7 +114,7 @@ class ShowDescriptionMenu extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            Search(destination: event.room, wantedPlaces: [event]),
+                            Search(destination: event.room, wantedPlaces: [event], origin: null,  location: "my location",),
                       ));
                 },
                 padding: EdgeInsets.all(1.0),

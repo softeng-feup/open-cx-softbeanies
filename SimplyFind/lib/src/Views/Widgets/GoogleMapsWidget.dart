@@ -7,12 +7,13 @@ import '../../Controller/DataServer.dart';
 
 class GoogleMapsWidget extends StatefulWidget {
   final List<Place> _markers;
+  final Place _origin;
 
-  GoogleMapsWidget([this._markers]);
+  GoogleMapsWidget([this._markers,this._origin]);
 
   @override
   _GoogleMapsWidgetState createState() =>
-      _GoogleMapsWidgetState(_markers);
+      _GoogleMapsWidgetState(_markers,_origin);
 }
 
 class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
@@ -24,10 +25,13 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
   final Set<Marker> _markers = new Set();
   final Set<Polyline> _polyLines = new Set();
   Place _destination;
+  Place _origin;
 
   static const LatLng _center = const LatLng(41.177634, -8.595764);
 
-  _GoogleMapsWidgetState(List<Place> markers) {
+  // ignore: avoid_init_to_null
+  _GoogleMapsWidgetState(List<Place> markers, Place origin )  {
+    _origin = origin;
     this.makeMarkers(markers);
     if(markers.length == 1) {
       _destination = markers.first;
@@ -159,7 +163,12 @@ class _GoogleMapsWidgetState extends State<GoogleMapsWidget> {
     if(_currentLocation == null)
       _currentLocation = await _myLocation.getLocation();
 
-    List<LatLng> path = server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), M.pointId);
+    List<LatLng> path;
+    if(_origin == null)
+      path = server.getPathToPOI(LatLng(_currentLocation.latitude,_currentLocation.longitude), M.pointId);
+    else {
+      path = server.getPathToPOI(server.pointsOfInterest[_origin.pointId].location, M.pointId);
+    }
 
     _markers.clear();
     // add final marker

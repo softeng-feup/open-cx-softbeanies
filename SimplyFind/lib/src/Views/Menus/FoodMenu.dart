@@ -28,7 +28,8 @@ class FoodMenu extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => Search(
                               destination: "Vending Machines",
-                              wantedPlaces: DataServer().vendingMachines),
+                              wantedPlaces: DataServer().vendingMachines,
+                              origin: null)
                         ));
                   }),
               ButtonOrange(
@@ -41,7 +42,8 @@ class FoodMenu extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => Search(
                               destination: "Coffee Lounge",
-                              wantedPlaces: [DataServer().coffeeLounge]),
+                              wantedPlaces: [DataServer().coffeeLounge],
+                              origin: null, location: "my location",),
                         ));
                   }),
             ],
