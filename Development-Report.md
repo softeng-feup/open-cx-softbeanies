@@ -16,7 +16,7 @@ You can find here detailed information about the (sub)product, hereby mentioned 
   * [Logical architecture](#Logical-architecture)
   * [Physical architecture](#Physical-architecture)
   * [Prototype](#Prototype)
-* [Implementation](##Implementation)
+* [Implementation](#Implementation)
 * Test
 * [Change management](#Configuration-and-change-management)
 * [Project management](#Project-management)
