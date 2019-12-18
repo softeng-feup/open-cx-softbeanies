@@ -175,6 +175,10 @@ In this section it is only expected to include the following:
  
 A good practice is to simplify this, avoiding repetitions, and automating the testing actions as much as possible.
 
+For the verification of the widgets and the behavior of the app we done unit test and acceptance test, respectively. In on hand, our unit tests follow the single responsibility principle, there for, each unit test verifies  one and only one piece of code. Our tests verify, mostly, if the correct display of the text is done correctly and the labels and buttons have the value they should have.
+On the hand hand, our acceptance test puts yourselves in the position of the stakeholders writing the functionality of the app. Our tests verify if the app response as supposed to the use of the user, making sure the user stories are implemented.
+
+
 ---
 
 ## Configuration and change management
