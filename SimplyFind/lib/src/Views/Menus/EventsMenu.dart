@@ -34,6 +34,7 @@ class EventsMenu extends StatelessWidget {
         ),
         body: SafeArea(
           child: Container(
+            key: Key("Event"),
           color: Colors.white,
           child: ListView(
             shrinkWrap: true,

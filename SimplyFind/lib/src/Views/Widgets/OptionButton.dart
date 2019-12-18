@@ -12,6 +12,7 @@ class OptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        key: Key("EventOption"),
         margin: new EdgeInsets.symmetric(
             vertical: (2 / 100) * MediaQuery.of(context).size.height,
             horizontal: (5 / 100) * MediaQuery.of(context).size.width,),

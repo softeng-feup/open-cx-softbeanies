@@ -29,6 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          key: Key("Main"),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           color: Color.fromRGBO(249, 228, 183, 1),

@@ -8,45 +8,68 @@ class ExploreStepWhen extends When2WithWorld<String, int, FlutterWorld> {
 
   @override
   Future<void> executeStep(String input1, int input2) async {
-    final locator = find.byValueKey("Explore");
+    final locator = find.byValueKey(input1);
     for (var i = 0; i < input2; i += 1) {
       await FlutterDriverUtils.tap(world.driver, locator, timeout: timeout);
     }
   }
   @override
-  RegExp get pattern => RegExp(r"I tap the {String} button {int} times");
+  RegExp get pattern => RegExp(r"I tap the {String} button {int} time");
 }
 
-class ExploreStepThen extends When2WithWorld<String, int, FlutterWorld> {
+class ExploreStepThen extends When1WithWorld<String, FlutterWorld> {
   ExploreStepThen()
       : super(StepDefinitionConfiguration()..timeout = Duration(seconds: 5));
 
   @override
-  Future<void> executeStep(String input1, int input2) async {
+  Future<void> executeStep(String input1) async {
     // find the button by key
     final locator = find.byValueKey("location");
-    for (var i = 0; i < input2; i += 1) {
       await FlutterDriverUtils.tap(world.driver, locator, timeout: timeout);
-    }
+    
   }
   @override
-  RegExp get pattern => RegExp(r"I expect {String} of the conference to be displayed");
+  RegExp get pattern => RegExp(r"I expect a {String} to be display");
 }
 
-class GivenOpenApp extends When2WithWorld<String, int, FlutterWorld> {
+class GivenOpenApp extends When1WithWorld<String, FlutterWorld> {
   GivenOpenApp()
       : super(StepDefinitionConfiguration()..timeout = Duration(seconds: 10));
 
   @override
-  Future<void> executeStep(String input1, int input2) async {
+  Future<void> executeStep(String location) async { 
+    String searchingKey;
+    if(location == "mainMenu")
+      searchingKey == "Explore";
+    else if(location == "optionsMenu")
+      searchingKey == "Categories";
     // find the button by key
-    final locator = find.byValueKey("Explore");
-    for (var i = 0; i < input2; i += 1) {
+    final locator = find.byValueKey(searchingKey);
       await FlutterDriverUtils.tap(world.driver, locator, timeout: timeout);
-    }
+    
   }
 
   @override
-  RegExp get pattern => RegExp(r"I opened the application");
+  RegExp get pattern => RegExp(r"I opened {string}");
 
+}
+
+class GivenMenu extends Given1<String> {
+
+  @override
+  Future<void> executeStep(String input1) async {
+    expect(find.byValueKey(input1), input1);
+  }
+
+  @override
+  RegExp get pattern => RegExp(r"I am at {string} Menu");
+}
+
+class ThenExploreButton extends Then1WithWorld<String, FlutterWorld> {
+  @override
+  Future<void> executeStep(String destination) async {
+    expect(find.byValueKey(destination), "starting point");
+  }
+  @override
+  RegExp get pattern => RegExp(r"I expect to find a {string} form");
 }

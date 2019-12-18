@@ -14,6 +14,7 @@ class FoodMenu extends StatelessWidget {
           title: "Food",
         ),
         body: SafeArea(
+            key: Key("Food"),
             child: new Container(
           color: Colors.white,
           child: Stack(

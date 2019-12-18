@@ -47,6 +47,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     },
                   ),
                   Expanded(
+                    key: Key("location"),
                     child: new MyCustomForm(finalHeight: finalHeight, context: context, type: "origin", origin: origin,wantedPlaces: wantedPlaces, destination: destination, location: location,),
                   ),
                 ],
@@ -64,6 +65,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: () {},
                   ),
                   Expanded(
+                    key: Key("destination"),
                     child: new MyCustomForm(finalHeight: finalHeight, context: context, type: "destination", origin: origin, wantedPlaces: wantedPlaces, location: location, destination: destination,),
                   ),
                 ],
