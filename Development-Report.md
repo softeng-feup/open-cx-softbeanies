@@ -16,7 +16,7 @@ You can find here detailed information about the (sub)product, hereby mentioned 
   * [Logical architecture](#Logical-architecture)
   * [Physical architecture](#Physical-architecture)
   * [Prototype](#Prototype)
-* Implementation
+* [Implementation](##Implementation)
 * Test
 * [Change management](#Configuration-and-change-management)
 * [Project management](#Project-management)
@@ -218,11 +218,16 @@ However, all the other user stories were concluded with success:
 
 ## Implementation
 
-Regular product increments are a good practice of product management. 
+Most of our app front-end is quite simple in implementation and Flutter provides clear syntax to build pretty interfaces.
+However, the key aspect of our app feature resides on the back-end, related to the navigation.
 
-While not necessary, sometimes it might be useful to explain a few aspects of the code that have the greatest potential to confuse software engineers about how it works. Since the code should speak by itself, try to keep this section as short and simple as possible.
+Since how domain is restricted to the main building of FEUP, it's easy to create a set of Points Of Interest that will be related to the conference. These will be considered as nodes of a graph. Then, we define connections between them (edges), having intermediate steps to make the user perception when visualizing the path. Having these sets of nodes and edges, our graph is ready to be created.
 
-Use cross-links to the code repository and only embed real fragments of code when strictly needed, since they tend to become outdated very soon.
+From now on the path will be obtained running an algorithm (based on BFS and Dijkstra), which will, in the end, return an ordered list of the POI to be traveled.
+
+Finally, this list will be passed to the front-end, so the Google Maps widget receives it and display the path on the screen.
+
+In our product development final stage we switched from our own local stored database to the one provided in the open-cx server and then allowing future changes in the locations needed for the conference.
 
 ---
 
