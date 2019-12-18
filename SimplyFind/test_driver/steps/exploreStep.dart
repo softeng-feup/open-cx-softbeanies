@@ -7,15 +7,12 @@ class ExploreStepWhen extends When2WithWorld<String, int, FlutterWorld> {
     : super(StepDefinitionConfiguration()..timeout = Duration(seconds: 5));
 
   @override
-  Future<void> executeStep(String buttonName, int numberOfTaps) async {
-    // find the button by key
+  Future<void> executeStep(String input1, int input2) async {
     final locator = find.byValueKey("Explore");
-    // tap numberOfTaps times
-    for (var i = 0; i < numberOfTaps; i++) {
+    for (var i = 0; i < input2; i += 1) {
       await FlutterDriverUtils.tap(world.driver, locator, timeout: timeout);
     }
   }
-
   @override
   RegExp get pattern => RegExp(r"I tap the {String} button {int} times");
 }
@@ -25,10 +22,13 @@ class ExploreStepThen extends When2WithWorld<String, int, FlutterWorld> {
       : super(StepDefinitionConfiguration()..timeout = Duration(seconds: 5));
 
   @override
-  Future<void> executeStep(String widgetName, int _) async {
-    find.byValueKey(widgetName);
+  Future<void> executeStep(String input1, int input2) async {
+    // find the button by key
+    final locator = find.byValueKey("location");
+    for (var i = 0; i < input2; i += 1) {
+      await FlutterDriverUtils.tap(world.driver, locator, timeout: timeout);
+    }
   }
-
   @override
   RegExp get pattern => RegExp(r"I expect {String} of the conference to be displayed");
 }

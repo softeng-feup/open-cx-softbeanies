@@ -29,7 +29,7 @@ class FoodMenu extends StatelessWidget {
                           builder: (context) => Search(
                               destination: "Vending Machines",
                               wantedPlaces: DataServer().vendingMachines,
-                              origin: null)
+                              origin: null, location: "my location",)
                         ));
                   }),
               ButtonOrange(
