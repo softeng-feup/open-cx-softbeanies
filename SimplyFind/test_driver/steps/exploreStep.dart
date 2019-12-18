@@ -29,7 +29,7 @@ class ExploreStepThen extends When1WithWorld<String, FlutterWorld> {
     
   }
   @override
-  RegExp get pattern => RegExp(r"I expect a {String} to be display");
+  RegExp get pattern => RegExp(r"I expect to find a {string} form to put the wanted destination");
 }
 
 class GivenOpenApp extends When1WithWorld<String, FlutterWorld> {
@@ -71,5 +71,5 @@ class ThenExploreButton extends Then1WithWorld<String, FlutterWorld> {
     expect(find.byValueKey(destination), "starting point");
   }
   @override
-  RegExp get pattern => RegExp(r"I expect to find a {string} form");
+  RegExp get pattern => RegExp(r"I expect to find a {string} form to put the wanted destination");
 }

@@ -3,5 +3,5 @@ Feature: Explore button functionality
 
 Scenario:
     Given I am a user
-    When I tap the "Categories" button "1" time
-    Then I expect to find a "destinatio" form
+    When I tap the "Explore" button "1" time
+    Then I expect to find a "destination" form to put the wanted destination

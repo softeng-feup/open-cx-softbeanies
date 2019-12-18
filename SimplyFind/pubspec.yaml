@@ -29,6 +29,9 @@ dependencies:
   flutter_dotenv: ^2.1.0
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
   flutter_driver:
     sdk: flutter
   test: any
@@ -65,3 +68,4 @@ flutter:
     - assets/data/auxiliarPOIDataBase.json
     - assets/data/vendingMachinesDataBase.json
     - assets/data/exitsDataBase.json
+
