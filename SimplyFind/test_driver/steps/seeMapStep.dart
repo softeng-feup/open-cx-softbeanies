@@ -6,7 +6,14 @@ class seeMapStep extends Then1WithWorld<String, FlutterWorld> {
   @override
   Future<void> executeStep(String key) async {
     //Menus have key with there name for easy find in this class
-    expect(find.byValueKey(key), true);
+
+    final keyfound = find.byValueKey(key);
+      await world.driver.waitFor(keyfound, timeout: timeout);
+
+    final locator = find.byValueKey("location"); //maps menu allways have the container with the key location
+    String text = await world.driver.getText(locator, timeout: Duration(seconds: 2));
+
+    expect(text, "my location"); //the value of the field with key location must be "my location"
   }
   @override
   RegExp get pattern => RegExp(r"I expect to see the {string}");
