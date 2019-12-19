@@ -3,6 +3,9 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 
 class ThenExploreButton extends Then1WithWorld<String, FlutterWorld> {
+  ThenExploreButton()
+      : super(StepDefinitionConfiguration()..timeout = Duration(seconds: 5));
+
   @override
   Future<void> executeStep(String destination) async {
     expect(find.byValueKey(destination), "starting point");

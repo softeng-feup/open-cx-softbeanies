@@ -3,6 +3,9 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 
 class seeMapStep extends Then1WithWorld<String, FlutterWorld> {
+  seeMapStep()
+      : super(StepDefinitionConfiguration()..timeout = Duration(seconds: 5));
+
   @override
   Future<void> executeStep(String key) async {
     //Menus have key with there name for easy find in this class

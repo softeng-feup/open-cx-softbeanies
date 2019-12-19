@@ -4,8 +4,10 @@ import 'package:gherkin/gherkin.dart';
 import 'package:glob/glob.dart';
 import 'hooks/hook.dart';
 import 'steps/IAmAt.dart';
+import 'steps/MenuStep.dart';
 import 'steps/ThenExploreButton.dart';
 import 'steps/exploreStep.dart';
+import 'steps/open.dart';
 import 'steps/seeMapStep.dart';
 
 Future<void> main() {
@@ -25,8 +27,10 @@ Future<void> main() {
     ..stepDefinitions = [
       ExploreStepWhen(),
       ThenExploreButton(),
+      GivenMenu(),
       IAmAt(),
       seeMapStep(),
+      GivenOpenApp()
     ]
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
