@@ -30,6 +30,7 @@ class ShowDescriptionMenu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             new Container( //Container with the description of the event
+              key: Key("showDescription"),
               alignment: Alignment.center,
                 width: (90 / 100) * MediaQuery.of(context).size.width,
                 height: (60 / 100) * MediaQuery.of(context).size.height,

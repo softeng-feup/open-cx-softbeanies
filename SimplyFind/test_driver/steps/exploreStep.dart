@@ -2,34 +2,33 @@ import 'package:flutter_driver/flutter_driver.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 
-
 class ExploreStepWhen extends When2WithWorld<String, int, FlutterWorld> {
   ExploreStepWhen()
     : super(StepDefinitionConfiguration()..timeout = Duration(seconds: 5));
 
   @override
-  Future<void> executeStep(String buttonName, int numberOfTaps) async {
-    // find the button by key
-    final locator = find.byValueKey('SearchButton');
-    // tap numberOfTaps times
-    for (var i = 0; i < numberOfTaps; i++) {
+  Future<void> executeStep(String input1, int input2) async {
+    final locator = find.byValueKey(input1);
+    for (var i = 0; i < input2; i += 1) {
       await FlutterDriverUtils.tap(world.driver, locator, timeout: timeout);
     }
   }
-
   @override
-  RegExp get pattern => RegExp(r"I tap the {String} button {int} times");
+  RegExp get pattern => RegExp(r"I tap the {String} button {int} time");
 }
 
-class ExploreStepThen extends When2WithWorld<String, int, FlutterWorld> {
+class ExploreStepThen extends When1WithWorld<String, FlutterWorld> {
   ExploreStepThen()
       : super(StepDefinitionConfiguration()..timeout = Duration(seconds: 5));
 
   @override
-  Future<void> executeStep(String widgetName, int _) async {
-    find.byValueKey(widgetName);
+  Future<void> executeStep(String input1) async {
+    // find the button by key
+    final locator = find.byValueKey("location");
+      await FlutterDriverUtils.tap(world.driver, locator, timeout: timeout);
+    
   }
-
   @override
-  RegExp get pattern => RegExp(r"I expect {String} of the conference to be displayed");
+  RegExp get pattern => RegExp(r"I expect to find a {string} form to put the wanted destination");
 }
+

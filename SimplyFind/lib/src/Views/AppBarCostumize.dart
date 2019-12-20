@@ -25,6 +25,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext c) {
     double finalHeight = (MediaQuery.of(context).size.height / 100 * this.height);
     return Container(
+      key: Key("location"),
       height: finalHeight,
       color: Color.fromRGBO(1, 38, 90, 1),
       child: new Form(
@@ -46,6 +47,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     },
                   ),
                   Expanded(
+                    key: Key("locationForm"),
                     child: new MyCustomForm(finalHeight: finalHeight, context: context, type: "origin", origin: origin,wantedPlaces: wantedPlaces, destination: destination, location: location,),
                   ),
                 ],
@@ -63,6 +65,7 @@ class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: () {},
                   ),
                   Expanded(
+                    key: Key("destination"),
                     child: new MyCustomForm(finalHeight: finalHeight, context: context, type: "destination", origin: origin, wantedPlaces: wantedPlaces, location: location, destination: destination,),
                   ),
                 ],

@@ -29,6 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          key: Key("Main"),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           color: Color.fromRGBO(249, 228, 183, 1),
@@ -54,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 0.4 * MediaQuery.of(context).size.height,
               ),
               new Container(
+                  key: Key("Categories"),
                 margin: new EdgeInsets.only(
                   bottom: (2.5/ 100) * MediaQuery.of(context).size.width
                 ),
@@ -63,6 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
               ),
               new Container(
+                key: Key("Explore"),
                 margin: new EdgeInsets.only(
                   bottom: (10/ 100) * MediaQuery.of(context).size.width
                 ),

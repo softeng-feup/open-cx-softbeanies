@@ -16,6 +16,7 @@ class WcMenu extends StatelessWidget {
         ),
         body: SafeArea(
             child: Container(
+                key: Key("Wc"),
                 color: Colors.white,
                 child: Stack(
                   children: <Widget>[

@@ -14,6 +14,7 @@ class FoodMenu extends StatelessWidget {
           title: "Food",
         ),
         body: SafeArea(
+            key: Key("Food"),
             child: new Container(
           color: Colors.white,
           child: Stack(
@@ -29,7 +30,7 @@ class FoodMenu extends StatelessWidget {
                           builder: (context) => Search(
                               destination: "Vending Machines",
                               wantedPlaces: DataServer().vendingMachines,
-                              origin: null)
+                              origin: null, location: "my location",)
                         ));
                   }),
               ButtonOrange(

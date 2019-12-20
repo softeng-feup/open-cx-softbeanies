@@ -15,6 +15,7 @@ class OptionsMenu extends StatelessWidget {
         ),
         body: SafeArea(
             child: Container(
+              key: Key("Menu"),
           color: Colors.white,
           child: Stack(
             children: <Widget>[
